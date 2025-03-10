@@ -1,19 +1,61 @@
 Initial Quality Assurance Mechanisms
 
-Walkthrough Procedures: (Describe the walkthrough procedures followed in the project. Explain the steps involved, how they are conducted, and the key participants.)
+1. Walkthrough Procedures:
+    I. Identifying the Need for a Change
+      Trigger: A bug report, feature request, or planned improvement.
+      Initiator: A developer, contributor, or community member.
+      Action: The issue is documented in the GitHub Issues section, where it is discussed and prioritized.
+    
+    II. Code Development
+      Developer: A contributor forks the repository, creates a new branch, and implements the change.
+      Standards: The developer follows coding conventions, project architecture, and best practices.
+      Testing: The developer performs preliminary testing before submitting code.
+    
+    III. Submitting a Pull Request (PR)
+      Action: The contributor creates a pull request (PR) on GitHub, linking it to a related issue if applicable.
+      Description: The PR includes details such as: purpose of the change, modified files and functionality, steps to reproduce/test the change
+    
+    IV. Automated Checks & Continuous Integration (CI)
+      CI/CD Pipelines: GitHub Actions or similar tools run automated tests to check for errors, code quality, and security vulnerabilities.
+      Immediate Feedback: If tests fail, the contributor must fix issues before further review.
+
+    V. Peer Review and Discussion
+      Key Participants: Project maintainers and experienced contributors.
+      Review Process:
+        Code Readability & Structure: Ensures the code is clean and well-organized.
+        Functionality Verification: Checks if the feature or fix works as intended.
+        Impact Analysis: Evaluates potential side effects on existing features.
+        Best Practices & Standards: Ensures adherence to project guidelines.
+        Security Considerations: Identifies vulnerabilities or performance issues.
+      Reviewer Feedback:
+        Comments are left directly in the code via GitHub.
+        If changes are needed, the contributor updates the code and resubmits it.
+    
+    VI. Approval & Merging
+      Final Decision: If the PR meets all requirements, a maintainer approves it.
+      Merge Process:
+        The PR is merged into the main codebase.
+        The contributor is acknowledged for their work.
+    
+    VII. Post-Merge Validation
+      Further Testing: Additional tests may be run to ensure system stability.
+      Bug Monitoring: If new issues arise, fixes are prioritized.
+    
+    VIII. Release & Deployment
+      Stable Versions: Once multiple features and fixes are integrated, a new release is published.
+      Community Feedback: Users test the new version and report issues.
+
+2. Code Review Process: (Describe the code review process, including how it is carried out, the tools used, and the roles of team members involved.)
 
 
-Code Review Process: (Describe the code review process, including how it is carried out, the tools used, and the roles of team members involved.)
+3. Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
 
 
-Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
+4. Quality Assurance Roles in the Team: (Outline the specific quality-related roles within the team, such as Quality Manager, Quality Engineer, Test Lead, and their responsibilities.)
 
 
-Quality Assurance Roles in the Team: (Outline the specific quality-related roles within the team, such as Quality Manager, Quality Engineer, Test Lead, and their responsibilities.)
+5. Software Testing Methods: (Examine the source code to determine the presence of testing mechanisms such as unit tests, integration tests, and end-to-end tests. Describe their implementation or, if absent, recommend necessary testing methods.)
 
 
-Software Testing Methods: (Examine the source code to determine the presence of testing mechanisms such as unit tests, integration tests, and end-to-end tests. Describe their implementation or, if absent, recommend necessary testing methods.)
-
-
-Identified Gaps and Recommendations: (Highlight any shortcomings in the quality assurance process and provide suggestions for improvement.)
+6. Identified Gaps and Recommendations: (Highlight any shortcomings in the quality assurance process and provide suggestions for improvement.)
 
