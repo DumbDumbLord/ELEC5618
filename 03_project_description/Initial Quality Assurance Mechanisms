@@ -5,6 +5,12 @@ Walkthrough Procedures: (Describe the walkthrough procedures followed in the pro
 
 Code Review Process: (Describe the code review process, including how it is carried out, the tools used, and the roles of team members involved.)
 
+The code review process mainly includes standard git collaboration methods. Freeplane is an open source project hosted on github, with the current 
+version 1.12.x being the main default branch. Changes are made in new branches which can originate from the main branch, or from another branch/version. 
+The changes from branches are merged to main via pull requests, where the main developer and project owner Dimitry Polivaev, is able to review the code, 
+then messages the contributor and rejects or accepts the pull request. Git allows for seamless collaboration and version control which provide great 
+flexibility and ensures that the code stays working and effective. Hence the code review mainly focuses on the usage of pull requests and 
+branches to review code with seemingly only the developer Dimitry Polivaev participating in it.
 
 Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
 
