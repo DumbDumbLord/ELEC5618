@@ -10,7 +10,8 @@ version 1.12.x being the main default branch. Changes are made in new branches w
 The changes from branches are merged to main via pull requests, where the main developer and project owner Dimitry Polivaev, is able to review the code, 
 then messages the contributor and rejects or accepts the pull request. Git allows for seamless collaboration and version control which provide great 
 flexibility and ensures that the code stays working and effective. Hence the code review mainly focuses on the usage of pull requests and 
-branches to review code with seemingly only the developer Dimitry Polivaev participating in it.
+branches to review code with seemingly only the developer Dimitry Polivaev participating in it. For our team the quality manager will be the main person 
+responsible for code reviewing, while some team members occasionally accept some pull requests. 
 
 Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
 
