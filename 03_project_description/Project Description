@@ -1,4 +1,4 @@
-Project Description
+                            Project Description
 
 1. Functionality:(Provide a concise description of what the program does.)
 
@@ -9,6 +9,22 @@ A program for users to mind map/organise their management plan or ideas.
 This program is likely used to organise ideas and to better develop or communicate them to others or for themselves. Users could include students, teachers, office workers and managements teams.
 
 3. Installation Process:(Provide a step-by-step guide for a novice user to install the program.)
+    Visit https://sourceforge.net/projects/freeplane/.
+    Download the latest version of Freeplan.
+        Windows: Double-click the .exe file and follow the installation wizard.
+        Mac: Open the .dmg file, then drag Freeplane to the Applications folder.
+        Linux: Extract the .tar.gz file and follow the installation instructions in the provided README.
+
+    Go to the Repository(https://github.com/freeplane/freeplane).
+    Download the Project as a ZIP File and extract the ZIP File.
+    Install Required Software Ensure that you have the following installed:
+        Java Development Kit (JDK 17 or later) → Download from Oracle JDK or use OpenJDK.
+        Gradle (used for building the project) → Download from Gradle website or use package managers like brew install gradle (Mac) or choco install gradle (Windows).
+        Visual Studio Code (VS Code) → Download from VS Code website.
+    Open the Project in VS Code and set Up the development environment.
+    Run the build file 'build.gradle’ and run Freeplane.
+
+
 
 4. Upgrade Process:(Each team selects an open-source project and identifies a software quality feature to improve. The team then collaborates to implement the upgrade, with each member playing a specific role. Describe the collaboration process, role assignments, and how the feature was built from scratch.)
   a. Collaboration Process
@@ -90,6 +106,7 @@ This program is likely used to organise ideas and to better develop or communica
 
 
 5. Proposed Improvements:(Each team member must propose at least three aspects of the product that need improvement. The aspects proposed by each team member cannot be repeated.)
+
   (1) Performance Optimization
     Issue: Slow response times and inefficient memory management
     Solution: Optimize code and algorithms, improve memory handling, and boost overall performance
@@ -102,7 +119,25 @@ This program is likely used to organise ideas and to better develop or communica
     Issue: Inflexible plugin system limiting extensibility
     Solution: Redesign the plugin framework for easier integration and extension by developers
     
+  (4) Automated testing and increased coverage
+    Issue:
+    Solution:
+    
+  (5) User experience enhancements
+    Issue:
+    Solution:
+  
+  (6) Improved documentation
+    Issue:
+    Solution:
+  
+  (7)
+    Issue:
+    Solution:
+  
   ()
     Issue:
     Solution:
+   
+
 
