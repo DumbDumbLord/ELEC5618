@@ -138,6 +138,14 @@ Since version 1.x, Freeplane has featured automatic error reporting: if an unhan
     Edge Case and Boundary Testing:
     Tests include scenarios with edge values like zero or negative quantities, ensuring the system handles them correctly.
     Tests also cover cases such as rounding behavior when converting between units.
+    Missing testing methods:
+    Integration Testing: Test how multiple modules work together, such as how Quantity interacts with the UI, database, or API.
+    Database interaction tests (if Quantity is stored in a database).
+    Component interaction tests (if Quantity is transferred via an API or file system).
+    End-to-end testing (E2E Testing): simulate user behavior and test whether the functions of the entire system are working properly.
+    Web UI testing (using Selenium/Cypress).
+    REST API testing (if Quantity is accessed through API, RestAssured can be used).
+
     
 
 6. Identified Gaps and Recommendations: (Highlight any shortcomings in the quality assurance process and provide suggestions for improvement.)
@@ -155,6 +163,9 @@ Since version 1.x, Freeplane has featured automatic error reporting: if an unhan
     Suggestions for improvement:
     Build a CI/CD pipeline (GitHub Actions or GitLab CI/CD) to realize automatic testing and building when the code is submitted.
     Establish a code review mechanism of "testing before merging" to ensure the stability of each update.
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 62a60a2 (Gaps and Recommendations)
 
