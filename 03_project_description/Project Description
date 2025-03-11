@@ -135,9 +135,30 @@ This program is likely used to organise ideas and to better develop or communica
     Issue:
     Solution:
   
-  ()
+  (8)
     Issue:
     Solution:
-   
+  (9)
+    Issue:
+    Solution:
+  (10)
+    Issue:Potential vulnerabilities and outdated security practices
+    Solution:Update security protocols, conduct regular vulnerability scans, and implement robust error handling
+  (11)
+    Issue:Manual testing and deployment causing delays and errors
+    Solution:Set up continuous integration and deployment pipelines to automate builds, tests, and releases
+  
+  (12)
+    Issue:Insufficient error tracking and logging hindering effective debugging
+    Solution:Integrate comprehensive logging, error monitoring, and alerting systems
+  (13)
+    Issue:
+    Solution:
+  (14)
+    Issue:
+    Solution:
+  (15)
+    Issue:
+    Solution:
 
 
