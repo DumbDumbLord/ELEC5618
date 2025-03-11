@@ -3,10 +3,12 @@
 1. Functionality:(Provide a concise description of what the program does.)
 
 A program for users to mind map/organise their management plan or ideas.
+Key features include support for styles, formulas, add-ons, command search, and rich formatting options.
 
 2. Target Users and Purpose:(Describe the type of user most likely to use this program and why they would use it.)
 
 This program is likely used to organise ideas and to better develop or communicate them to others or for themselves. Users could include students, teachers, office workers and managements teams.
+Freeplane's flexibility, open source nature, and cross-platform compatibility make it also attractive to those looking for a customizable, free alternative to commercial mind mapping tools like Xmind or Mindmeister, as well as casual and power users who value productivity and creativity.
 
 3. Installation Process:(Provide a step-by-step guide for a novice user to install the program.)
     Visit https://sourceforge.net/projects/freeplane/.
@@ -131,18 +133,30 @@ This program is likely used to organise ideas and to better develop or communica
     Issue:
     Solution:
   
-  (7)Internationalization & Localization
+  (7) Internationalization & Localization
     Issue:Limited language support and regional customization
     Solution:Add multi-language support and localization features for broader accessibility
 
-  (8)Simplified Installation Process
+  (8) Simplified Installation Process
     Issue:Complicated installation procedures deterring new users
     Solution:Simplify and automate the installation process for easier setup across different platforms
     
-  (9)Accessibility Improvements
+  (9) Accessibility Improvements
      Issue:Lack of compliance with accessibility standards (e.g., keyboard navigation, screen readers)
      Solution:Implement accessibility features such as keyboard shortcuts, high-contrast modes, and screen reader support
-
+  
+  (10)
+    Issue:Potential vulnerabilities and outdated security practices
+    Solution:Update security protocols, conduct regular vulnerability scans, and implement robust error handling
+  
+  (11)
+    Issue:Manual testing and deployment causing delays and errors
+    Solution:Set up continuous integration and deployment pipelines to automate builds, tests, and releases
+  
+  (12)
+    Issue:Insufficient error tracking and logging hindering effective debugging
+    Solution:Integrate comprehensive logging, error monitoring, and alerting systems
+  
   (13) Improved UI
     Issue:Currently the UI is not very appealing and with a lot of information clustered together
     Solution: Increase outline for tabs, increase margins for mindmap boxes/nodes and also move around for font, size, etc to a left tab to improve space
