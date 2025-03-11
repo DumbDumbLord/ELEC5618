@@ -163,9 +163,3 @@ Since version 1.x, Freeplane has featured automatic error reporting: if an unhan
     Suggestions for improvement:
     Build a CI/CD pipeline (GitHub Actions or GitLab CI/CD) to realize automatic testing and building when the code is submitted.
     Establish a code review mechanism of "testing before merging" to ensure the stability of each update.
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 62a60a2 (Gaps and Recommendations)
-
