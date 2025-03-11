@@ -157,17 +157,18 @@ Freeplane's flexibility, open source nature, and cross-platform compatibility ma
     Issue:Insufficient error tracking and logging hindering effective debugging
     Solution:Integrate comprehensive logging, error monitoring, and alerting systems
   
-  (13)
-    Issue:
-    Solution:
-  
-  (14)
-    Issue:
-    Solution:
-  
-  (15)
-    Issue:
-    Solution:
+  (13) Improved UI
+    Issue:Currently the UI is not very appealing and with a lot of information clustered together
+    Solution: Increase outline for tabs, increase margins for mindmap boxes/nodes and also move around for font, size, etc to a left tab to improve space
+    
+  (14) Resizing Nodes Using Mouse
+    Issue: Nodes currently can't be resized dynamically using mouse
+    Solution: Make nodes resizable using mouse
+    
+  (15) Default/Template node/mindmap designs
+    Issue: The software currently lack any templates for nodes or mindmap from the software itself, which would be helpful to the user
+    Solution: Add in templates for nodes/mindmaps
+
 
 
 
