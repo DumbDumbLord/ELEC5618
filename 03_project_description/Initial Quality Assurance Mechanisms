@@ -45,34 +45,35 @@
       Stable Versions: Once multiple features and fixes are integrated, a new release is published.
       Community Feedback: Users test the new version and report issues.
 
-2. Code Review Process: (Describe the code review process, including how it is carried out, the tools used, and the roles of team members involved.)
+2. Code Review Process: 
+    The code review process mainly includes standard git collaboration methods. Freeplane is an open source project hosted on github, with the current 
+    version 1.12.x being the main default branch. Changes are made in new branches which can originate from the main branch, or from another branch/version. 
+    The changes from branches are merged to main via pull requests, where the main developer and project owner Dimitry Polivaev, is able to review the code, 
+    then messages the contributor and rejects or accepts the pull request. Git allows for seamless collaboration and version control which provide great 
+    flexibility and ensures that the code stays working and effective. Hence the code review mainly focuses on the usage of pull requests and 
+    branches to review code with seemingly only the developer Dimitry Polivaev participating in it. For our team the quality manager will be the main person 
+    responsible for code reviewing, while some team members occasionally accept some pull requests. 
 
-  The code review process mainly includes standard git collaboration methods. Freeplane is an open source project hosted on github, with the current 
-  version 1.12.x being the main default branch. Changes are made in new branches which can originate from the main branch, or from another branch/version. 
-  The changes from branches are merged to main via pull requests, where the main developer and project owner Dimitry Polivaev, is able to review the code, 
-  then messages the contributor and rejects or accepts the pull request. Git allows for seamless collaboration and version control which provide great 
-  flexibility and ensures that the code stays working and effective. Hence the code review mainly focuses on the usage of pull requests and 
-  branches to review code with seemingly only the developer Dimitry Polivaev participating in it. For our team the quality manager will be the main person 
-  responsible for code reviewing, while some team members occasionally accept some pull requests. 
 
+3. Software Evaluation Process: 
+    1) User Testing
+    Freeplane refactored the original FreeMind code to quickly add features requested by users, such as labeled graphical links, spell checking, and improved filtering. These enhancements stemmed from close attention to user feedback. 
+    Whenever new features or versions appear, community members test and discuss them, which led to better filtering usability (e.g., filtering menus, icons, history, and date-based filtering). 
+    Freeplane also collaborated with the University of Oulu’s User Experience Research Group; their suggestions (noted in version 1.8.3’s changelog) helped further improve usability.
+    
+    2) Performance Benchmarking and Optimization
+    The Freeplane team regularly evaluates and optimizes performance for tasks like map rendering and filtering—examples include quicker compound filtering in version 1.8.6 and enhanced rendering in version 1.8.7. 
+    As mind maps grow larger, Freeplane’s updates (e.g., in versions 1.5.13 and 1.6.13) focus on speeding up loading and handling of giant maps with many elements (such as SVG icons). 
+    Memory management also improved, like reducing resource use for external map zooming (1.2.13 beta) and checking available memory at startup on Windows (1.0.39 beta). 
+    Many performance fixes arose from addressing bugs (e.g., hierarchical icons slowing performance in 1.0.34 beta, memory leaks in the long node editor in 1.0.36 beta, and Java heap overflows in FreeMind 0.9.0 Beta18). 
+    They also sped up startup by delaying certain component loading, such as the spell checker dictionary. Additionally, a “Release Smoke Test” includes performance checks like rapid text entry and node folding/unfolding to see how the software behaves under heavier use.
+    
+    3) Automated Analysis Tools
+    Freeplane integrated automated code analysis and architecture testing to improve code quality. A key example is ArchUnit, which checks code architecture rules; in version 1.11.11, Freeplane began logging and analyzing any violations. 
+    Version 1.11.9 added a JVM code explorer mode for visualizing dependencies. Using Gradle, Freeplane also incorporates unit tests (e.g., adding new JUnit tests when fixing HTML export issues). 
+    Since version 1.x, Freeplane has featured automatic error reporting: if an unhandled exception occurs, the software prompts users to send an error log, allowing developers to identify and fix issues without relying solely on full-scale user testing.
 
-3. Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
-1) User Testing
-Freeplane refactored the original FreeMind code to quickly add features requested by users, such as labeled graphical links, spell checking, and improved filtering. These enhancements stemmed from close attention to user feedback. 
-Whenever new features or versions appear, community members test and discuss them, which led to better filtering usability (e.g., filtering menus, icons, history, and date-based filtering). 
-Freeplane also collaborated with the University of Oulu’s User Experience Research Group; their suggestions (noted in version 1.8.3’s changelog) helped further improve usability.
-2) Performance Benchmarking and Optimization
-The Freeplane team regularly evaluates and optimizes performance for tasks like map rendering and filtering—examples include quicker compound filtering in version 1.8.6 and enhanced rendering in version 1.8.7. 
-As mind maps grow larger, Freeplane’s updates (e.g., in versions 1.5.13 and 1.6.13) focus on speeding up loading and handling of giant maps with many elements (such as SVG icons). 
-Memory management also improved, like reducing resource use for external map zooming (1.2.13 beta) and checking available memory at startup on Windows (1.0.39 beta). 
-Many performance fixes arose from addressing bugs (e.g., hierarchical icons slowing performance in 1.0.34 beta, memory leaks in the long node editor in 1.0.36 beta, and Java heap overflows in FreeMind 0.9.0 Beta18). 
-They also sped up startup by delaying certain component loading, such as the spell checker dictionary. Additionally, a “Release Smoke Test” includes performance checks like rapid text entry and node folding/unfolding to see how the software behaves under heavier use.
-3) Automated Analysis Tools
-Freeplane integrated automated code analysis and architecture testing to improve code quality. A key example is ArchUnit, which checks code architecture rules; in version 1.11.11, Freeplane began logging and analyzing any violations. 
-Version 1.11.9 added a JVM code explorer mode for visualizing dependencies. Using Gradle, Freeplane also incorporates unit tests (e.g., adding new JUnit tests when fixing HTML export issues). 
-Since version 1.x, Freeplane has featured automatic error reporting: if an unhandled exception occurs, the software prompts users to send an error log, allowing developers to identify and fix issues without relying solely on full-scale user testing.
-
-4. Quality Assurance Roles in the Team: (Outline the specific quality-related roles within the team, such as Quality Manager, Quality Engineer, Test Lead, and their responsibilities.)
+4. Quality Assurance Roles in the Team: 
     Quality Manager
       Role Description: The role of quality manager is usually performed by a core maintainer. The quality manager is the strategic leader of quality assurance and is responsible for setting and overseeing quality standards and processes throughout the project.
       Specific responsibilities:
@@ -96,36 +97,42 @@ Since version 1.x, Freeplane has featured automatic error reporting: if an unhan
       oordinate community testing: For example, launch a test call in Discussions to encourage other users to participate in validating a new feature or fix.
 
 
-5. Software Testing Methods: (Examine the source code to determine the presence of testing mechanisms such as unit tests, integration tests, and end-to-end tests. Describe their implementation or, if absent, recommend necessary testing methods.)
+5. Software Testing Methods: 
     (EventTest.java)
     1. Unit Test
-    This code is a unit test that verifies the functionality of the language selection menu through the JUnit framework and ensures that the menu items correctly update their selected state after being clicked.
+      This code is a unit test that verifies the functionality of the language selection menu through the JUnit framework and ensures that the menu items correctly update their selected state after being clicked.
+    
     2. Test Method
-    Initialization: Create two menus menu1 and menu2 and use SpellChecker.
-    createLanguagesMenu() to fill the menu items.
-    Assertions:
-    Use assertEquals() to check whether the names and selected states of the two menu items are the same.
-    Use assertTrue() and assertFalse() to check the selected state of the menu items after clicking.
-    User interaction simulation: Use doClick(0) to simulate the user clicking on the menu item to switch the selected language.
-    Synchronous check: Verify that the states between menu1 and menu2 are consistent.
+      Initialization: Create two menus menu1 and menu2 and use SpellChecker.
+      createLanguagesMenu() to fill the menu items.
+      Assertions:
+      Use assertEquals() to check whether the names and selected states of the two menu items are the same.
+      Use assertTrue() and assertFalse() to check the selected state of the menu items after clicking.
+      User interaction simulation: Use doClick(0) to simulate the user clicking on the menu item to switch the selected language.
+      Synchronous check: Verify that the states between menu1 and menu2 are consistent.
+    
     3. Threading
-    Use Thread.sleep(10) to wait for asynchronous operations to complete, but this method is not the best practice.
+      Use Thread.sleep(10) to wait for asynchronous operations to complete, but this method is not the best practice.
 
     (MemoryTest.java)
     1. Unit Testing
-    This code includes two primary memory leak tests, using the JUnit framework to verify whether methods in the SpellChecker class exhibit memory leaks.
+      This code includes two primary memory leak tests, using the JUnit framework to verify whether methods in the SpellChecker class exhibit memory leaks.
+    
     2. Test Methods
-    testCreateLanguagesMenu: This test creates a language menu and repeatedly calls SpellChecker.createLanguagesMenu() to generate 10,000 menu items. It then compares the memory usage before and after the method execution to ensure there is no excessive increase, which would indicate a memory leak.
-    The usedMemory() method is used to track memory usage, and if the memory grows beyond a set threshold, it is considered a memory leak.
-    testRegister: This test creates a large text and registers it with the SpellChecker. It then creates multiple JTextPane objects, registering each one with the SpellChecker, and monitors memory usage. If memory usage grows too much, it suggests a memory leak.
-    Similar to the previous test, it uses the usedMemory() method to monitor memory and prints out memory usage details.
+      testCreateLanguagesMenu: This test creates a language menu and repeatedly calls SpellChecker.createLanguagesMenu() to generate 10,000 menu items. It then compares the memory usage before and after the method execution to ensure there is no excessive increase, which would indicate a memory leak.
+      The usedMemory() method is used to track memory usage, and if the memory grows beyond a set threshold, it is considered a memory leak.
+      testRegister: This test creates a large text and registers it with the SpellChecker. It then creates multiple JTextPane objects, registering each one with the SpellChecker, and monitors memory usage. If memory usage grows too much, it suggests a memory leak.
+      Similar to the previous test, it uses the usedMemory() method to monitor memory and prints out memory usage details.
+    
     3. Memory Usage Monitoring
-    usedMemory() Method: This method forces garbage collection using System.gc() and monitors the difference between runtime.totalMemory() and runtime.freeMemory to track memory usage.
-    If memory usage increases without significant reduction, it indicates a potential memory leak.
+      usedMemory() Method: This method forces garbage collection using System.gc() and monitors the difference between runtime.totalMemory() and runtime.freeMemory to track memory usage.
+      If memory usage increases without significant reduction, it indicates a potential memory leak.
+    
     4. Thread Handling
-    Thread.sleep(10) is used to allow garbage collection to complete and ensure that memory management processes have time to execute properly.
+      Thread.sleep(10) is used to allow garbage collection to complete and ensure that memory management processes have time to execute properly.
+    
     5. Failure Conditions
-    If memory usage exceeds a predefined threshold (such as 100,000 or 1,000,000 bytes), the test calls the fail() method, marking the test as failed and reporting a memory leak.
+      If memory usage exceeds a predefined threshold (such as 100,000 or 1,000,000 bytes), the test calls the fail() method, marking the test as failed and reporting a memory leak.
 
     (QualityTest.java)
     JUnit Assertions:
@@ -150,16 +157,16 @@ Since version 1.x, Freeplane has featured automatic error reporting: if an unhan
 
 6. Identified Gaps and Recommendations: (Highlight any shortcomings in the quality assurance process and provide suggestions for improvement.)
     a.Insufficient coverage of automated tests
-    Problem:
-    Freeplane relies too much on manual testing, and the testing process is inefficient and prone to human errors.
-    The coverage of unit tests, integration tests, and UI tests is limited, which may lead to new bugs being introduced when code changes are made without being discovered in time.
-    Suggestions for improvement:
-    Introduce automated testing frameworks, such as: JUnit (unit testing), Mockito (simulated dependencies),TestContainers (integration testing of external dependencies such as databases), Selenium or Cypress (UI automated testing). Ensure that the test coverage reaches more than 80% to reduce the occurrence of regression problems.
+      Problem:
+        Freeplane relies too much on manual testing, and the testing process is inefficient and prone to human errors.
+        The coverage of unit tests, integration tests, and UI tests is limited, which may lead to new bugs being introduced when code changes are made without being discovered in time.
+      Suggestions for improvement:
+        Introduce automated testing frameworks, such as: JUnit (unit testing), Mockito (simulated dependencies),TestContainers (integration testing of external dependencies such as databases), Selenium or Cypress (UI automated testing). Ensure that the test coverage reaches more than 80% to reduce the occurrence of regression problems.
 
     b.Lack of continuous integration and continuous deployment (CI/CD)
-    Problem:
-    There is no automated test pipeline, and the test will not be automatically run after the code is submitted.
-    Developers may merge the code directly without sufficient testing, which may cause bugs in the production environment.
-    Suggestions for improvement:
-    Build a CI/CD pipeline (GitHub Actions or GitLab CI/CD) to realize automatic testing and building when the code is submitted.
-    Establish a code review mechanism of "testing before merging" to ensure the stability of each update.
+      Problem:
+        There is no automated test pipeline, and the test will not be automatically run after the code is submitted.
+        Developers may merge the code directly without sufficient testing, which may cause bugs in the production environment.
+      Suggestions for improvement:
+        Build a CI/CD pipeline (GitHub Actions or GitLab CI/CD) to realize automatic testing and building when the code is submitted.
+        Establish a code review mechanism of "testing before merging" to ensure the stability of each update.
