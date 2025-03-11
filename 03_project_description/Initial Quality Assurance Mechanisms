@@ -1,19 +1,59 @@
-Initial Quality Assurance Mechanisms
+                        Initial Quality Assurance Mechanisms
 
-Walkthrough Procedures: (Describe the walkthrough procedures followed in the project. Explain the steps involved, how they are conducted, and the key participants.)
-
-
-Code Review Process: (Describe the code review process, including how it is carried out, the tools used, and the roles of team members involved.)
+1. Walkthrough Procedures: (Describe the walkthrough procedures followed in the project. Explain the steps involved, how they are conducted, and the key participants.)
 
 
-Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
+2. Code Review Process: (Describe the code review process, including how it is carried out, the tools used, and the roles of team members involved.)
 
 
-Quality Assurance Roles in the Team: (Outline the specific quality-related roles within the team, such as Quality Manager, Quality Engineer, Test Lead, and their responsibilities.)
+3. Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
 
 
-Software Testing Methods: (Examine the source code to determine the presence of testing mechanisms such as unit tests, integration tests, and end-to-end tests. Describe their implementation or, if absent, recommend necessary testing methods.)
+4. Quality Assurance Roles in the Team: (Outline the specific quality-related roles within the team, such as Quality Manager, Quality Engineer, Test Lead, and their responsibilities.)
 
 
-Identified Gaps and Recommendations: (Highlight any shortcomings in the quality assurance process and provide suggestions for improvement.)
+5. Software Testing Methods: (Examine the source code to determine the presence of testing mechanisms such as unit tests, integration tests, and end-to-end tests. Describe their implementation or, if absent, recommend necessary testing methods.)
+    (EventTest.java)
+    1. Unit Test
+    This code is a unit test that verifies the functionality of the language selection menu through the JUnit framework and ensures that the menu items correctly update their selected state after being clicked.
+    2. Test Method
+    Initialization: Create two menus menu1 and menu2 and use SpellChecker.
+    createLanguagesMenu() to fill the menu items.
+    Assertions:
+    Use assertEquals() to check whether the names and selected states of the two menu items are the same.
+    Use assertTrue() and assertFalse() to check the selected state of the menu items after clicking.
+    User interaction simulation: Use doClick(0) to simulate the user clicking on the menu item to switch the selected language.
+    Synchronous check: Verify that the states between menu1 and menu2 are consistent.
+    3. Threading
+    Use Thread.sleep(10) to wait for asynchronous operations to complete, but this method is not the best practice.
+
+    (MemoryTest.java)
+    1. Unit Testing
+    This code includes two primary memory leak tests, using the JUnit framework to verify whether methods in the SpellChecker class exhibit memory leaks.
+    2. Test Methods
+    testCreateLanguagesMenu: This test creates a language menu and repeatedly calls SpellChecker.createLanguagesMenu() to generate 10,000 menu items. It then compares the memory usage before and after the method execution to ensure there is no excessive increase, which would indicate a memory leak.
+    The usedMemory() method is used to track memory usage, and if the memory grows beyond a set threshold, it is considered a memory leak.
+    testRegister: This test creates a large text and registers it with the SpellChecker. It then creates multiple JTextPane objects, registering each one with the SpellChecker, and monitors memory usage. If memory usage grows too much, it suggests a memory leak.
+    Similar to the previous test, it uses the usedMemory() method to monitor memory and prints out memory usage details.
+    3. Memory Usage Monitoring
+    usedMemory() Method: This method forces garbage collection using System.gc() and monitors the difference between runtime.totalMemory() and runtime.freeMemory to track memory usage.
+    If memory usage increases without significant reduction, it indicates a potential memory leak.
+    4. Thread Handling
+    Thread.sleep(10) is used to allow garbage collection to complete and ensure that memory management processes have time to execute properly.
+    5. Failure Conditions
+    If memory usage exceeds a predefined threshold (such as 100,000 or 1,000,000 bytes), the test calls the fail() method, marking the test as failed and reporting a memory leak.
+
+    (QualityTest.java)
+    JUnit Assertions:
+    assertEquals(expected, actual): Verifies that the actual value matches the expected value (e.g., testing string conversions and unit conversions).
+    assertNull(value): Checks if a value is null (e.g., when parsing a null string).
+    assertThrows(expectedException.class, executable): Verifies that a specific exception is thrown (e.g., testing for IllegalStateException when a negative quantity is used).
+    AssertJ Assertions:
+    assertThat(value).isEqualTo(expected): Fluent and expressive assertion for equality checks (e.g., testing value conversions, unit transformations, and the rounding of values).
+    assertThat(value).isEqualTo(new Quantity(...)): Verifies if objects are equal based on custom logic (e.g., verifying unit conversions).
+    Edge Case and Boundary Testing:
+    Tests include scenarios with edge values like zero or negative quantities, ensuring the system handles them correctly.
+    Tests also cover cases such as rounding behavior when converting between units.
+    
+6. Identified Gaps and Recommendations: (Highlight any shortcomings in the quality assurance process and provide suggestions for improvement.)
 
