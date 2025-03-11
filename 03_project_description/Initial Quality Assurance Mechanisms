@@ -57,7 +57,20 @@
 
 
 3. Software Evaluation Process: (Explain the processes used to assess software quality, such as user testing, performance benchmarking, and automated analysis tools.)
-
+1) User Testing
+Freeplane refactored the original FreeMind code to quickly add features requested by users, such as labeled graphical links, spell checking, and improved filtering. These enhancements stemmed from close attention to user feedback. 
+Whenever new features or versions appear, community members test and discuss them, which led to better filtering usability (e.g., filtering menus, icons, history, and date-based filtering). 
+Freeplane also collaborated with the University of Oulu’s User Experience Research Group; their suggestions (noted in version 1.8.3’s changelog) helped further improve usability.
+2) Performance Benchmarking and Optimization
+The Freeplane team regularly evaluates and optimizes performance for tasks like map rendering and filtering—examples include quicker compound filtering in version 1.8.6 and enhanced rendering in version 1.8.7. 
+As mind maps grow larger, Freeplane’s updates (e.g., in versions 1.5.13 and 1.6.13) focus on speeding up loading and handling of giant maps with many elements (such as SVG icons). 
+Memory management also improved, like reducing resource use for external map zooming (1.2.13 beta) and checking available memory at startup on Windows (1.0.39 beta). 
+Many performance fixes arose from addressing bugs (e.g., hierarchical icons slowing performance in 1.0.34 beta, memory leaks in the long node editor in 1.0.36 beta, and Java heap overflows in FreeMind 0.9.0 Beta18). 
+They also sped up startup by delaying certain component loading, such as the spell checker dictionary. Additionally, a “Release Smoke Test” includes performance checks like rapid text entry and node folding/unfolding to see how the software behaves under heavier use.
+3) Automated Analysis Tools
+Freeplane integrated automated code analysis and architecture testing to improve code quality. A key example is ArchUnit, which checks code architecture rules; in version 1.11.11, Freeplane began logging and analyzing any violations. 
+Version 1.11.9 added a JVM code explorer mode for visualizing dependencies. Using Gradle, Freeplane also incorporates unit tests (e.g., adding new JUnit tests when fixing HTML export issues). 
+Since version 1.x, Freeplane has featured automatic error reporting: if an unhandled exception occurs, the software prompts users to send an error log, allowing developers to identify and fix issues without relying solely on full-scale user testing.
 
 4. Quality Assurance Roles in the Team: (Outline the specific quality-related roles within the team, such as Quality Manager, Quality Engineer, Test Lead, and their responsibilities.)
     Quality Manager
