@@ -141,4 +141,20 @@ Since version 1.x, Freeplane has featured automatic error reporting: if an unhan
     
 
 6. Identified Gaps and Recommendations: (Highlight any shortcomings in the quality assurance process and provide suggestions for improvement.)
+    a.Insufficient coverage of automated tests
+    Problem:
+    Freeplane relies too much on manual testing, and the testing process is inefficient and prone to human errors.
+    The coverage of unit tests, integration tests, and UI tests is limited, which may lead to new bugs being introduced when code changes are made without being discovered in time.
+    Suggestions for improvement:
+    Introduce automated testing frameworks, such as: JUnit (unit testing), Mockito (simulated dependencies),TestContainers (integration testing of external dependencies such as databases), Selenium or Cypress (UI automated testing). Ensure that the test coverage reaches more than 80% to reduce the occurrence of regression problems.
+
+    b.Lack of continuous integration and continuous deployment (CI/CD)
+    Problem:
+    There is no automated test pipeline, and the test will not be automatically run after the code is submitted.
+    Developers may merge the code directly without sufficient testing, which may cause bugs in the production environment.
+    Suggestions for improvement:
+    Build a CI/CD pipeline (GitHub Actions or GitLab CI/CD) to realize automatic testing and building when the code is submitted.
+    Establish a code review mechanism of "testing before merging" to ensure the stability of each update.
+
+
 
