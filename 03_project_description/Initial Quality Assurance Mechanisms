@@ -10,6 +10,27 @@
 
 
 4. Quality Assurance Roles in the Team: (Outline the specific quality-related roles within the team, such as Quality Manager, Quality Engineer, Test Lead, and their responsibilities.)
+Quality Manager
+  Role Description: The role of quality manager is usually performed by a core maintainer. The quality manager is the strategic leader of quality assurance and is responsible for setting and overseeing quality standards and processes throughout the project.
+  Specific responsibilities:
+  Define quality objectives: such as ensuring that each release, such as alpha-1.9.0-pre05, passes basic functional testing and is free of critical defects. As you can see from the GitHub Releases page, the maintainer releases releases regularly with an update log.
+  Review Pull Requests to ensure code conforms to coding specifications, such as Java's OSGi and Swing standards.
+  Decide when to release the new version and ensure that the version is fully verified, such as functional testing and stability checking.
+  Community feedback Integration: Gather user feedback and prioritize quality Issues through GitHub Discussions and Issues, such as#2271, bug report dated February 1, 2025.
+Quality Engineer
+  Role Description: Quality engineers are typically active code contributors to a project who support the quality assurance process through technical means.
+  Specific responsibilities:
+  Write automated tests: Write automated test scripts for core functions, such as mind map editing, file export to ensure functional correctness.
+  Bug management: Analyze bug reports in GitHub Issues, reproduce issues and submit fixes.
+  Continuous Integration Optimization: Maintain the test pipeline configuration for GitHub Actions
+  Participate in code reviews: Provide technical feedback in Pull Requests reviews to help improve code quality.
+Test Lead
+  Role Description: The test lead is responsible for coordinating testing activities and ensuring that new features and fixes are fully validated. In Freeplane, this role may be filled by active testers or volunteers in the community.
+  Specific responsibilities:
+  Design test plan:Develop test cases for new features or major changes, covering major use cases.The repository has multiple open bugs and feature requests, such as #2301, #2291, indicating that the community is continuously tracking and improving quality.
+  Perform manual testing, download pre-release versions ,such as Assets of alpha-1.9.0-pre05, test cross-platform compatibility (Windows, macOS, Linux), and user experience.
+  Feedback test results: Submit a detailed test report on GitHub Issues and record the problems found.
+  oordinate community testing: For example, launch a test call in Discussions to encourage other users to participate in validating a new feature or fix.
 
 
 5. Software Testing Methods: (Examine the source code to determine the presence of testing mechanisms such as unit tests, integration tests, and end-to-end tests. Describe their implementation or, if absent, recommend necessary testing methods.)
