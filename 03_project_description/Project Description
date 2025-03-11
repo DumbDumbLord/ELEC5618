@@ -131,13 +131,20 @@ This program is likely used to organise ideas and to better develop or communica
     Issue:
     Solution:
   
-  (7)
-    Issue:
-    Solution:
-  
-  ()
-    Issue:
-    Solution:
-   
+  (7)Internationalization & Localization
+    Issue:Limited language support and regional customization
+    Solution:Add multi-language support and localization features for broader accessibility
+
+  (8)Simplified Installation Process
+    Issue:Complicated installation procedures deterring new users
+    Solution:Simplify and automate the installation process for easier setup across different platforms
+    
+  (9)Accessibility Improvements
+     Issue:Lack of compliance with accessibility standards (e.g., keyboard navigation, screen readers)
+     Solution:Implement accessibility features such as keyboard shortcuts, high-contrast modes, and screen reader support
+
+
+
+
 
 
