@@ -147,9 +147,9 @@ This program is likely used to organise ideas and to better develop or communica
     Issue:Currently the UI is not very appealing and with a lot of information clustered together
     Solution: Increase outline for tabs, increase margins for mindmap boxes/nodes and also move around for font, size, etc to a left tab to improve space
     
-  (14) Resizing Nodes
-    Issue: Nodes currently can't be resized
-    Solution: Make nodes resizable
+  (14) Resizing Nodes Using Mouse
+    Issue: Nodes currently can't be resized dynamically using mouse
+    Solution: Make nodes resizable using mouse
     
   (15) Default/Template node/mindmap designs
     Issue: The software currently lack any templates for nodes or mindmap from the software itself, which would be helpful to the user
