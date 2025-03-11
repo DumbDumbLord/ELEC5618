@@ -1,0 +1,143 @@
+                            Project Description
+
+1. Functionality:(Provide a concise description of what the program does.)
+
+A program for users to mind map/organise their management plan or ideas.
+
+2. Target Users and Purpose:(Describe the type of user most likely to use this program and why they would use it.)
+
+This program is likely used to organise ideas and to better develop or communicate them to others or for themselves. Users could include students, teachers, office workers and managements teams.
+
+3. Installation Process:(Provide a step-by-step guide for a novice user to install the program.)
+    Visit https://sourceforge.net/projects/freeplane/.
+    Download the latest version of Freeplan.
+        Windows: Double-click the .exe file and follow the installation wizard.
+        Mac: Open the .dmg file, then drag Freeplane to the Applications folder.
+        Linux: Extract the .tar.gz file and follow the installation instructions in the provided README.
+
+    Go to the Repository(https://github.com/freeplane/freeplane).
+    Download the Project as a ZIP File and extract the ZIP File.
+    Install Required Software Ensure that you have the following installed:
+        Java Development Kit (JDK 17 or later) → Download from Oracle JDK or use OpenJDK.
+        Gradle (used for building the project) → Download from Gradle website or use package managers like brew install gradle (Mac) or choco install gradle (Windows).
+        Visual Studio Code (VS Code) → Download from VS Code website.
+    Open the Project in VS Code and set Up the development environment.
+    Run the build file 'build.gradle’ and run Freeplane.
+
+
+
+4. Upgrade Process:(Each team selects an open-source project and identifies a software quality feature to improve. The team then collaborates to implement the upgrade, with each member playing a specific role. Describe the collaboration process, role assignments, and how the feature was built from scratch.)
+  a. Collaboration Process
+      Quality Planning:
+        Kick-off Meeting:
+          Assemble key participants: Project Manager, Lead Developer, QA, UX/UI Designer, DevOps, and Community Representatives.
+          Review current quality issues and user feedback (from GitHub Issues, Discussions, and direct user input) to identify the improvement areas.
+          
+        Define Scope and Priorities:
+          Prioritize the 15 improvement aspects based on impact, effort, and community feedback.
+          Develop detailed requirement documents for each aspect.
+         
+      Quality Assurance:
+        Prototype Development:
+          Develop a proof-of-concept or a minimal viable version of new features to validate design decisions.
+          
+        Incremental Implementation:
+          Use feature branches for each major improvement.
+          Follow coding standards and best practices; maintain modularity for future extensions.
+          
+        Peer Review Process:
+          Developers submit pull requests which are reviewed by peers, the lead developer, and QA.
+          Automated code analysis tools (e.g., static analysis, test coverage reports) support this process.
+          
+        Merge and Integration:
+          After successful reviews and testing, merge feature branches into the main branch.
+          
+        Automated Testing:
+          Implement unit tests, integration tests, and UI tests using a CI pipeline.
+          
+        Manual Testing:
+          QA conducts exploratory and regression testing.
+          Security tests are performed to ensure vulnerability-free updates.
+          
+        Walkthrough Sessions:
+          Testing Walkthrough: QA and developers jointly review test cases, results, and bug reports to ensure comprehensive coverage.
+
+      Quality Control
+        Rigorous Testing Regimes
+          Both automated and manual testing are used to monitor project results. Unit tests, integration tests, and UI tests are implemented to check that the specific outputs comply with quality standards.
+
+        Monitoring and Feedback Loops
+          Regular bug tracking, error logging, and community feedback help the team promptly address any deviations from the quality standards.
+
+        Enforcing Standards
+          Code reviews and strict merge criteria ensure that all development follows the agreed-upon procedures and quality requirements.
+
+  b. Role Assignments
+    Project Lead
+      - Overall coordination
+      - Task prioritization
+      - Backend/core code contributions
+    UX/UI Designer
+      - Redesigning the interface
+      - Accessibility improvements
+    Backend
+      - Performance optimization
+      - Feature integration
+    QA & Testing Engineer
+      - Writing and running tests
+      - Bug triage
+    Documentation & Tools
+      - Writing docs
+      - Managing dev tools/CI/CD
+
+  c. The process builds features from scratch by following these key steps:
+
+      Planning & Design:
+      Define requirements and quality standards, then create prototypes and design walkthroughs to validate ideas.
+
+      Incremental Development:
+      Develop the feature in isolated branches, adhering to coding best practices and using peer reviews for quality checks.
+
+      Continuous Testing & Integration:
+      Run automated and manual tests through a CI/CD pipeline, ensuring the new code meets all quality standards before merging into the main branch.
+
+      Final Review:
+      Conduct a final walkthrough to confirm that the feature integrates seamlessly and meets the set requirements.
+
+
+5. Proposed Improvements:(Each team member must propose at least three aspects of the product that need improvement. The aspects proposed by each team member cannot be repeated.)
+
+  (1) Performance Optimization
+    Issue: Slow response times and inefficient memory management
+    Solution: Optimize code and algorithms, improve memory handling, and boost overall performance
+    
+  (2) Code Modularity & Refactoring
+    Issue: Monolithic legacy code that is difficult to maintain
+    Solution: Refactor the codebase into modular components to reduce technical debt and simplify future enhancements
+    
+  (3) Enhanced Plugin Architecture
+    Issue: Inflexible plugin system limiting extensibility
+    Solution: Redesign the plugin framework for easier integration and extension by developers
+    
+  (4) Automated testing and increased coverage
+    Issue:
+    Solution:
+    
+  (5) User experience enhancements
+    Issue:
+    Solution:
+  
+  (6) Improved documentation
+    Issue:
+    Solution:
+  
+  (7)
+    Issue:
+    Solution:
+  
+  ()
+    Issue:
+    Solution:
+   
+
+
