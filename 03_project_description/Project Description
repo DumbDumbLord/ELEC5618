@@ -143,7 +143,17 @@ This program is likely used to organise ideas and to better develop or communica
      Issue:Lack of compliance with accessibility standards (e.g., keyboard navigation, screen readers)
      Solution:Implement accessibility features such as keyboard shortcuts, high-contrast modes, and screen reader support
 
-
+  (13) Improved UI
+    Issue:Currently the UI is not very appealing and with a lot of information clustered together
+    Solution: Increase outline for tabs, increase margins for mindmap boxes/nodes and also move around for font, size, etc to a left tab to improve space
+    
+  (14) Resizing Nodes
+    Issue: Nodes currently can't be resized
+    Solution: Make nodes resizable
+    
+  (15) Default/Template node/mindmap designs
+    Issue: The software currently lack any templates for nodes or mindmap from the software itself, which would be helpful to the user
+    Solution: Add in templates for nodes/mindmaps
 
 
 
