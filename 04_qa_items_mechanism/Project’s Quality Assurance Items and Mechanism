@@ -19,39 +19,72 @@ Part 2
 
 7. QA Mechanism Documentation (Please see page 2 for details)
 a. Three defects:
+Performance Degradation:
+Description: Scripts or filters cause UI freezes or crashes when handling large mind maps (>10,000 nodes), degrading user experience due to Freeplane‚Äôs Java Swing architecture and computational overhead.
+Risk: Users abandon Freeplane for slow performance on complex projects.
+UI State Corruption:
+Description: Script errors or interrupted operations (e.g., crashes) leave the mind map in an inconsistent state, such as unsaved changes or broken hyperlinks, due to unhandled exceptions in MapModel or NodeModel.
+Risk: Data loss or usability issues frustrate users, eroding trust.
+Filtering Inaccuracies:
+Description: Advanced filters return incomplete or irrelevant nodes (e.g., missing partial keyword matches), stemming from potential flaws in FilterController logic for complex queries.
+Risk: Users cannot reliably navigate or manage large maps, reducing functionality.
 
 b. Training:
+Performance Degradation:
+Train contributors on Java Swing optimization techniques (e.g., minimizing repaint calls, using buffered rendering) and profiling tools like VisualVM to identify bottlenecks in real-time. Include sessions on handling large datasets efficiently, focusing on Freeplane‚Äôs event-driven UI model.
+UI State Corruption:
+Educate developers on exception handling best practices in Java (e.g., try-catch blocks around script execution) and Freeplane‚Äôs autosave/recovery mechanisms (MapModel). Use case studies of past crashes to highlight state preservation techniques.
+Filtering Inaccuracies:
+Train team members on Freeplane‚Äôs filtering system (FilterController, FilterCondition), emphasizing regex and attribute-based query logic. Simulate edge cases (e.g., partial matches, case sensitivity) to ensure understanding of accurate filter implementation.
 
 c. Policies:
+Performance Degradation:
+Enforce a coding standard requiring performance impact assessments for new features or scripts (e.g., ‚ÄúNo pull request merged without profiling data for >1,000 nodes‚Äù). Mandate lightweight algorithms for UI updates, aligned with IEEE 730-2014‚Äôs quality attribute focus.
+UI State Corruption:
+Require mandatory peer reviews for script-related code, with a checklist ensuring exception handling and state consistency (e.g., ‚ÄúDoes this preserve MapModel integrity on failure?‚Äù). Establish a versioning policy for autosave files to track state changes.
+Filtering Inaccuracies:
+Mandate documentation of filter logic in pull requests and a policy for regression testing all filter conditions before release. Align with best practices by requiring filter specs to be reviewed against user requirements.
 
 d. Tests:
+Performance Degradation:
+Implement automated performance tests in the GitHub Actions CI pipeline using JUnit, simulating large maps (e.g., 10,000 nodes with scripts/filters) and measuring latency (e.g., <3 seconds threshold). Add stress tests with varying node counts and profiling to catch freezes or crashes.
+UI State Corruption:
+Develop unit tests for script execution (e.g., test_script_failure_preserves_state() in ScriptingEngine) and integration tests to verify autosave triggers after interruptions. Include fuzz testing to simulate erratic script inputs and validate state recovery.
+Filtering Inaccuracies:
+Create unit tests for FilterCondition (e.g., test_partial_keyword_match()) and integration tests comparing filter outputs to expected node sets (e.g., golden master files). Add system tests to validate end-to-end filtering on sample maps with complex queries.
 
 e. Measures:
+Performance Degradation:
+Monitor KPIs like average rendering time for 1,000+ node maps (via test logs) and user-reported lag incidents (GitHub Issues). Set a threshold (e.g., >3 seconds triggers review) and track improvement trends post-optimization.
+UI State Corruption:
+Measure defect rates for crash-related Issues and user feedback on data loss (via Discussions/X). Track autosave success rate (e.g., % of recoveries completed) to refine recovery mechanisms.
+Filtering Inaccuracies:
+Monitor filter-related bug reports (GitHub Issues) and customer satisfaction scores from Discussions (e.g., ‚ÄúDid filters work as expected?‚Äù). Measure accuracy rates in test suites (e.g., % of correct node matches).
 
 QA Mechanism Details
 Documentation:
-ï Regularly reviewed & updated to reflect the current state of
+‚Ä¢ Regularly reviewed & updated to reflect the current state of
 the product.
-ï Prevents ìout-of-dateî instructions that might introduce new
+‚Ä¢ Prevents ‚Äúout-of-date‚Äù instructions that might introduce new
 defects.
 Training:
-ï Train team members on product design,
+‚Ä¢ Train team members on product design,
 manufacturing/implementation processes, and safety
 standards.
-ï Ensures everyone has the knowledge to identify & address
+‚Ä¢ Ensures everyone has the knowledge to identify & address
 potential defects early.
 Policies:
-ï Summarize the written guidelines governing the projectís
+‚Ä¢ Summarize the written guidelines governing the project‚Äôs
 design, coding standards, and manufacturing processes.
-ï Keep them updated so they align with current best practices
+‚Ä¢ Keep them updated so they align with current best practices
 and regulatory requirements.
 Tests:
-ï Conduct rigorous testing (design validation, manufacturing
+‚Ä¢ Conduct rigorous testing (design validation, manufacturing
 validation, product verification).
-ï Catch potential defects before release. May include unit tests,
+‚Ä¢ Catch potential defects before release. May include unit tests,
 integration tests, system tests, etc.
 Measures:
-ï Monitor and measure key performance indicators (defect rates,
+‚Ä¢ Monitor and measure key performance indicators (defect rates,
 customer satisfaction, regulatory compliance).
-ï Use these metrics to refine and improve the QA process
+‚Ä¢ Use these metrics to refine and improve the QA process
 continuously.
