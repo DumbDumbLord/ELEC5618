@@ -1,49 +1,96 @@
                         Initial Quality Assurance Mechanisms
 
 1. Walkthrough Procedures:
-    I. Identifying the Need for a Change
-      Trigger: A bug report, feature request, or planned improvement.
-      Initiator: A developer, contributor, or community member.
-      Action: The issue is documented in the GitHub Issues section, where it is discussed and prioritized.
+    Freeplane employs a multi-layered QA approach combining automated testing, peer reviews, and community-driven validation. 
+    Below are the key procedures and their implementation:
+    I. Code Review Walkthroughs
+      Purpose: Ensure code correctness, adherence to standards, and maintainability.
+      Steps Involved:
+        a. Pull Request Submission:
+          Contributors submit PRs from feature/fix branches to the develop branch.
+          PRs must include:
+            - A description linking to the relevant GitHub issue.
+            - Unit/UI test updates (if applicable).
+            - Javadoc comments for new methods.
+        b. Automated Checks:
+          CI Pipelines run:
+            - Compilation checks.
+            - Unit tests.
+            - Code coverage metrics.
+        c. Manual Code Review:
+          Core Maintainers review:
+            - Architectural consistency.
+            - Compliance with coding conventions.
+            - Edge-case handling and error logging.
+          Feedback Loop:
+            - Reviewers request revisions via PR comments.
+            - Contributors amend code and push updates.
+        d. Approval & Merge:
+          PRs are merged into develop only after:
+            - All CI checks pass.
+            - At least one maintainer approves.
+        
+        Key Participants:
+        - Contributors: Implement code and address feedback.
+        - Maintainers: Enforce standards and validate logic.
+        - CI Bots: Automate preliminary checks.
     
-    II. Code Development
-      Developer: A contributor forks the repository, creates a new branch, and implements the change.
-      Standards: The developer follows coding conventions, project architecture, and best practices.
-      Testing: The developer performs preliminary testing before submitting code.
+    II. Testing Walkthroughs
+      Purpose: Validate functionality, regression safety, and cross-platform compatibility.
+      Steps Involved:
+        a. Unit Testing:
+          - Developers write JUnit tests for core logic.
+          - Tests are stored in /src/test/java and executed via ant test.
+        b. GUI Testing:
+          Automated UI Tests:
+            - Custom frameworks simulate user interactions.
+            - Executed during CI to detect visual/functional regressions.
+          Manual Exploratory Testing:
+            - Testers (community volunteers) validate workflows on Windows, macOS, and Linux.
+        c. Integration Testing:
+          - Plugins are tested in isolation and alongside core features.
+          - Example: LaTeX plugin compatibility with mind-map exports.
+        d. Performance Profiling:
+          - Maintainers use profiling tools to identify memory leaks or slowdowns.
+        
+        Key Participants:
+          - Developers: Write and maintain test cases.
+          - Testers: Execute manual tests and report issues.
+          - Community Users: Validate pre-release builds.
     
-    III. Submitting a Pull Request (PR)
-      Action: The contributor creates a pull request (PR) on GitHub, linking it to a related issue if applicable.
-      Description: The PR includes details such as: purpose of the change, modified files and functionality, steps to reproduce/test the change
+    III. Documentation & Requirements Walkthroughs
+      Purpose: Ensure clarity, usability, and alignment with user needs.
+      Steps Involved:
+        a. Functional Specification Review:
+          New features require a GitHub issue or Wiki page outlining:
+            - Use cases.
+            - UI mockups.
+            - Technical dependencies.
+        b. User Documentation Updates:
+          - Contributors update the Freeplane Wiki for new features.
+          - Maintainers verify documentation matches implementation.
+        c. Accessibility Audits
+          - Periodic checks for keyboard navigation, screen-reader compatibility, and UI consistency.
+        
+        Key Participants:
+          - Documentation Maintainers: Edit and organize Wiki content.
+          - UX Contributors: Review UI/UX changes.
     
-    IV. Automated Checks & Continuous Integration (CI)
-      CI/CD Pipelines: GitHub Actions or similar tools run automated tests to check for errors, code quality, and security vulnerabilities.
-      Immediate Feedback: If tests fail, the contributor must fix issues before further review.
-
-    V. Peer Review and Discussion
-      Key Participants: Project maintainers and experienced contributors.
-      Review Process:
-        Code Readability & Structure: Ensures the code is clean and well-organized.
-        Functionality Verification: Checks if the feature or fix works as intended.
-        Impact Analysis: Evaluates potential side effects on existing features.
-        Best Practices & Standards: Ensures adherence to project guidelines.
-        Security Considerations: Identifies vulnerabilities or performance issues.
-      Reviewer Feedback:
-        Comments are left directly in the code via GitHub.
-        If changes are needed, the contributor updates the code and resubmits it.
-    
-    VI. Approval & Merging
-      Final Decision: If the PR meets all requirements, a maintainer approves it.
-      Merge Process:
-        The PR is merged into the main codebase.
-        The contributor is acknowledged for their work.
-    
-    VII. Post-Merge Validation
-      Further Testing: Additional tests may be run to ensure system stability.
-      Bug Monitoring: If new issues arise, fixes are prioritized.
-    
-    VIII. Release & Deployment
-      Stable Versions: Once multiple features and fixes are integrated, a new release is published.
-      Community Feedback: Users test the new version and report issues.
+    IV. Release Candidate Walkthroughs
+      Purpose: Final validation before public releases.
+      Steps Involved:
+        a. Release Packaging:
+          - Maintainers use Ant scripts to generate installers for all platforms.
+        b. Smoke Testing:
+          - Core functionalities are tested on clean environments.
+        c. Community Beta Testing:
+          - Pre-release builds are shared via forums or GitHub Releases for user feedback.
+        d. Hotfix Handling:
+          - Critical bugs reported post-release are patched via master branch hotfixes.
+      
+      Key Participants:
+        - Release Managers: Coordinate packaging and testing.
+        - Beta Testers: Provide real-world feedback.
 
 2. Code Review Process: 
     The code review process mainly includes standard git collaboration methods. Freeplane is an open source project hosted on github, with the current 
