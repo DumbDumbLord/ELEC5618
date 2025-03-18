@@ -8,7 +8,18 @@ the relations among them.
 
 3. The list contains the most important data structures of the product (not more
 than 10) and their relationship.
-
+- Mind Map Tree (MindMap)
+Contains the root node, which represents the mind map and its hierarchy, as all other nodes attached can be checked with the root node.
+- Node (Node)
+The main component of the mind map can outline an idea or concept. Allows the creation of child nodes and setting connectors to another node. It also stores all its attributes and may be set in a style.
+- Attributes Container (Attributes)
+Attribute containers are attached nodes, each defining a name and value of the attribute. 
+- Connector (Connector)
+Connector between two nodes, other than direct parent-child nodes.
+- Node Style Definition (NodeStyle)
+Contains the style of the node and nodes can be set to. Can be searched for in MindMap.
+- Undo/Redo Command Stack (Controller)
+Controller of the model/mind map, allows setting/loading the mindmap, edits nodes and redo/undo commands. Mainly for supporting user actions on mindmap and for controller design patterns. 
 
 Part 2
 4. Review and Suggestion on three functionalities.
@@ -16,6 +27,14 @@ Part 2
 5. Discussion on figure.
 
 6. Discussion on the list of most important data structures.
+Dynamic Scripting & Automation
+Dynamic Scripting simplifies node creation and automates repetitive tasks of data import/exports and sorting node attributes/styles. Controller allows the input and export of mindmap and also dynamic undo and redo commands. Node contains a simplified process to create child nodes.
+
+Conditional Formatting & Data Recognition
+Conditional formatting is applied to nodes (Node) causing changes to the nodeâ€™s attributes (Attributes) or style (NodeStyle). Controller should be able to find/fetch the nodes from Mindmap and adjust the nodesâ€™ attributes (Attributes) or style (NodeStyle), hence allowing for conditional formatting.
+
+Advanced Navigation & Iterative Filtering
+Controller is able to find/navigate nodes with a specific property using the Mindmapâ€™s filtering function that filters nodes and allows searching for the nodes. Mindmap also searches and allows the retrieval of node styles in the mindmap, hence being able to filter based on style. 
 
 7. QA Mechanism Documentation (Please see page 2 for details)
 a. Three defects:
@@ -27,31 +46,3 @@ c. Policies:
 d. Tests:
 
 e. Measures:
-
-QA Mechanism Details
-Documentation:
-• Regularly reviewed & updated to reflect the current state of
-the product.
-• Prevents “out-of-date” instructions that might introduce new
-defects.
-Training:
-• Train team members on product design,
-manufacturing/implementation processes, and safety
-standards.
-• Ensures everyone has the knowledge to identify & address
-potential defects early.
-Policies:
-• Summarize the written guidelines governing the project’s
-design, coding standards, and manufacturing processes.
-• Keep them updated so they align with current best practices
-and regulatory requirements.
-Tests:
-• Conduct rigorous testing (design validation, manufacturing
-validation, product verification).
-• Catch potential defects before release. May include unit tests,
-integration tests, system tests, etc.
-Measures:
-• Monitor and measure key performance indicators (defect rates,
-customer satisfaction, regulatory compliance).
-• Use these metrics to refine and improve the QA process
-continuously.
