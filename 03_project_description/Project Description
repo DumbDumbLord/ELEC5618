@@ -96,22 +96,37 @@
           Code reviews and strict merge criteria ensure that all development follows the agreed-upon procedures and quality requirements.
 
   b. Role Assignments
-    Project Lead
+    Project Lead: Yujie Dai
       - Overall coordination
       - Task prioritization
       - Backend/core code contributions
-    UX/UI Designer
+      
+      Reason: With a strong foundation in Java, experience in backend/full-stack development, and software engineering expertise, Yujie can coordinate tasks, prioritize work, and contribute to core backend code. Her full-stack experience ensures a holistic view of the project.
+      
+    UX/UI Designer: Zeyu Li
       - Redesigning the interface
       - Accessibility improvements
-    Backend
+      
+      Reason: Familiarity with HTML, CSS, JavaScript, and game development (Unity) highlights frontend and design capabilities. This aligns with redesigning interfaces and improving accessibility.
+      
+    Backend: Hongyi Chen
       - Performance optimization
       - Feature integration
-    QA & Testing Engineer
+      
+      Reason: Proficient in Python, Java, and C, with experience in both frontend and backend development. His versatility and math/logic background (BSc in Maths) suit performance optimization and complex feature integration.
+      
+    QA & Testing Engineer: Yicheng Xie
       - Writing and running tests
       - Bug triage
-    Documentation & Tools
+      
+      As a newer developer with foundational Python knowledge, QA/testing offers hands-on learning while ensuring software quality. Testing will help Yicheng understand the codebase and software practices.
+      
+    Documentation & Tools: Yuanhao Cai
       - Writing docs
       - Managing dev tools/CI/CD
+      
+      With an engineering background (C++, Matlab), Yuanhao can manage CI/CD pipelines and documentation systematically. This role leverages organizational skills without requiring deep frontend/backend expertise.
+      
 
   c. The process builds features from scratch by following these key steps:
 
