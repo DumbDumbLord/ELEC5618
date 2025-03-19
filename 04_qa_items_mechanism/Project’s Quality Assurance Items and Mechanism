@@ -2,7 +2,20 @@
 Part 1
 1. The three functionalities are clearly described from what the user does with the
 product.
-
+1）Dynamic Scripting & Automation
+   Description:Enables users to extend and automate Freeplane’s behavior through custom scripts (e.g. Groovy), allowing them to modify node properties, perform calculations, and even add new features without waiting for official releases.
+   User Action / Engagement:Users write or import scripts via the built-in script editor or external files to automate tasks, customize node behavior, or integrate add-ons.
+   Example:Write scripts to traverse nodes, filter keywords, modify styles, and export, avoiding manual processing of hundreds of nodes.
+2)Conditional Formatting & Data Recognition
+  Description:Provides users with the ability to set rules that automatically adjust node appearance (e.g. color, icons) or compute values (using formulas) based on the node’s content. 
+              This goes beyond manual formatting by making maps visually responsive to their data.
+  User Action / Engagement:Users define conditions or formulas—either via the user interface or scripting—that trigger style changes or automatic recalculations when specific criteria are met.
+  Example:Set the rule to "Node contains' # key 'becomes blue + bold", and the system automatically identifies urls as hyperlinks.
+3)Advanced Navigation & Iterative Filtering
+  Description:Offers powerful tools for searching, filtering, and iterating over nodes in large, complex maps.
+              This functionality helps users focus on relevant information and navigate their maps more efficiently, even as maps grow in size and complexity.
+  User Action / Engagement:Users engage with built-in search and filtering features (or use scripted closures) to traverse and display only the nodes that match defined criteria.
+  Example:Enter "Manager A" filtering results, superimpose date conditions, and finally locate 3 key nodes.
 2. The figure contains the main components of the project (not more than 10) and
 the relations among them.
 ![components](IMG_6801-1.jpg)
@@ -15,7 +28,25 @@ than 10) and their relationship.
 
 Part 2
 4. Review and Suggestion on three functionalities.
-
+   1)Dynamic Scripting & Automation
+     Purpose and Value:Scripts (such as Groovy) and automation tools help users batch process repetitive tasks (such as node modification and data export), reduce manual operation costs, and improve the efficiency of complex project management or knowledge collation.
+     User benefit:1)Efficient processing of large-scale data: For example, researchers can write scripts to automatically extract literature keywords and generate structured reports, avoiding the need to manually organize hundreds of nodes.
+                  2)Custom workflow: developers can through the plug-in extension functions (such as synchronous external data integration API), realize the personalized demand.
+     Suggestion:1)Lower scripting barriers: Provide a visual script generator or preset common script templates (such as automatic Gantt chart generation) for non-technical users.
+                2)Enhanced error warning: When a script fails to be executed, clearly mark the location of the error node and the cause, reducing the debugging time.
+   2)Conditional Formatting & Data Recognition
+     Purpose and Value:Dynamically adjust node styles (such as colors and ICONS) based on preset rules, and automatically identify data (such as dates and links), helping users quickly locate key information and improving information readability.
+     User benefit:1)Visual priority management: Users can set "overdue task nodes turn red" to visually track project risks.
+                  2)Automated data classification: When users organize notes, the software automatically recognizes reference links and adds hyperlink ICONS.
+     Suggestion:1)Expanded data type recognition: Automatic identification and tagging of more structured data, such as email addresses and phone numbers.
+                2)Add dynamic rule templates: Common rule combinations for scenarios such as Project Management and Study Notes are preset to reduce user configuration time.
+   3)Advanced Navigation & Iterative Filtering
+     Purpose and Value:By means of multi-layered condition screening (such as combination of keywords, dates and attributes) and the quick jump function, it helps users precisely locate the target nodes in complex diagrams, avoiding information overload.
+     User benefit:1)Quickly focus on key contents: Researchers can first filter out "2025 literature", then add the "Unread" tag, and quickly narrow down the search scope.
+                  2)Smoothly integrate complex diagram operations: Through shortcut keys and hierarchical expansion/collapse, users can quickly navigate through diagrams with numerous branches, such as directly locating detailed explanations of a certain sub-task from the project overview, 
+                                                                   reducing the time spent on mouse scrolling and manual hierarchical expansion.
+     Suggestion:1)Enhance cross-branch navigation: Add a "Jump to Associated Node" shortcut key to address the efficiency issue of jumping to deeply nested nodes.
+                2)Optimize filtering of historical records: Allow users to save frequently used filtering combinations (such as "To-Do Tasks for This Week"), and enable one-click reuse.
 5. Discussion on figure.
 Component Name             Purpose / Description                        Interactions / Relations
 (1). User Interface (UI) Module
