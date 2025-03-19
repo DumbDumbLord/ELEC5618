@@ -1,19 +1,51 @@
-**Project's_QA_Items_Mechanism**
+                            Project's_QA_Items_Mechanism   
 Part 1
 1. The three functionalities are clearly described from what the user does with the
 product.
 
 2. The figure contains the main components of the project (not more than 10) and
 the relations among them.
-
+![components](IMG_6801-1.jpg)
 3. The list contains the most important data structures of the product (not more
 than 10) and their relationship.
+
+
+
 
 
 Part 2
 4. Review and Suggestion on three functionalities.
 
 5. Discussion on figure.
+Component Name             Purpose / Description                        Interactions / Relations
+(1). User Interface (UI) Module
+Presents the mind map and supports user interaction (such as dragging nodes, modifying text, adjusting layout, etc.).
+Processer user input and displays data from the Mind Map Data Model; 
+Sends commands to the Core Controller; 
+Adapts based on user settings from the Preferences Manager.
+(2). Mind Map Data Model
+​Manage the structure of the mind map, including core logic such as nodes, links and attributes..
+Updated by the Core Controller and Command Manager; Accessed by the UI for display and by the Scripting Engine to manipulate map data.
+(3). Core Controller & Workflow Manager
+Coordinates the overall behavior of the application, processes user commands, manages workflow, and organizes interactions between subsystems. ​
+Serves as the central hub that connects the UI, Data Model, Command Manager, and Scripting Engine; integrates settings from the Preferences Manager.
+(4). Command Manager & Undo/Redo System
+Track user actions and changes, and provide undo/redo functionality to ensure users can safely try and revert changes.
+Monitors and records changes made by the Core Controller on the Data Model; works with the UI to trigger undo/redo actions when requested by the user.
+(5). Scripting Engine & Extension API
+Provides dynamic scripting support (e.g. using Groovy) to enable users to automate tasks, customize behavior, and extend functionality.
+Allows scripts to interact with the Data Model, UI, and Core Controller; forms the basis for user-developed plugins and add‑ons.
+(6). File Management Module
+Responsible for saving, loading and exporting mind map files, supporting multiple formats (such as .mm, .html, .xml).
+Reads from and writes to the Mind Map Data Model; is triggered by UI actions (e.g. “Save” or “Export”) and coordinated by the Core Controller.
+(7). Plugin Framework
+Allows users to extend Freeplane's functionality, making it highly customizable and extensible.
+Integrates with the Core Controller and Scripting Engine to add or modify functionality; can extend UI elements; accesses configuration from the Preferences Manager.
+(8). Configuration & Preferences Manager
+​Manage system settings, user preferences, and other configuration data to control the overall behavior of the application.
+Feeds configuration data to the UI, Core Controller, and Plugin Framework; ensures that customizations and user settings are applied across the system.
+
+
 
 6. Discussion on the list of most important data structures.
 
@@ -88,3 +120,4 @@ Measures:
 customer satisfaction, regulatory compliance).
 • Use these metrics to refine and improve the QA process
 continuously.
+
