@@ -81,7 +81,7 @@ Feeds configuration data to the UI, Core Controller, and Plugin Framework; ensur
 6. Discussion on the list of most important data structures.
 
 7. QA Mechanism Documentation (Please see page 2 for details)
-a. Three defects:
+a. Three Defects:
 Performance Degradation:
 Description: Scripts or filters cause UI freezes or crashes when handling large mind maps (>10,000 nodes), degrading user experience due to Freeplane’s Java Swing architecture and computational overhead.
 Risk: Users abandon Freeplane for slow performance on complex projects.
