@@ -2,8 +2,7 @@
 
 Freeplane is a software designed to help users create mind maps.  It is a tool that helps users organise their thoughts, plans and ideas. 
 Target audience for the software are individuals and teams who need a visual representation of information to communicate information or develop them. 
-This can include students, project managers, educators, and researchers. The skill level to use freeplane is very low and very user friendly, 
-hence suitable and targeted for beginners. Professionals can also try advance features (scripting and extensions) which can give them more freedom 
+This can include students, project managers, educators, and researchers. The skill level to use freeplane is very low and very user friendly, hence suitable and targeted for beginners. Professionals can also try advance features (scripting and extensions) which can give them more freedom 
 and areas for manipulation.
 
 2. Installation & Setup
@@ -28,13 +27,30 @@ Combining Freeplane
   Run Freeplane in BIN folder (freeplane.sh for linux, freeplane.jar for window)
 
 3. Features & Usage
+  Create mind map nodes: You can add central nodes, child nodes, and sibling nodes by double-clicking or clicking the toolbar icon.
+  Node content editing: Supports text input, and can insert links, images, hyperlinks, icons, labels, and other content.
+  Connection lines between nodes: You can create connections between nodes through the "Add connection" function, and support     multiple line types.
+  Automatic layout and style: Supports multiple preset layout methods (such as classic, right, radial) and style configuration.
+  Export function: You can export mind maps to multiple formats such as .pdf, .html, .jpeg, .xml, .xhtml, etc.
+  Search and filter: Supports keyword search and multi-condition filtering, suitable for large maps.
+  Script function (advanced): Supports Groovy scripts for automated processing, batch operations, and extended functions.
+  Plug-in extension: Custom tools such as task managers and calendar integration can be added through the plug-in system.
+  
+  basic process:
+  Open Freeplane and create a new map.
+  Double-click the center node and enter the topic.
+  Use the Tab key to add child nodes and the Enter key to add peer nodes.
+
 
 4. Troubleshooting
+  No response when launching Freeplane: Java environment is missing. Please make sure JDK 17 or above is installed correctly.Crash when opening a map file: The file format is incorrect or damaged. Try to open the .mm file with a text editor to check the format, or restore from a backup.
+  Chinese characters are displayed in garbled characters: Fonts are incompatible. Change the default font to a font that supports Chinese (such as Microsoft YaHei, Source Han Song).
+  Unable to use the script function: The script engine is not enabled or the syntax is incorrect. Check whether the script function is enabled in the settings; use Groovy syntax to debug the script.
+  Export failed: No write permission or the path is wrong. Check whether the file save path is correct and ensure that you have write permission.
+
+  Log file path and usage instructions:
+  Log path: ~/.freeplane/logs/ (Linux & Mac) or %APPDATA%/Freeplane/logs/ (Windows)
+  Usage: Open the log.txt file and find the error stack information to help locate the source of the problem.
+
 
 5. Appendices
-Root Node - First node created for the mind map. Origin of all other nodes.
-Parent Node - The creator of a child node.
-Child Node - A subordinate node created by the parent node
-Plugins - Additional features or extensions that can be added to Freeplane
-The document contains details for scripting. For more advanced manipulation of the software. https://docs.freeplane.org/scripting/Start_Here.html. 
-
