@@ -1,0 +1,43 @@
+1. Configuration Items
+
+2. Tools & Processes
+
+3. Roles & Responsibilities
+
+4. Release Management
+Release Process Overview
+Code Submission Process: Freeplane uses GitHub as its primary code repository, which suggests a typical Git-based workflow. Developers fork the repository, create feature branches, and submit pull requests (PRs) to the freeplane/freeplane repository. The "Pull Requests" tab shows active and merged PRs, indicating that code submissions are reviewed before integration into the main branch.
+Release Creation: The "Releases" tab (e.g., Releases · freeplane/freeplane) lists stable and pre-release versions. Releases are tagged (e.g., v1.11.stick sticktick, alpha-1.9.0-pre05), indicating that maintainers create releases manually by tagging a stable state of the codebase. Assets like ZIP files and source code archives are attached to these releases.
+
+File Management in the Release Process
+Organization: Files are versioned and bundled into archives, ensuring all necessary components (e.g., Java classes, documentation) are included. The repository’s root contains build scripts (e.g., Gradle files), suggesting that releases are built systematically before tagging.
+Artifacts: Release assets include compiled binaries (e.g., freeplane_bin-1.11.14.zip) and source code (e.g., Source code (zip)). These are uploaded to GitHub Releases, providing a centralized location for distribution.
+
+Stable Version Rollback
+Mechanism: GitHub’s release tagging system allows rollback to any previous tagged version (e.g., v1.11.13, v1.11.12). Users can download older release assets from the Releases page if a newer version introduces instability. The Git history enables maintainers to revert commits if needed, though this would require creating a new release tag.
+Evidence: The availability of past releases (e.g., v1.9.14 and earlier) on the Releases page suggests rollback is feasible by redistributing or rebuilding from a prior tag.
+
+File Name Design Principles
+Pattern: Release file names follow a consistent convention: freeplane_bin-<version>.zip (e.g., freeplane_bin-1.11.14.zip) for binaries and freeplane-<version>.tar.gz for source code. Pre-releases use prefixes like alpha- or pre- (e.g., alpha-1.9.0-pre05).
+Logic: The naming includes：Project name (freeplane): Identifies the software.Artifact type (bin for binary): Clarifies the file’s purpose.Version number (1.11.14): Follows semantic versioning (major.minor.patch). This ensures traceability and clarity for users downloading releases.
+
+5. Change Management
+Submitting a Change Request
+Pull Requests: Code and documentation changes are submitted via PRs. The freeplane directory includes doc and various plugin directories (e.g., freeplane_plugin_latex), indicating that both code and documentation changes are managed in the repository. Contributors fork, make changes, and open PRs.
+
+Issues: The "Issues" tab on GitHub (e.g., bug #2301, feature request #2298 as of early 2025) allows users to report bugs or request features, serving as change requests.
+Analyzing the Impact:
+The build.gradle file suggests automated testing (likely via Gradle tasks), ensuring changes don’t break the build. The freeplane_plugin_script_test directory indicates specific tests for plugins, helping assess impact.
+
+Approval
+PRs are reviewed by maintainers, as evidenced by merged PRs in the commit history. The .github directory likely contains workflows for automated checks (e.g., CI/CD pipelines) that must pass before approval.
+
+Implementation
+The format_translation_gradle and signjar-example.properties files suggest that changes may involve updating translations or signing JARs, which are part of the build process.
+
+Maintenance of a Change Log
+Change Log Location: Release Notes: Each release on GitHub (e.g., v1.11.14) includes a summary of changes in the release description, acting as a high-level change log.
+ommit History: The "Commits" tab provides a detailed log of all changes, with commit messages describing the purpose (e.g., “Fix bug in latex plugin”).
+Process: Changes are tracked via Git commits, with messages providing context.
+Significant updates are summarized in release notes when a new version is tagged.
+The community-driven nature means a formal changelog may not always be updated, but the Git history and release notes provide a comprehensive record.
