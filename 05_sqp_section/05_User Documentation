@@ -54,3 +54,10 @@ Combining Freeplane
 
 
 5. Appendices
+
+Provide explanations of professional terms in the project, share relevant documents, etc. The core of this part is to enable users to further learn and use the software in depth.
+Root Node - First node created for the mind map. Origin of all other nodes.
+Parent Node - The creator of a child node.
+Child Node - A subordinate node created by the parent node
+Plugins - Additional features or extensions that can be added to Freeplane
+The document contains details for scripting. For more advanced manipulation of the software. https://docs.freeplane.org/scripting/Start_Here.html. 
