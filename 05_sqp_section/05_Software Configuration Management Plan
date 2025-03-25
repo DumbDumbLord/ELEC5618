@@ -1,8 +1,69 @@
 1. Configuration Items
 
+Ⅰ.Configuration Items to be Managed
+
+1. Software Source Code
+1）Located in the /freeplane/src/ directory, written in Java.
+2）Requires version tracking to support collaborative development, issue tracing, and rollback if necessary.
+
+2.Documentation
+1)Includes the README.md, user manuals, developer guides and design documents in the /freeplane/doc/ directory.
+2)These documents must be versioned to ensure that user and developer information stays aligned with software updates.
+
+3.Test Cases and Scripts
+1)Stored in testing-related directories such as /freeplane/src/test/.
+2)Unit tests and regression tests are essential for ensuring software reliability.
+
+4.Build Configurations
+1)Includes build scripts that automate compilation and packaging.
+2)Any changes to build tools or settings must be managed carefully.
+
+Ⅱ. Tools and Processes for Configuration Management
+1.Version Control System: Git is used to track all changes to source code, documents, and configurations. Development is done on feature branches merged via pull requests after peer review.
+2.Change Management System: GitHub Issues and Pull Requests are used to manage bugs, enhancements, and updates.
+3.Continuous Integration Tools: Jenkins or GitHub Actions automatically build and test the software on every commit.
+
+Ⅲ. Roles and Responsibilities
+1.Configuration Manager: Oversees the integrity of configuration items and ensures proper versioning.
+2.Developers: Implement features, write code, and submit changes via pull requests.
+3.Testers: Maintain and execute test cases, validate bug fixes.
+4.Project Maintainer: Approves major changes and coordinates team efforts.
+
+Ⅳ. Release / Change Management Process
+1. Change Identification: Issues or feature requests are logged on GitHub.
+2. Review and Approval: Pull requests are submitted and reviewed by maintainers.
+3. Versioning and Release: Approved changes are tagged with semantic versioning.
+4. Distribution: Releases are published via GitHub and official website.
+5. Rollback: Previous stable versions are archived for emergency rollback.
+
 2. Tools & Processes
 
+1. Git: A distributed version control system used to manage source code and documents. Git supports branch-based workflows, enabling parallel development and controlled integration.
+2. GitHub: Hosts the project repository and provides tools for issue tracking, pull requests, and release tagging.
+3. GitHub Actions: A CI/CD tool used to automate builds and tests for each code push or pull request, ensuring immediate feedback.
+4. Issue Tracking and Change Management: GitHub Issues is used to track bugs, enhancement requests, and documentation updates. Each issue can be assigned, prioritized, and linked to code changes.
+5. Release Management: GitHub Releases are used to publish precompiled binaries with release notes, changelogs, and version tags, ensuring traceability and rollback support.
+
 3. Roles & Responsibilities
+- Development Team:
+  - Responsible for implementing new features and fixing bugs in the core application.
+  - Team members work on specific modules such as the UI layer, mind map engine, or file export/import functionalities.
+  - Focused on writing maintainable code, following code review protocols, and ensuring their changes do not break existing functionality.
+ 
+- Testing/QA Team:
+  - Designs and maintains unit tests and integration tests.
+  - Executes test suites before releases to ensure stability.
+  - Focused on validating features, catching regressions, and reporting issues.
+ 
+- Documentation Team:
+  - Prepares and updates user manuals, developer guides, and configuration references.
+  - Ensures that documentation reflects the latest software state.
+  - Focused on accessibility, clarity, and accuracy of documentation.
+ 
+- Configuration Manager / Project Maintainer:
+  - Oversees the integrity of all configuration items.
+  - Approves pull requests, manages version tagging and release cycles.
+  - Ensures the configuration management process is followed by all contributors.
 
 4. Release Management
 
