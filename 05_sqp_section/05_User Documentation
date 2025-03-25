@@ -32,3 +32,9 @@ Combining Freeplane
 4. Troubleshooting
 
 5. Appendices
+Root Node - First node created for the mind map. Origin of all other nodes.
+Parent Node - The creator of a child node.
+Child Node - A subordinate node created by the parent node
+Plugins - Additional features or extensions that can be added to Freeplane
+The document contains details for scripting. For more advanced manipulation of the software. https://docs.freeplane.org/scripting/Start_Here.html. 
+
