@@ -1,6 +1,31 @@
 1. Overview
 
+Freeplane is a software designed to help users create mind maps.  It is a tool that helps users organise their thoughts, plans and ideas. 
+Target audience for the software are individuals and teams who need a visual representation of information to communicate information or develop them. 
+This can include students, project managers, educators, and researchers. The skill level to use freeplane is very low and very user friendly, 
+hence suitable and targeted for beginners. Professionals can also try advance features (scripting and extensions) which can give them more freedom 
+and areas for manipulation.
+
 2. Installation & Setup
+
+Installing Freeplane directly:
+  Visit https://sourceforge.net/projects/freeplane/.
+  Download the latest version of Freeplane.
+  
+    Windows: Double-click the .exe file and follow the installation wizard
+    Mac: Open the .dmg file, then drag Freeplane to the Applications folder.
+    Linux: Extract the .tar.gz file and follow the installation instructions in the provided README.
+
+Combining Freeplane
+  Go to the Repository(https://github.com/freeplane/freeplane).
+  Clone repository or download and extract the project as a ZIP File
+  Ensure the following software are installed
+    Java Development Kit (JDK 17 or later) → Download from Oracle JDK or use OpenJDK.
+    Gradle (used for building the project) → Download from Gradle website or use package managers like brew install gradle (Mac) or choco install gradle (Windows).
+    Optional: Visual Studio Code (VS Code) → Download from VS Code website. (Can be replace with terminal)
+  Open the Project in VS Code or Terminal
+  Build freeplane with ‘gradle build’
+  Run Freeplane in BIN folder (freeplane.sh for linux, freeplane.jar for window)
 
 3. Features & Usage
 
