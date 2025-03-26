@@ -19,44 +19,34 @@
      It Expands accessibility to a broader range of users and could be modified codebase to address compatibility issues.
      It should be achieved within three months.
 2. Organization
-    Project Manager (PM):
-      Responsibilities:
-        Oversee project planning, execution, and delivery
-        Ensure alignment with project goals and timelines.
-        Facilitate communication across all teams.
-      Collaboration:
-        Acts as the central point of contact, coordinating efforts between development, QA, QC, and UI/UX teams.
-    Development Team:
-      Responsibilities:
-        Design, code, and implement software features.
-        Conduct initial unit testing.
-        Address defects identified during QA and QC processes.
-      Collaboration:
-        Works closely with the QA team to ensure code quality and with the UI/UX team to implement design specifications.
-    Quality Assurance (QA) Team:
-      Responsibilities:
-        Develop comprehensive test plans and cases.
-        Execute various testing methodologies to identify defects.
-        Ensure software meets functional and non-functional requirements.
-      Collaboration:
-        Communicates findings to the development team for remediation.
-        Coordinates with the QC team to align testing strategies.
-    Quality Control (QC) Team:
-      Responsibilities:
-        Verify that the software product complies with predefined quality standards.
-        Conduct inspections and reviews of processes and deliverables.
-        Validate the effectiveness of QA processes.
-      Collaboration:
-        Provides feedback to the QA team to improve testing procedures.
-        Reports to the PM on quality metrics and compliance.
-    UI/UX Design Team:
-      Responsibilities:
-        Design intuitive and user-friendly interfaces.
-        Ensure consistency and accessibility in design elements.
-        Gather and incorporate user feedback into designs.
-      Collaboration:
-        Works with the development team to implement designs accurately.
-        Engages with the QA team to ensure design integrity during testing.
+   A clear organizational framework is vital for the effective implementation of Quality Assurance (QA) and Quality Control (QC) mechanisms. 
+   The proposed structure for the Freeplane project includes the following key teams:
+    Project Management Office (PMO): 
+    Led by the Project Manager, this office oversees project planning, execution, and delivery, ensuring alignment with organizational goals and quality standards.
+    
+    Development Team: 
+    Responsible for designing, coding, and implementing software features, as well as conducting initial testing and code reviews.
+    
+    Quality Assurance (QA) Team: 
+    Focuses on developing test plans, executing various testing methodologies, and ensuring the software meets both functional and non-functional requirements.
+    
+    Quality Control (QC) Team: 
+    Conducts inspections and reviews to verify that the software product complies with predefined quality standards and validates the effectiveness of QA processes.
+    
+    UI/UX Design Team: 
+    Handles the design of user interfaces and experiences, ensuring consistency, accessibility, and incorporation of user feedback.
+    
+    Configuration Management Team: 
+    Manages version control and maintains software configuration integrity, ensuring systematic control and documentation of changes.
+    
+    Documentation Team:
+    Creates and maintains comprehensive project documentation, ensuring accuracy and accessibility.
+    
+    Security Team: 
+    Identifies and mitigates security vulnerabilities, implementing best practices and conducting regular assessments.
+    
+    DevOps Team: 
+    Automates deployment processes, manages continuous integration/continuous deployment (CI/CD) pipelines, and monitors system performance.
         
     Communication and Collaboration Processes:
       Regular Meetings:
@@ -115,9 +105,182 @@
       Automate deployment processes and manage continuous integration/continuous deployment (CI/CD) pipelines.
       Monitor system performance and ensure operational reliability.
 4. Tasks
+    This section delineates the tasks throughout the software development lifecycle, specifying details, entry and exit criteria, and their relation to the project's main phases.​
+    Requirements Review:
+      Objective: Ensure that all software requirements are clearly defined, complete, and testable.​
+      Entry Criteria:
+      Availability of documented requirements
+      Stakeholders identified and engaged.
+      Tasks:
+      Conduct formal reviews with stakeholders to validate requirements.
+      Identify ambiguities or inconsistencies.
+      Document feedback and necessary revisions.
+      Exit Criteria:
+      All requirements approved and baselined.
+      Documented agreement from all stakeholders.
+
+    Design Review:
+      Objective: Verify that the software design meets requirements and is aligned with architectural standards.​
+      Entry Criteria:
+      Completed design documents.
+      Traceability matrix linking design to requirements.
+      Tasks:
+      Evaluate design for compliance with requirements.
+      Assess design for maintainability, scalability, and security.
+      Document findings and suggest improvements.
+      Exit Criteria:
+      Approved design documents.
+      Resolution of identified issues.
+
+    Code Review:
+      Objective: Ensure code quality, adherence to coding standards, and early detection of defects.​
+      Entry Criteria:
+      Completed code for a module or feature.
+      Code meets initial unit testing benchmarks.
+      Tasks:
+      Peer review of code for correctness and style.
+      Use of static analysis tools to detect potential issues.
+      Document and address identified defects.
+      Exit Criteria:
+      Code approved with no critical issues.
+      All defects addressed or scheduled for resolution.
+
+    Testing Execution:
+      Objective: Validate that the software functions as intended and meets quality standards.​
+      Entry Criteria:
+      Test plans and cases developed and reviewed.
+      Test environment set up and validated.
+      Tasks:
+      Execute functional, performance, security, and usability tests.
+      Log defects and track them to closure.
+      Report test results and metrics.
+      Exit Criteria:
+      All planned tests executed.
+      Critical defects resolved.
+      Test summary report approved.
+
+    Change Management
+      Objective: Control changes to project scope, requirements, and deliverables systematically.​
+      Entry Criteria:
+      Formal change request submitted.
+      Impact analysis conducted.
+      Tasks:
+      Evaluate the necessity and impact of the change.
+      Obtain approval from stakeholders.
+      Implement change and update documentation.
+      Exit Criteria:
+      Change implemented and verified.
+      Project documentation updated. 
 
 5. Defect Source Analysis
+    Identifying potential sources of defects at each stage of the project lifecycle is crucial for proactive quality management.
+    Requirements Stage:
+      Potential Defects:
+      Ambiguous or incomplete requirements.
+      Misinterpretation of stakeholder needs.
+      Risks:
+      Scope creep.
+      Misaligned expectations.
+    Design Stage:
+      Potential Defects:
+      Inconsistent architecture.
+      Failure to address non-functional requirements.
+      Risks:
+      Performance bottlenecks.
+      Security vulnerabilities.
+    Implementation Stage:
+      Potential Defects:
+      Coding errors.
+      Deviation from design specifications.
+      Risks:
+      Increased debugging time.
+      Integration challenges.
+    Testing Stage:
+      Potential Defects:
+      Inadequate test coverage.
+      False positives/negatives in test results.
+      Risks:
+      Undetected critical defects.
+      Delayed release schedules.
 
 6. Prevention & Detection Methods
-
+    Implementing effective strategies to prevent and detect defects early is crucial for maintaining software quality. Below are selected methods tailored to the Freeplane project, along with their advantages and disadvantages:​
+    Defect Prevention Methods:
+      Requirements Analysis:
+        Description: Thoroughly analyzing and clarifying requirements to ensure they are complete, consistent, and unambiguous.
+        Advantages:
+        Reduces misunderstandings and misinterpretations early in the development process.
+        Minimizes the risk of introducing defects due to unclear requirements.
+        Disadvantages:
+        Can be time-consuming and may delay the initiation of design and development phases.
+        Requires active and continuous stakeholder engagement.
+      Coding Standards and Guidelines:
+        Description: Establishing and adhering to a set of coding conventions and best practices.
+        Advantages:
+        Promotes code consistency and readability.
+        Facilitates easier code reviews and maintenance.
+        Disadvantages:
+        May require training and enforcement mechanisms.
+        Potential resistance from developers accustomed to different practices.
+      Pair Programming:
+        Description: Two developers work together at one workstation, collaboratively writing and reviewing code.
+        Advantages:
+        Encourages real-time code review and knowledge sharing.
+        Can lead to higher quality code and quicker problem resolution.
+        Disadvantages:
+        Increases resource utilization as two developers are engaged in a single task.
+        May not be suitable for all tasks or personalities.
+    Defect Detection Methods:
+      Static Code Analysis:
+        Description: Using automated tools to examine source code for potential defects without executing the program.
+        Advantages:
+        Identifies issues such as syntax errors, code smells, and potential vulnerabilities early.
+        Can be integrated into the development environment for continuous feedback.
+        Disadvantages:
+        May produce false positives, leading to unnecessary investigations.
+        Limited in detecting runtime errors or logical flaws.
+      Automated Testing:
+        Description: Writing scripts to automatically execute tests on the software application.
+        Advantages:
+        Enables frequent and consistent testing, facilitating early detection of defects.
+        Supports regression testing, ensuring new changes do not introduce new defects.
+        Disadvantages:
+        Initial setup can be resource-intensive.
+        Requires ongoing maintenance as the application evolves.
+      Beta Testing:
+        Description: Releasing the software to a select group of external users to gather feedback on its performance and identify defects.
+        Advantages:
+        Provides insights into real-world usage and uncovers issues not found during internal testing.
+        Engages the user community and builds anticipation for the product.
+        Disadvantages:
+        Feedback can be inconsistent and may require significant effort to analyze.
+        Risk of negative publicity if major defects are discovered.
 7. Estimated Resources
+    Implementing the Software Quality Management Plan requires a comprehensive allocation of resources across assurance and control activities. Below is an overview of the necessary resources:​
+    Human Resources:
+      Quality Assurance (QA) Team:
+      Responsible for planning and executing testing strategies.
+      Collaborates with developers to ensure quality standards are met.
+      Quality Control (QC) Team:
+      Conducts inspections and reviews to verify compliance with quality standards.
+      Developers:
+      Implement code adhering to quality guidelines and participate in code reviews.
+      Project Manager:
+      Oversees resource allocation, project timelines, and quality objectives.
+    Equipment Resources:
+      Testing Tools:
+      Automated testing software for functional, performance, and security testing.
+      Development Tools:
+      Integrated Development Environments (IDEs) and static code analysis tools.
+      Infrastructure:
+      Servers and environments for development, testing, and staging.
+      Financial Resources:
+      Budget Allocation:
+      Funding for tool licenses, training programs, and potential third-party audits.
+      Contingency Funds:
+      Reserved budget for unforeseen expenses related to quality issues or resource constraints.
+      Additional Components:
+      Training Programs:
+      Continuous education for team members on quality standards and tools.
+      Documentation:
+      Resources dedicated to maintaining comprehensive records of quality processes and outcomes.
