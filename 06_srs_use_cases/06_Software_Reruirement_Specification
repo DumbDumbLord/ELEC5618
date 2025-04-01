@@ -1,14 +1,54 @@
 Introduction
 1.1 Purpose(Tips: Who may want to see this SRS document and why they see it?)
+This document is called a Software Requirements Specification (SRS). It tells what the Freeplane software should do.
+It helps everyone understand the system in the same way.
+The SRS is for these people:
+1. Developers – They need to know what features to build and how the system should work.  
+2. Testers – They need to check if the software works as expected and has no bugs.  
+3. Project managers – They need to plan the work, set deadlines, and make sure the team follows the plan.  
+4. Users – They want to know what the software can do and if it fits their needs.  
+5. Contributors – They want to help improve the software, so they need to understand how it works now.
 1.2 Scope
 1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
 this SRS document clearly)
+ Mind Map: A diagram used to organize ideas or tasks, where each idea is shown as a "node".
 1.4 References (Tips: you can reference some Appendixes provided)
 1.5 Document Overview
 
 Overall Description
 2.1 Product perspective
+Freeplane is a free and open-source mind mapping tool. It comes from another project called FreeMind. 
+You can use Freeplane to draw maps that help you plan, organize ideas, and manage knowledge.
+Freeplane works on computers with Windows, macOS, or Linux. It does not need the internet or a server to run. You can use it by itself. 
+If you are an advanced user, you can also add extra tools, plugins, or write scripts to do more things.You can use Freeplane alone. 
+It does not need other software to work. But it can work with other tools. For example, you can export maps and open them in PDF or HTML. 
+You can also write scripts to connect it with other programs.
+Freeplane is one part of many tools used for thinking, learning, or working.
+It can open and save maps in different formats, like PDF, HTML, Markdown, and OPML. This helps you share your work with other software.
+This document (called SRS) explains what Freeplane should do, how it should work, and what limits it has. It helps developers build, test, and improve the software.
 2.2 Product Features
+A. Mind Map Editing
+1. Users can make mind maps.
+They can add ideas and connect them using branches. It is good for planning and thinking.
+2. Users can change the look of the map.
+They can use different colors, fonts, and icons. This helps make the map easy to read.
+3. Users can add files and links.
+They can put in pictures, documents, or website links to make the map more useful.
+B. Search and Organization
+Users can search and filter the map.
+They can find words or hide parts they don’t need. This is helpful when maps are big.
+C. Export and Sharing
+Users can save and share maps.
+They can export maps to PDF, HTML, Markdown, and other formats. It is easy to share with others.
+D. Security and Privacy
+Users can protect their maps.  
+They can use passwords to lock parts of the map. This helps keep private info safe.
+E. Platform and Support
+Freeplane works offline.
+It does not need the internet. It runs on Windows, macOS, and Linux.
+F. Advanced Features
+Advanced users can write scripts.
+These scripts help do things faster or in special ways. It is useful for power users.
 2.3 User classes and Characteristics
 2.4 Operating Environment
 2.5 Design and Implementation Constraints
@@ -26,11 +66,30 @@ Feature 1:
 3.1.6Quality Attributes
 Feature 2:
 3.2.1Feature name
+Search and Filter
 3.2.2Description
+This feature helps users find what they want in a big map. Users can search for text or filter nodes to show only what they need. 
+It is useful when the map has many ideas. This feature is for all users.
 3.2.3Functional Requirements
+FR1: The system shall allow users to type a word and search for it in the whole map.  
+Input: A search word.  
+Process: The system looks at all the nodes.  
+Output: All matching nodes are shown or highlighted.
+FR2: The system shall allow users to filter nodes by icon, date, or attribute.  
+Input: A filter choice (like icon name or date).  
+Process: The system hides nodes that do not match.  
+Output: Only matching nodes are shown.
 3.2.4Performance Requirements
+PR1: The system should show search results within **2 seconds** for maps with up to 1000 nodes.
+PR2: When a filter is applied, the system should not freeze and should respond within 3 seconds even for large maps.
 3.2.5Design constraints
+DC1: The feature must work on all major desktop systems (Windows, macOS, Linux).  
+This means the code must be written in a way that works the same across systems.
+DC2: The system cannot use online services.  
+All searching and filtering must happen offline, inside the app.
 3.2.6Quality Attributes
+QA1: Usability** – The feature must be easy to find and use. Buttons and input boxes must be clear for beginners.
+QA2: Efficiency** – The feature must work fast and not slow down the app, even with big maps.
 Feature 3:
 3.3.1Feature name
 3.3.2Description
