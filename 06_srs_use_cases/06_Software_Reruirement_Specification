@@ -10,7 +10,30 @@ Overall Description
 2.1 Product perspective
 2.2 Product Features
 2.3 User classes and Characteristics
+Casual Users
+Characteristics: Basic computer literacy, occasional mind mapping needs
+Responsibilities:Creating simple mind maps,Applying basic formatting,Saving/loading map files
+Example: A student creating a study outline using default templates
+Power Users
+Characteristics: Advanced technical skills, frequent usage
+Responsibilities:Using advanced formatting options,Creating custom templates,Managing add-ons
+Example: A project manager creating complex GTD (Getting Things Done) systems
+Add-on Developers
+Characteristics: Java programming knowledge
+Responsibilities:Developing extensions,Testing add-on compatibility,Maintaining documentation
+Example: A developer creating a LaTeX equation plugin
+Collaborators
+Characteristics: Teamwork-oriented, diverse technical levels
+Responsibilities:Sharing map files,Merging map versions,Providing feedback
+Example: A research team collaborating on a literature review map
+
 2.4 Operating Environment
+Software: Java 8+ Runtime
+Hardware:
+Minimum: 2GB RAM, 1GHz CPU
+Recommended: 4GB RAM, SSD storage
+OS: Windows 10+, macOS 10.15+, Linux (GTK)
+
 2.5 Design and Implementation Constraints
 2.6 Assumptions and Dependencies (Tips: Assumptions are the prerequisites that we
 take for granted when designing requirements. For example, for a certain function, do
@@ -33,11 +56,30 @@ Feature 2:
 3.2.6Quality Attributes
 Feature 3:
 3.3.1Feature name
+Add-on Management System
 3.3.2Description
+Provides functionality for installing, updating, and managing extensions that enhance Freeplane's capabilities. The system maintains security while enabling community contributions.
 3.3.3Functional Requirements
+FR3.1: Users shall be able to browse and install add-ons from the official repository
+Example: Installing the "Markdown Support" add-on via Tools → Add-ons menu
+FR3.2: The system shall verify digital signatures before installation
+Example: Blocking unsigned or tampered add-on files
 3.3.4Performance Requirements
+PR3.1: Add-on list shall load within 3 seconds on 10Mbps connection
+Example: Displaying available add-ons in the management dialog
+PR3.2: Add-on installation shall complete within 30 seconds for packages <5MB
+Example: Installing the "Calendar" add-on (3.2MB)
 3.3.5Design constraints
+DC3.1: Must use Java's ServiceLoader mechanism for extension discovery
+Example: Add-ons register services via META-INF/services
+DC3.2: Shall maintain sandboxing for untrusted code
+Example: Restricting filesystem access for new add-ons
 3.3.6Quality Attributes
+QA 3.1: Security - Protection against malicious add-ons
+Example: Digital signature verification using PGP
+QA3.2: Extensibility - Clear API documentation
+Example: Provided JavaDoc for extension points
+
 Feature 4:
 3.4.1Feature name
 3.4.2Description
