@@ -4,6 +4,7 @@ Introduction
 1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
 this SRS document clearly)
 1.4 References (Tips: you can reference some Appendixes provided)
+[2] IEEE 830 Software Requirements Specification.pdf (Provided document, Sections 2.5 and 2.6)(Accessed: 30 March 2025).
 1.5 Document Overview
 
 Overall Description
@@ -12,9 +13,31 @@ Overall Description
 2.3 User classes and Characteristics
 2.4 Operating Environment
 2.5 Design and Implementation Constraints
+Technology Limitation - Java Dependency:
+Constraint: Freeplane is built using Java, which requires users to have a compatible Java Runtime Environment (JRE) installed on their systems. This limits the application’s portability to environments where Java is supported and imposes a dependency on maintaining compatibility with evolving Java versions (e.g., Java 8 or later as specified in the Freeplane GitHub repository).
+Impact: The design must adhere to Java-specific conventions, and updates to the Java platform (e.g., deprecated APIs) may necessitate refactoring. Additionally, performance may be constrained by the Java Virtual Machine (JVM) overhead compared to native applications.
+Standards Compliance - Export Formats:
+Constraint: Freeplane supports exporting mind maps to formats such as PDF, PNG, and HTML, which must comply with industry standards for these file types (e.g., PDF/A for archival purposes or HTML5 for web compatibility). Deviations from these standards could lead to interoperability issues with other tools.
+Impact: The implementation must include libraries or modules (e.g., iText for PDF generation) that conform to these standards, potentially limiting the choice of tools or increasing development complexity.
+Regulatory Requirements - Accessibility:
+Constraint: As a tool potentially used in educational or professional settings, Freeplane may need to comply with accessibility regulations such as the Web Content Accessibility Guidelines (WCAG) or Section 508 (if deployed in certain jurisdictions like the U.S.). This includes ensuring keyboard navigation and screen reader compatibility.
+Impact: The user interface design must incorporate accessibility features, which could constrain the complexity of visual elements or require additional development effort.
+
 2.6 Assumptions and Dependencies (Tips: Assumptions are the prerequisites that we
 take for granted when designing requirements. For example, for a certain function, do
 you think users need to have certain prerequisite capabilities before using it? )
+Assumption - User Familiarity with Mind Mapping:
+Assumption: Users of Freeplane are assumed to have a basic understanding of mind-mapping concepts (e.g., nodes, branches, hierarchies) to effectively utilize the software. The interface and documentation do not explicitly cater to absolute beginners in this domain.
+Implication: The system’s design assumes that users can navigate and interpret hierarchical structures without extensive onboarding, which may exclude features like step-by-step tutorials for novices.
+Assumption - Availability of Storage and Memory:
+Assumption: The system assumes that users have sufficient local storage and memory to handle large mind maps, especially when working with complex projects that include multimedia attachments (e.g., images or PDFs).
+Implication: No specific mechanisms are built into Freeplane to handle low-resource environments, potentially limiting usability on older or resource-constrained devices.
+Dependency - Java Ecosystem:
+Dependency: Freeplane relies on the Java ecosystem, including the JRE and libraries such as Swing for the graphical user interface. Any updates, discontinuations, or security patches in these components directly affect Freeplane’s functionality and maintenance.
+Implication: The development team must monitor Java updates and ensure compatibility, which may delay feature releases or require additional testing.
+Dependency - Operating System Compatibility:
+Dependency: Freeplane depends on operating systems (e.g., Windows, macOS, Linux) that support Java. Changes in OS-specific Java implementations (e.g., macOS dropping support for older Java versions) could disrupt functionality.
+Implication: The system assumes a stable OS-Java relationship, and compatibility issues may require OS-specific workarounds or updates.
 
 System features (Each student should provide one feature)
 Feature 1:
@@ -71,11 +94,41 @@ Feature 4:
 3.4.6Quality Attributes
 Feature 5
 3.5.1Feature name
+Real-Time Collaboration
 3.5.2Description
+This feature allows multiple users to collaborate on a Freeplane mind map simultaneously over a network. Users can view, edit, and comment on nodes in real time, facilitating teamwork for group projects, brainstorming sessions, or remote workshops. It is intended for user classes such as students working on group assignments, professionals in distributed teams, and educators conducting interactive sessions. The feature aims to enhance Freeplane’s utility in collaborative environments by enabling seamless interaction.
 3.5.3Functional Requirements
+FR-3.1.3-01: Multi-User Access
+Description: The system shall allow multiple users to connect to a shared mind map session hosted on a server or peer-to-peer network, with each user identified by a unique username or color-coded marker.
+Input: User initiation of a collaboration session (e.g., via a “Start Collaboration” menu option) and connection details (e.g., server IP or session ID).
+Process: The system establishes a connection, synchronizes the mind map state across all users, and tracks individual contributions.
+Output: A shared mind map accessible and editable by all connected users in real time.
+FR-3.1.3-02: Real-Time Updates
+Description: The system shall propagate changes (e.g., node additions, edits, deletions) made by one user to all other connected users within 1 second of the action.
+Input: User modifications to the mind map (e.g., typing text, dragging nodes).
+Process: The system broadcasts the changes via the network and updates each user’s local view of the mind map.
+Output: All users see the updated mind map reflecting the latest changes without manual refresh.
 3.5.4Performance Requirements
+PR-3.1.4-01: Synchronization Latency
+Description: The system shall ensure that updates are synchronized across all users with a maximum latency of 1 second under typical network conditions (e.g., 100 Mbps broadband).
+Rationale: Minimizes delays to maintain a fluid collaborative experience, critical for real-time interaction.
+PR-3.1.4-02: Concurrent User Capacity
+Description: The system shall support up to 10 concurrent users editing the same mind map without significant performance degradation (e.g., latency exceeding 2 seconds or system crashes).
+Rationale: Accommodates small to medium-sized teams, a common use case for collaborative mind mapping.
 3.5.5Design constraints
+DC-3.1.5-01: Java-Based Networking
+Description: The feature must be implemented using Java’s networking capabilities (e.g., Java Sockets or RMI), as Freeplane is a Java application.
+Influence: This restricts the use of non-Java frameworks (e.g., WebSockets in JavaScript) and may limit scalability or real-time performance compared to modern web-based solutions, requiring optimization within Java’s ecosystem.
+DC-3.1.5-02: Security Standards Compliance
+Description: The feature must comply with basic security standards (e.g., encrypting data in transit using TLS) to protect user data during collaboration.
+Influence: Adds complexity to the design, requiring integration of security libraries (e.g., Java Secure Socket Extension) and potentially impacting performance due to encryption overhead.
 3.5.6Quality Attributes
+QA-3.1.6-01: Reliability
+Description: The system shall maintain session stability with no more than one unintended disconnection per hour for a group of 10 users under normal network conditions.
+Rationale: Ensures a dependable collaboration experience, critical for team productivity and trust in the tool.
+QA-3.1.6-02: Usability
+Description: The collaboration interface shall include visual indicators (e.g., cursors or highlights showing other users’ actions) and a simple connection process (e.g., one-click join with a session ID) to minimize the learning curve.
+Rationale: Enhances accessibility for users unfamiliar with collaborative software, aligning with Freeplane’s goal of ease of use.
 
 External Interface Requirements
 4.1 User Interfaces
