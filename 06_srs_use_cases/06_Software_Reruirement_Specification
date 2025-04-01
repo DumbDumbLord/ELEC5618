@@ -1,5 +1,18 @@
 Introduction
 1.1 Purpose(Tips: Who may want to see this SRS document and why they see it?)
+The Software Requirement Specification (SRS) document is a guide for the software that is under development and maintained. 
+The intended audience for the document should mainly be stakeholders of the project, hence the owners, development team and end users. 
+Freeplane is a tool for making mind maps. It helps users collect, organize, and show their ideas. 
+Users can add topics, connect them, and change how they look. They can also add links, files, and notes to each idea.
+Users can search the map or hide parts they don’t need. They can save their maps in many formats like PDF or HTML. They can share these maps with others.
+Advanced users can write scripts. These scripts can do tasks faster or add new features. Freeplane works on Windows, macOS, and Linux. It does not need the internet to run.
+Freeplane is good for planning, learning, and thinking. Both beginners and advanced users can use it.
+The SRS is for these people:
+1. Developers – They need to know what features to build and how the system should work.  
+2. Testers – They need to check if the software works as expected and has no bugs.  
+3. Project managers – They need to plan the work, set deadlines, and make sure the team follows the plan.  
+4. Users – They want to know what the software can do and if it fits their needs.  
+5. Contributors – They want to help improve the software, so they need to understand how it works now.
 1.2 Scope
 1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
 this SRS document clearly)
@@ -8,7 +21,38 @@ this SRS document clearly)
 
 Overall Description
 2.1 Product perspective
+Freeplane is a free and open-source mind mapping tool. It comes from another project called FreeMind. 
+You can use Freeplane to draw maps that help you plan, organize ideas, and manage knowledge.
+Freeplane works on computers with Windows, macOS, or Linux. It does not need the internet or a server to run. You can use it by itself. 
+If you are an advanced user, you can also add extra tools, plugins, or write scripts to do more things.You can use Freeplane alone. 
+It does not need other software to work. But it can work with other tools. For example, you can export maps and open them in PDF or HTML. 
+You can also write scripts to connect it with other programs.
+Freeplane is one part of many tools used for thinking, learning, or working. 
+It can open and save maps in different formats, like PDF, HTML, Markdown, and OPML. This helps you share your work with other software.
+This document (called SRS) explains what Freeplane should do, how it should work, and what limits it has. It helps developers build, test, and improve the software.
 2.2 Product Features
+A. Mind Map Editing
+1. Users can make mind maps.
+They can add ideas and connect them using branches. It is good for planning and thinking.
+2. Users can change the look of the map.
+They can use different colors, fonts, and icons. This helps make the map easy to read.
+3. Users can add files and links.
+They can put in pictures, documents, or website links to make the map more useful.
+B. Search and Organization
+Users can search and filter the map.
+They can find words or hide parts they don’t need. This is helpful when maps are big.
+C. Export and Sharing
+Users can save and share maps.
+They can export maps to PDF, HTML, Markdown, and other formats. It is easy to share with others.
+D. Security and Privacy
+Users can protect their maps.  
+They can use passwords to lock parts of the map. This helps keep private info safe.
+E. Platform and Support
+Freeplane works offline.
+It does not need the internet. It runs on Windows, macOS, and Linux.
+F. Advanced Features
+Advanced users can write scripts.
+These scripts help do things faster or in special ways. It is useful for power users.
 2.3 User classes and Characteristics
 2.4 Operating Environment
 2.5 Design and Implementation Constraints
@@ -64,11 +108,31 @@ Feature 3:
 3.3.6Quality Attributes
 Feature 4:
 3.4.1Feature name
+Map Exporting
 3.4.2Description
+This feature lets users save their mind maps in other file types. 
+For example, users can save maps as PDF, HTML, or Markdown. This helps them share the map with others or use it in other programs. 
+This feature is useful for all users.
 3.4.3Functional Requirements
+FR-2.1: The system shall allow users to choose a file format for export (e.g. PDF, HTML).
+ Input: The file format and location.
+ Process: The system converts the map.
+ Output: A new file is saved on the computer.
+FR-2.2: The system shall allow users to export the full map or only part of the map.
+ Input: User selects full map or selected nodes.
+ Process: The system filters the export content.
+ Output: The file includes only the selected content.
 3.4.4Performance Requirements
+PR-2.1: The system should export a map with 500 nodes in less than 5 seconds.
+PR-2.2: The exported file should open correctly and show the same content and layout as the original map.
 3.4.5Design constraints
+DC-2.1: The export function must support offline use.
+It cannot rely on any internet-based service.
+DC-2.2: Only file formats supported by Freeplane (like PDF, HTML, Markdown, OPML) can be used.
+Export to formats not supported by Freeplane is not allowed.
 3.4.6Quality Attributes
+QA-2.1: Usability – The export steps must be easy to follow, even for new users. The export options should be clear.
+QA-2.2: Compatibility – The exported files must work well with common tools (like web browsers or PDF readers).
 Feature 5
 3.5.1Feature name
 3.5.2Description
