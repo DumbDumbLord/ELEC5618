@@ -1,11 +1,18 @@
 Introduction
-1.1 Purpose
-The Software Requirement Specification (SRS) document is a guide for the software that is under development and maintained. 
-The intended audience for the document should mainly be stakeholders of the project, hence the owners, development team and end users. 
-
+1.1 Purpose(Tips: Who may want to see this SRS document and why they see it?)
+This document is called a Software Requirements Specification (SRS). It tells what the Freeplane software should do.
+It helps everyone understand the system in the same way.
+The SRS is for these people:
+1. Developers – They need to know what features to build and how the system should work.  
+2. Testers – They need to check if the software works as expected and has no bugs.  
+3. Project managers – They need to plan the work, set deadlines, and make sure the team follows the plan.  
+4. Users – They want to know what the software can do and if it fits their needs.  
+5. Contributors – They want to help improve the software, so they need to understand how it works now.
 1.2 Scope
 
-1.3 Definitions, Acronyms, and Abbreviations 
+1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
+this SRS document clearly)
+ Mind Map: A diagram used to organize ideas or tasks, where each idea is shown as a "node".
 
 1.4 References (Tips: you can reference some Appendixes provided)
 [1] Freeplane documentation (no date) Distributions - Freeplane Documentation. Available at: https://docs.freeplane.org/getting-started/Distributions.html (Accessed: 30 March 2025). 
@@ -15,6 +22,39 @@ The intended audience for the document should mainly be stakeholders of the proj
 
 Overall Description
 2.1 Product perspective
+
+Freeplane is a free and open-source mind mapping tool. It comes from another project called FreeMind. 
+You can use Freeplane to draw maps that help you plan, organize ideas, and manage knowledge.
+Freeplane works on computers with Windows, macOS, or Linux. It does not need the internet or a server to run. You can use it by itself. 
+If you are an advanced user, you can also add extra tools, plugins, or write scripts to do more things.You can use Freeplane alone. 
+It does not need other software to work. But it can work with other tools. For example, you can export maps and open them in PDF or HTML. 
+You can also write scripts to connect it with other programs.
+Freeplane is one part of many tools used for thinking, learning, or working.
+It can open and save maps in different formats, like PDF, HTML, Markdown, and OPML. This helps you share your work with other software.
+This document (called SRS) explains what Freeplane should do, how it should work, and what limits it has. It helps developers build, test, and improve the software.
+2.2 Product Features
+A. Mind Map Editing
+1. Users can make mind maps.
+They can add ideas and connect them using branches. It is good for planning and thinking.
+2. Users can change the look of the map.
+They can use different colors, fonts, and icons. This helps make the map easy to read.
+3. Users can add files and links.
+They can put in pictures, documents, or website links to make the map more useful.
+B. Search and Organization
+Users can search and filter the map.
+They can find words or hide parts they don’t need. This is helpful when maps are big.
+C. Export and Sharing
+Users can save and share maps.
+They can export maps to PDF, HTML, Markdown, and other formats. It is easy to share with others.
+D. Security and Privacy
+Users can protect their maps.  
+They can use passwords to lock parts of the map. This helps keep private info safe.
+E. Platform and Support
+Freeplane works offline.
+It does not need the internet. It runs on Windows, macOS, and Linux.
+F. Advanced Features
+Advanced users can write scripts.
+These scripts help do things faster or in special ways. It is useful for power users.
 
 2.2 Product Features
 
@@ -165,6 +205,8 @@ External Interface Requirements
 4.1 User Interfaces
 4.2 Hardware Interfaces
 4.3 Software Interfaces
+
+4.4 Communication Interfaces
 Name
 Mnemonic
 Specification number
