@@ -179,7 +179,7 @@ you think users need to have certain prerequisite capabilities before using it? 
  Dependency: Freeplane depends on operating systems (e.g., Windows, macOS, Linux) that support Java. Changes in OS-specific Java implementations (e.g., macOS dropping support for older Java versions) could disrupt functionality.
  Implication: The system assumes a stable OS-Java relationship, and compatibility issues may require OS-specific workarounds or updates.
 
-System features (Each student should provide one feature)
+System features 
 Feature 1:
 3.1.1 Feature name
 Node Creation in Mind map
@@ -221,7 +221,7 @@ Node creation should be used with ease and easy to navigate. The user should not
 3.1.6.2 Maintainability 
 Node creation should be well maintained, hence being easy to edit and open to changes and updates when issues arise or to be improved. 
 
--Feature 2:
+Feature 2:
 3.2.1 Feature name
 Filtering and Searching
 3.2.2 Description
@@ -410,6 +410,37 @@ External Interface Requirements
  Online Collaboration: While Freeplane primarily functions as a standalone application, it can interface with network resources for purposes such as sharing mind maps via cloud storage services or integrating with other online tools. Network configurations should allow for standard HTTP/HTTPS protocols to enable these features.
 
 4.3 Software Interfaces
+Name
+Mnemonic
+Specification number
+Version number
+Source
+Java Runtime Environment
+JRE
+Java SE 8
+1.8+
+Oracle / OpenJDK
+Apache Ant
+Ant
+-
+1.10+
+Apache Foundation
+Groovy Scripting Engine
+Groovy
+-
+2.4+
+Codehaus / Apache
+Java Swing UI Toolkit
+Swing
+-
+JDK built-in
+Oracle
+Java Scripting API
+javax.script
+JSR-223
+Java SE 6+
+Oracle
+
  NodeModel interface: used to access and manipulate nodes in the mind map, providing fundamental methods such as getText(), setStyle(), etc. 
  (Freeplane API document: org.freeplane.features.map.NodeModel)
  MapModel class: abstract representation of the mind map, all nodes (NodeModel) are attached to it in a tree structure.
