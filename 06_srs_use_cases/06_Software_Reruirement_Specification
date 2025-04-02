@@ -109,13 +109,36 @@ Node creation should be used with ease and easy to navigate. The user should not
 3.1.6.2 Maintainability 
 Node creation should be well maintained, hence being easy to edit and open to changes and updates when issues arise or to be improved. 
 
-Feature 2:
-3.2.1Feature name
-3.2.2Description
-3.2.3Functional Requirements
-3.2.4Performance Requirements
-3.2.5Design constraints
-3.2.6Quality Attributes
+-Feature 2:
+3.2.1 Feature name
+Filtering and Searching
+3.2.2 Description
+This function allows users to filter and search nodes in mind maps by keywords, attributes or conditional expressions. Its purpose is to help users quickly locate information from a large number of nodes, hide irrelevant content, and focus on specific tasks or content structures.
+3.2.3 Functional Requirements
+FR1: Keyword search function
+Description: The system should allow users to enter keywords in the search box and highlight all nodes matching the keyword in the map.
+Input: The user enters text in the search bar, such as "deadline".
+Processing: The system searches for nodes containing the text in all nodes.
+Output: Matching nodes are highlighted and their ancestor nodes are automatically expanded.
+FR2: Conditional filter function
+Description: The system should allow users to apply filter conditions (such as node priority, label, completion status) to display specific nodes.
+Input: User selects a filter, such as priority == high
+Processing: The system hides nodes that do not meet the requirements according to the conditions.
+Output: Only nodes that meet the conditions and their ancestors/descendants are displayed, and other nodes are hidden.
+3.2.4 Performance Requirements
+PR1: Response time
+For mind maps with no more than 1,000 nodes, the response time for search operations should be no more than 300 milliseconds, and for filter operations no more than 500 milliseconds.
+PR2: Memory efficiency
+The system should avoid memory leaks when performing filter operations, use lightweight data structures for filter states, and release cached data immediately after filtering is undone.
+3.2.5 Design constraints
+DC1: Platform compatibility constraints
+The function must be compatible with the Java runtime environment (JRE 8 and above) to ensure that it can run on Windows, macOS, and Linux systems.
+DC2: Data structure restrictions
+The filtering function must be implemented based on the existing NodeModel and MapModel data structures, and the introduction of new core node types is prohibited.
+3.2.6 Quality Attributes
+QA1:  Performance Search and filter operations should be completed within 1 second (for less than 1,000 nodes) to ensure high interactive response speed.
+QA2:  Usability Users can quickly access filter and search functions through shortcut keys or graphic buttons, and the operation logic should be consistent with the document description.
+
 Feature 3:
 3.3.1Feature name
 3.3.2Description
@@ -142,4 +165,54 @@ External Interface Requirements
 4.1 User Interfaces
 4.2 Hardware Interfaces
 4.3 Software Interfaces
+Name
+Mnemonic
+Specification number
+Version number
+Source
+Java Runtime Environment
+JRE
+Java SE 8
+1.8+
+Oracle / OpenJDK
+Apache Ant
+Ant
+-
+1.10+
+Apache Foundation
+Groovy Scripting Engine
+Groovy
+-
+2.4+
+Codehaus / Apache
+Java Swing UI Toolkit
+Swing
+-
+JDK built-in
+Oracle
+Java Scripting API
+javax.script
+JSR-223
+Java SE 6+
+Oracle
+
+NodeModel interface: used to access and manipulate nodes in the mind map, providing fundamental methods such as getText(), setStyle(), etc. 
+(Freeplane API document: org.freeplane.features.map.NodeModel)
+MapModel class: abstract representation of the mind map, all nodes (NodeModel) are attached to it in a tree structure.
+(Freeplane API document: org.freeplane.features.map.MapModel)
+NodeCondition interface: used to define conditional expressions when filtering nodes, supporting plug-in and script calls.
+(Freeplane API document: org.freeplane.api.NodeCondition)
+ScriptEngine interface (javax.script): executes Groovy/JavaScript scripts to implement advanced filtering and custom node logic.
+(JSR-223 standard API:
+https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html)
+FilterController module: handles node filtering and hiding logic, integrated with UI and Undo system.(Internal module, no separate documentation)
+
 4.4 Communication Interfaces
+Plugin remote download: Freeplane plugins support remote pull from GitHub or plugin repositories via HTTP/HTTPS protocol, using port 443.
+
+URI file binding interface: allows users to bind local or remote .mm file paths, such as template:/my-template.mm.
+
+User script external request: Groovy/JavaScript scripts support external API requests via URLs, such as new URL(...).text to read external tasks or notes.
+
+Version check and update (optional): The system can access the official website address to detect the plugin/main program version, the protocol is HTTPS, and supports JSON format response.
+
