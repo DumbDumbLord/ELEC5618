@@ -1,17 +1,134 @@
 Introduction
 1.1 Purpose(Tips: Who may want to see this SRS document and why they see it?)
+
+The Software Requirement Specification (SRS) document is a guide for the software that is under development and maintained. 
+The intended audience for the document should mainly be stakeholders of the project, hence the owners, development team and end users. 
+Freeplane is a tool for making mind maps. It helps users collect, organize, and show their ideas. 
+Users can add topics, connect them, and change how they look. They can also add links, files, and notes to each idea.
+Users can search the map or hide parts they don’t need. They can save their maps in many formats like PDF or HTML. They can share these maps with others.
+Advanced users can write scripts. These scripts can do tasks faster or add new features. Freeplane works on Windows, macOS, and Linux. It does not need the internet to run.
+Freeplane is good for planning, learning, and thinking. Both beginners and advanced users can use it.
+
+The SRS is for these people:
+1. Developers – They need to know what features to build and how the system should work.  
+2. Testers – They need to check if the software works as expected and has no bugs.  
+3. Project managers – They need to plan the work, set deadlines, and make sure the team follows the plan.  
+4. Users – They want to know what the software can do and if it fits their needs.  
+5. Contributors – They want to help improve the software, so they need to understand how it works now.
 1.2 Scope
+
 1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
 this SRS document clearly)
+ Mind Map: A diagram used to organize ideas or tasks, where each idea is shown as a "node".
+
 1.4 References (Tips: you can reference some Appendixes provided)
+[1] Freeplane documentation (no date) Distributions - Freeplane Documentation. Available at: https://docs.freeplane.org/getting-started/Distributions.html (Accessed: 30 March 2025). 
 [2] IEEE 830 Software Requirements Specification.pdf (Provided document, Sections 2.5 and 2.6)(Accessed: 30 March 2025).
+
 1.5 Document Overview
+
 
 Overall Description
 2.1 Product perspective
+
+Freeplane is a free and open-source mind mapping tool. It comes from another project called FreeMind. 
+You can use Freeplane to draw maps that help you plan, organize ideas, and manage knowledge.
+Freeplane works on computers with Windows, macOS, or Linux. It does not need the internet or a server to run. You can use it by itself. 
+If you are an advanced user, you can also add extra tools, plugins, or write scripts to do more things.You can use Freeplane alone. 
+It does not need other software to work. But it can work with other tools. For example, you can export maps and open them in PDF or HTML. 
+You can also write scripts to connect it with other programs.
+
+Freeplane is one part of many tools used for thinking, learning, or working. 
+It can open and save maps in different formats, like PDF, HTML, Markdown, and OPML. This helps you share your work with other software.
+This document (called SRS) explains what Freeplane should do, how it should work, and what limits it has. It helps developers build, test, and improve the software.
+
 2.2 Product Features
+A. Mind Map Editing
+1. Users can make mind maps.
+They can add ideas and connect them using branches. It is good for planning and thinking.
+2. Users can change the look of the map.
+They can use different colors, fonts, and icons. This helps make the map easy to read.
+3. Users can add files and links.
+They can put in pictures, documents, or website links to make the map more useful.
+B. Search and Organization
+Users can search and filter the map.
+They can find words or hide parts they don’t need. This is helpful when maps are big.
+C. Export and Sharing
+Users can save and share maps.
+They can export maps to PDF, HTML, Markdown, and other formats. It is easy to share with others.
+D. Security and Privacy
+Users can protect their maps.  
+They can use passwords to lock parts of the map. This helps keep private info safe.
+E. Platform and Support
+Freeplane works offline.
+It does not need the internet. It runs on Windows, macOS, and Linux.
+F. Advanced Features
+Advanced users can write scripts.
+These scripts help do things faster or in special ways. It is useful for power users.
+
 2.3 User classes and Characteristics
+
+Casual Users
+Characteristics: Basic computer literacy, occasional mind mapping needs
+Responsibilities:Creating simple mind maps,Applying basic formatting,Saving/loading map files
+Example: A student creating a study outline using default templates
+Power Users
+Characteristics: Advanced technical skills, frequent usage
+Responsibilities:Using advanced formatting options,Creating custom templates,Managing add-ons
+Example: A project manager creating complex GTD (Getting Things Done) systems
+Add-on Developers
+Characteristics: Java programming knowledge
+Responsibilities:Developing extensions,Testing add-on compatibility,Maintaining documentation
+Example: A developer creating a LaTeX equation plugin
+Collaborators
+Characteristics: Teamwork-oriented, diverse technical levels
+Responsibilities:Sharing map files,Merging map versions,Providing feedback
+Example: A research team collaborating on a literature review map
+
+Users
+Characteristics - these users want to use the software to create mind maps for personal or educational purposes. May lack the expertise of more advanced users and programmers. 
+Responsibilities:
+Creating and editing mind maps.
+Organising thoughts, ideas, or information into the mind maps.
+Adding nodes and connections to the map.
+Exporting mind maps to intended file types
+
+Advanced Users
+Characteristics  - these are more advanced users who have a deeper understanding of freeplane and/or want to use more advanced features of the software. 
+These advanced features should include plugins and addons. 
+Responsibilities:
+Creating and editing more detailed mind maps.
+Installing addons and/or plugins to freeplane to extend functionality
+Collaborating with other users more dynamically with addons.
+Able to extend exports options if needed
+
+Developer/Programmer
+Characteristics  - programmers that have programming knowledge and want to extend the software functionality or implement quality of life changes to make the software more convenient.
+Responsibilities:
+Writing scripts/addons to automate or make actions more convenient within the mind maps
+Developing and implementing additional functionality on freeplane
+Creating or updating software/addon to a new version.
+Fixing bugs 
+
+Viewer
+Characteristics  - any user which only wants to view mind maps using the software.
+Responsibilities:
+Viewing mind maps
+Exporting mind maps to different file types
+
 2.4 Operating Environment
+There are no specific hardware requirements on the program and can run on all modern operating systems (windows, mac & linux). Assumed recommended requirements:
+CPU, 2 GHz or higher (better performance)
+RAM, 1 GB or more (smoother when working with big mind maps)
+Storage, 200 MB or more (for installation and more depends on mind maps)
+Graphics, enough to handle basic 2d rendering
+
+The software requirements for the system requires an embedded java distribution in the installer or independently java 11 or later needs to be installed (preferably java 11 or 17). [1] 
+Without an installer and using git clone, ‘gradle’ additionally with java needs to be installed to build the program.
+
+The program is mainly an offline local application and may only need the network to check for updates.
+
+
 2.5 Design and Implementation Constraints
 Technology Limitation - Java Dependency:
 Constraint: Freeplane is built using Java, which requires users to have a compatible Java Runtime Environment (JRE) installed on their systems. This limits the application’s portability to environments where Java is supported and imposes a dependency on maintaining compatibility with evolving Java versions (e.g., Java 8 or later as specified in the Freeplane GitHub repository).
@@ -41,12 +158,45 @@ Implication: The system assumes a stable OS-Java relationship, and compatibility
 
 System features (Each student should provide one feature)
 Feature 1:
-3.1.1Feature name
-3.1.2Description
-3.1.3Functional Requirements
-3.1.4Performance Requirements
-3.1.5Design constraints
-3.1.6Quality Attributes
+3.1.1 Feature name
+Node Creation in Mind map
+
+3.1.2 Description
+Allows the user to create and edit a visual mind map represented by nodes which helps organise their ideas, information or plans. 
+
+3.1.3 Functional Requirements
+3.1.3.1 Create Nodes in Mind Map
+Clicking on the add nodes button will create a new node on the currently selected node.
+Input: add node button press
+Output: new child node to selected node
+
+3.1.3.2 Edit Content of Existing Nodes
+Clicking the node selects the node. Double clicking nodes allows editing the content of the node
+Input: Double Clicking
+Process: Editing the node, can change text with addition to its font size, text alignment and bold/italic.
+Output: Content of Node changes
+
+3.1.4 Performance Requirements
+3.1.4.1 Response/Rendering Time for Node Creation/updates
+Should be responsive and be below 1s to create nodes and update the new node content.
+
+3.1.4.2 Efficient or Sufficient Memory 
+Should be able to create render and add nodes without lag, crashing or unable render content due lack of memory. 
+
+3.1.5 Design constraints
+3.1.5.1 Storage and Memory
+Extra storage is needed to store the mind map file if the mind map is too big with a large number of nodes, it may require storage to be a problem with the software unable to store it. 
+Low memory may also cause the software to be unable to load big mind maps with large numbers of nodes or lagging and crashing the software. These hardware constraints may cause the software to be unable to operate.
+
+3.1.5.2 Operating Requirements
+Java is needed to operate the software as the software is code in Java. This may only increase storage for the application as Java needs to be installed.
+
+3.1.6 Quality Attributes
+3.1.6.1 Usuability
+Node creation should be used with ease and easy to navigate. The user should not be frustrated when navigating node creation and the software should be responsive enough to update new changes.
+
+3.1.6.2 Maintainability 
+Node creation should be well maintained, hence being easy to edit and open to changes and updates when issues arise or to be improved. 
 
 -Feature 2:
 3.2.1 Feature name
@@ -80,18 +230,57 @@ QA2:  Usability Users can quickly access filter and search functions through sho
 
 Feature 3:
 3.3.1Feature name
+Add-on Management System
 3.3.2Description
+Provides functionality for installing, updating, and managing extensions that enhance Freeplane's capabilities. The system maintains security while enabling community contributions.
 3.3.3Functional Requirements
+FR3.1: Users shall be able to browse and install add-ons from the official repository
+Example: Installing the "Markdown Support" add-on via Tools → Add-ons menu
+FR3.2: The system shall verify digital signatures before installation
+Example: Blocking unsigned or tampered add-on files
 3.3.4Performance Requirements
+PR3.1: Add-on list shall load within 3 seconds on 10Mbps connection
+Example: Displaying available add-ons in the management dialog
+PR3.2: Add-on installation shall complete within 30 seconds for packages <5MB
+Example: Installing the "Calendar" add-on (3.2MB)
 3.3.5Design constraints
+DC3.1: Must use Java's ServiceLoader mechanism for extension discovery
+Example: Add-ons register services via META-INF/services
+DC3.2: Shall maintain sandboxing for untrusted code
+Example: Restricting filesystem access for new add-ons
 3.3.6Quality Attributes
+QA 3.1: Security - Protection against malicious add-ons
+Example: Digital signature verification using PGP
+QA3.2: Extensibility - Clear API documentation
+Example: Provided JavaDoc for extension points
+
 Feature 4:
 3.4.1Feature name
+Map Exporting
 3.4.2Description
+This feature lets users save their mind maps in other file types. 
+For example, users can save maps as PDF, HTML, or Markdown. This helps them share the map with others or use it in other programs. 
+This feature is useful for all users.
 3.4.3Functional Requirements
+FR-2.1: The system shall allow users to choose a file format for export (e.g. PDF, HTML).
+ Input: The file format and location.
+ Process: The system converts the map.
+ Output: A new file is saved on the computer.
+FR-2.2: The system shall allow users to export the full map or only part of the map.
+ Input: User selects full map or selected nodes.
+ Process: The system filters the export content.
+ Output: The file includes only the selected content.
 3.4.4Performance Requirements
+PR-2.1: The system should export a map with 500 nodes in less than 5 seconds.
+PR-2.2: The exported file should open correctly and show the same content and layout as the original map.
 3.4.5Design constraints
+DC-2.1: The export function must support offline use.
+It cannot rely on any internet-based service.
+DC-2.2: Only file formats supported by Freeplane (like PDF, HTML, Markdown, OPML) can be used.
+Export to formats not supported by Freeplane is not allowed.
 3.4.6Quality Attributes
+QA-2.1: Usability – The export steps must be easy to follow, even for new users. The export options should be clear.
+QA-2.2: Compatibility – The exported files must work well with common tools (like web browsers or PDF readers).
 Feature 5
 3.5.1Feature name
 Real-Time Collaboration
@@ -134,6 +323,9 @@ External Interface Requirements
 4.1 User Interfaces
 4.2 Hardware Interfaces
 4.3 Software Interfaces
+4.4 Communication Interfaces
+
+4.4 Communication Interfaces
 Name
 Mnemonic
 Specification number
@@ -184,4 +376,5 @@ URI file binding interface: allows users to bind local or remote .mm file paths,
 User script external request: Groovy/JavaScript scripts support external API requests via URLs, such as new URL(...).text to read external tasks or notes.
 
 Version check and update (optional): The system can access the official website address to detect the plugin/main program version, the protocol is HTTPS, and supports JSON format response.
+
 
