@@ -1,16 +1,67 @@
 Introduction
-1.1 Purpose(Tips: Who may want to see this SRS document and why they see it?)
+1.1 Purpose
+The Software Requirement Specification (SRS) document is a guide for the software that is under development and maintained. 
+The intended audience for the document should mainly be stakeholders of the project, hence the owners, development team and end users. 
+
 1.2 Scope
-1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
-this SRS document clearly)
+
+1.3 Definitions, Acronyms, and Abbreviations 
+
 1.4 References (Tips: you can reference some Appendixes provided)
+[1] Freeplane documentation (no date) Distributions - Freeplane Documentation. Available at: https://docs.freeplane.org/getting-started/Distributions.html (Accessed: 30 March 2025). 
+
 1.5 Document Overview
+
 
 Overall Description
 2.1 Product perspective
+
 2.2 Product Features
+
 2.3 User classes and Characteristics
+Users
+Characteristics - these users want to use the software to create mind maps for personal or educational purposes. May lack the expertise of more advanced users and programmers. 
+Responsibilities:
+Creating and editing mind maps.
+Organising thoughts, ideas, or information into the mind maps.
+Adding nodes and connections to the map.
+Exporting mind maps to intended file types
+
+Advanced Users
+Characteristics  - these are more advanced users who have a deeper understanding of freeplane and/or want to use more advanced features of the software. 
+These advanced features should include plugins and addons. 
+Responsibilities:
+Creating and editing more detailed mind maps.
+Installing addons and/or plugins to freeplane to extend functionality
+Collaborating with other users more dynamically with addons.
+Able to extend exports options if needed
+
+Developer/Programmer
+Characteristics  - programmers that have programming knowledge and want to extend the software functionality or implement quality of life changes to make the software more convenient.
+Responsibilities:
+Writing scripts/addons to automate or make actions more convenient within the mind maps
+Developing and implementing additional functionality on freeplane
+Creating or updating software/addon to a new version.
+Fixing bugs 
+
+Viewer
+Characteristics  - any user which only wants to view mind maps using the software.
+Responsibilities:
+Viewing mind maps
+Exporting mind maps to different file types
+
 2.4 Operating Environment
+There are no specific hardware requirements on the program and can run on all modern operating systems (windows, mac & linux). Assumed recommended requirements:
+CPU, 2 GHz or higher (better performance)
+RAM, 1 GB or more (smoother when working with big mind maps)
+Storage, 200 MB or more (for installation and more depends on mind maps)
+Graphics, enough to handle basic 2d rendering
+
+The software requirements for the system requires an embedded java distribution in the installer or independently java 11 or later needs to be installed (preferably java 11 or 17). [1] 
+Without an installer and using git clone, ‘gradle’ additionally with java needs to be installed to build the program.
+
+The program is mainly an offline local application and may only need the network to check for updates.
+
 2.5 Design and Implementation Constraints
 2.6 Assumptions and Dependencies (Tips: Assumptions are the prerequisites that we
 take for granted when designing requirements. For example, for a certain function, do
@@ -18,12 +69,45 @@ you think users need to have certain prerequisite capabilities before using it? 
 
 System features (Each student should provide one feature)
 Feature 1:
-3.1.1Feature name
-3.1.2Description
-3.1.3Functional Requirements
-3.1.4Performance Requirements
-3.1.5Design constraints
-3.1.6Quality Attributes
+3.1.1 Feature name
+Node Creation in Mind map
+
+3.1.2 Description
+Allows the user to create and edit a visual mind map represented by nodes which helps organise their ideas, information or plans. 
+
+3.1.3 Functional Requirements
+3.1.3.1 Create Nodes in Mind Map
+Clicking on the add nodes button will create a new node on the currently selected node.
+Input: add node button press
+Output: new child node to selected node
+
+3.1.3.2 Edit Content of Existing Nodes
+Clicking the node selects the node. Double clicking nodes allows editing the content of the node
+Input: Double Clicking
+Process: Editing the node, can change text with addition to its font size, text alignment and bold/italic.
+Output: Content of Node changes
+
+3.1.4 Performance Requirements
+3.1.4.1 Response/Rendering Time for Node Creation/updates
+Should be responsive and be below 1s to create nodes and update the new node content.
+
+3.1.4.2 Efficient or Sufficient Memory 
+Should be able to create render and add nodes without lag, crashing or unable render content due lack of memory. 
+
+3.1.5 Design constraints
+3.1.5.1 Storage and Memory
+Extra storage is needed to store the mind map file if the mind map is too big with a large number of nodes, it may require storage to be a problem with the software unable to store it. 
+Low memory may also cause the software to be unable to load big mind maps with large numbers of nodes or lagging and crashing the software. These hardware constraints may cause the software to be unable to operate.
+
+3.1.5.2 Operating Requirements
+Java is needed to operate the software as the software is code in Java. This may only increase storage for the application as Java needs to be installed.
+
+3.1.6 Quality Attributes
+3.1.6.1 Usuability
+Node creation should be used with ease and easy to navigate. The user should not be frustrated when navigating node creation and the software should be responsive enough to update new changes.
+
+3.1.6.2 Maintainability 
+Node creation should be well maintained, hence being easy to edit and open to changes and updates when issues arise or to be improved. 
 
 -Feature 2:
 3.2.1 Feature name
