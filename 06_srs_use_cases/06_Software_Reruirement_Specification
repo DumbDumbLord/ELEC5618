@@ -16,10 +16,28 @@ The SRS is for these people:
 4. Users – They want to know what the software can do and if it fits their needs.  
 5. Contributors – They want to help improve the software, so they need to understand how it works now.
 1.2 Scope
+Freeplane is a free and open-source Mind Mapping and Knowledge Management System designed for mind mapping, knowledge management, and project management. 
+It allows users to organise and communicate with structured diagrams, which can help them think better and share information. 
+The software allows users to create, edit, and format mind maps, supporting hierarchical structures, task management, and annotation features. However, those features unrelated to mind mapping are not included, such as word processing or spreadsheet management. 
+Freeplane is widely used in education, business, and personal productivity. It benefits them with enhanced workflow arrangement and improved concept visualisation. 
+
+It can be executed on Windows, macOS, and Linux with a Java Runtime Environment (JRE). 
+Users are expected to have basic computer skills and familiarity with mind mapping concepts. 
+Though it provides broad customisation and export options, Freeplane does not currently support mobile platforms or advanced project scheduling beyond mind mapping. 
 
 1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
 this SRS document clearly)
  Mind Map: A diagram used to organize ideas or tasks, where each idea is shown as a "node".
+JRE: Java Runtime Environment – Required to run Freeplane on any platform.
+UI: User Interface – Visual interface of the application.
+Mind Map: A visual representation of information, structured hierarchically with nodes and connections to illustrate relationships.
+OS: Operating System, the software that manages hardware and software resources, such as Windows, macOS, and Linux.
+JVM: Java Virtual Machine. A runtime environment that enables Java programs to run on different operating systems without modification.
+GUI: Graphical User Interface. A user-friendly interface that includes visual elements like windows, menus, and icons for interacting with software.
+gRPC: A high-performance framework that enables remote communication between applications or services. In Freeplane, it can be used to interact with external systems.
+FOP: Freeplane Online Presentation - The system for exporting interactive presentations
+
+
 
 1.4 References (Tips: you can reference some Appendixes provided)
 [1] Freeplane documentation (no date) Distributions - Freeplane Documentation. Available at: https://docs.freeplane.org/getting-started/Distributions.html (Accessed: 30 March 2025). 
@@ -281,6 +299,7 @@ Export to formats not supported by Freeplane is not allowed.
 3.4.6Quality Attributes
 QA-2.1: Usability – The export steps must be easy to follow, even for new users. The export options should be clear.
 QA-2.2: Compatibility – The exported files must work well with common tools (like web browsers or PDF readers).
+
 Feature 5
 3.5.1Feature name
 Real-Time Collaboration
@@ -321,7 +340,79 @@ Rationale: Enhances accessibility for users unfamiliar with collaborative softwa
 
 External Interface Requirements
 4.1 User Interfaces
+ a) Logical Characteristics of Each Interface Component
+ 1. Map Window:
+    - Layout: Serves as the central workspace where mind maps are created and edited. Each map opens in its own tab, facilitating seamless navigation between multiple projects.
+    - Functionality: Supports drag-and-drop for node arrangement, zooming capabilities, and dynamic map structuring to accommodate complex hierarchies.
+ 2. Menu Bar:
+    - Structure: Positioned at the top of the application, it provides categorized menus such as File, Edit, View, Format, Tools, and Help.
+    - Functionality: Offers access to comprehensive features, including file operations, editing tools, formatting options, and access to documentation and support resources.
+ 3. Tool Bar:
+    - Layout: Located directly beneath the Menu Bar, it presents a series of icons for quick access to frequently used functions.
+    - Functionality: Enables rapid execution of commands like adding nodes, formatting text, and managing connections between nodes.
+ 4. Filter Bar:
+    - Placement: Situated above the Map Window, this bar allows users to filter and search within mind maps.
+    - Functionality: Facilitates the location of specific nodes or information by inputting keywords or applying predefined filters.
+ 5. Icon Panel:
+    - Layout: Positioned on the left side of the Map Window, it provides a collection of icons that can be added to nodes.
+    - Functionality: Assists in visually categorizing and emphasizing nodes, enhancing the clarity and organization of the mind map.
+ 6. Tool Panel:
+    - Placement: Docked on the right side of the application, it contains multiple tabs:
+      - Format Panel: For text and node formatting options.
+      - Attributes Panel: To manage node attributes.
+      - Calendar Panel: For date-related functionalities.
+      - Presentations Panel: To assist in creating presentations from mind maps.
+    - Functionality: Each tab offers specialized tools to enhance the customization and functionality of mind maps.
+ 7. Notes Panel:
+    - Layout: When activated, appears below the Map Window.
+    - Functionality: Allows users to add detailed notes to selected nodes, providing additional context or information.
+ 8. Status Bar:
+    - Placement: Located at the bottom of the application window.
+    - Functionality: Displays information about the selected node, current operations, and other contextual details.
+ b) Optimization Considerations for User Interaction:
+ - Consistency: Maintain uniformity in UI elements across different platforms to ensure a predictable and intuitive user experience.
+ - Accessibility: Ensure that all functionalities are accessible via both mouse and keyboard inputs, catering to diverse user preferences and needs.
+ - Feedback: Provide immediate visual or auditory feedback for user actions, such as highlighting selected nodes or confirming completed operations.
+ - Error Handling: Implement clear and concise error messages with options for detailed explanations, aiding users in understanding and resolving issues effectively.
+ - Customization: Offer users the ability to personalize the interface, including the arrangement of panels, choice of color schemes, and configurable shortcuts, to suit individual workflows.
+ - Performance: Ensure that the interface remains responsive and efficient, even when handling large and complex mind maps, to maintain productivity and user satisfaction.
+
+
 4.2 Hardware Interfaces
+ 1. Java Runtime Environment (JRE) Dependency:
+ Requirement: Freeplane necessitates the presence of a compatible JRE on the host system to function correctly.
+
+
+ Windows and macOS: Freeplane 1.11.x requires Java versions between 11 and 21.
+
+
+ Linux: The same version supports Java versions between 8 and 21.
+
+
+ Configuration: The environment variable FREEPLANE_JAVA_HOME should be set to the path of the desired Java installation. For instance:
+ 2. Operating System Compatibility:
+ Supported Systems: Freeplane is compatible with Windows, macOS, and Linux operating systems, provided they meet the JRE requirements specified above.
+
+
+ Distribution Variants: Different distributions are available to cater to specific OS needs:
+ Windows:
+ Installer with embedded Java
+ Installer requiring an independent Java installation
+ macOS:
+ Distribution with embedded Java for Intel or M1 processors
+ Linux:
+ Debian installer.
+ Archive without installer.
+ 3. Hardware Resource Utilization:
+ Processor and Memory: While Freeplane does not demand high-end hardware, performance is optimal on systems with at least a dual-core processor and 2 GB of RAM.
+ Storage: The application requires approximately 100 MB of disk space for installation, with additional space needed for user-generated mind maps and related files.
+ 4. Peripheral Device Support:
+ Input Devices: Freeplane supports standard input devices such as keyboards and mice. It also accommodates advanced input methods, including graphics tablets, enhancing the user experience for tasks like freehand drawing within mind maps.
+ Output Devices: The software is compatible with standard display monitors and supports high-resolution outputs, ensuring clarity in visual representations. Additionally, Freeplane can export mind maps to various formats (e.g., PNG, JPEG, SVG, PDF), facilitating printing and sharing across different mediums.
+ 5. Network Interfaces:
+ Online Collaboration: While Freeplane primarily functions as a standalone application, it can interface with network resources for purposes such as sharing mind maps via cloud storage services or integrating with other online tools. Network configurations should allow for standard HTTP/HTTPS protocols to enable these features.
+
+
 4.3 Software Interfaces
 4.4 Communication Interfaces
 
