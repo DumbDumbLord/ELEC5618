@@ -1,178 +1,183 @@
 Introduction
 1.1 Purpose(Tips: Who may want to see this SRS document and why they see it?)
+ The Software Requirement Specification (SRS) document is a guide for the software that is under development and maintained. 
+ The intended audience for the document should mainly be stakeholders of the project, hence the owners, development team and end users. 
+ Freeplane is a tool for making mind maps. It helps users collect, organize, and show their ideas. 
+ Users can add topics, connect them, and change how they look. They can also add links, files, and notes to each idea.
+ Users can search the map or hide parts they don’t need. They can save their maps in many formats like PDF or HTML. They can share these maps with others.
+ Advanced users can write scripts. These scripts can do tasks faster or add new features. Freeplane works on Windows, macOS, and Linux. It does not need the internet to run.
+ Freeplane is good for planning, learning, and thinking. Both beginners and advanced users can use it.
 
-The Software Requirement Specification (SRS) document is a guide for the software that is under development and maintained. 
-The intended audience for the document should mainly be stakeholders of the project, hence the owners, development team and end users. 
-Freeplane is a tool for making mind maps. It helps users collect, organize, and show their ideas. 
-Users can add topics, connect them, and change how they look. They can also add links, files, and notes to each idea.
-Users can search the map or hide parts they don’t need. They can save their maps in many formats like PDF or HTML. They can share these maps with others.
-Advanced users can write scripts. These scripts can do tasks faster or add new features. Freeplane works on Windows, macOS, and Linux. It does not need the internet to run.
-Freeplane is good for planning, learning, and thinking. Both beginners and advanced users can use it.
-
-The SRS is for these people:
-1. Developers – They need to know what features to build and how the system should work.  
-2. Testers – They need to check if the software works as expected and has no bugs.  
-3. Project managers – They need to plan the work, set deadlines, and make sure the team follows the plan.  
-4. Users – They want to know what the software can do and if it fits their needs.  
-5. Contributors – They want to help improve the software, so they need to understand how it works now.
+ The SRS is for these people:
+ 1. Developers – They need to know what features to build and how the system should work.  
+ 2. Testers – They need to check if the software works as expected and has no bugs.  
+ 3. Project managers – They need to plan the work, set deadlines, and make sure the team follows the plan.  
+ 4. Users – They want to know what the software can do and if it fits their needs.  
+ 5. Contributors – They want to help improve the software, so they need to understand how it works now.
+ 
 1.2 Scope
-Freeplane is a free and open-source Mind Mapping and Knowledge Management System designed for mind mapping, knowledge management, and project management. 
-It allows users to organise and communicate with structured diagrams, which can help them think better and share information. 
-The software allows users to create, edit, and format mind maps, supporting hierarchical structures, task management, and annotation features. However, those features unrelated to mind mapping are not included, such as word processing or spreadsheet management. 
-Freeplane is widely used in education, business, and personal productivity. It benefits them with enhanced workflow arrangement and improved concept visualisation. 
+ Freeplane is a free and open-source Mind Mapping and Knowledge Management System designed for mind mapping, knowledge management, and project management. 
+ It allows users to organise and communicate with structured diagrams, which can help them think better and share information. 
+ The software allows users to create, edit, and format mind maps, supporting hierarchical structures, task management, and annotation features. However, those features unrelated to mind mapping are not included, such as word processing or spreadsheet management. 
+ Freeplane is widely used in education, business, and personal productivity. It benefits them with enhanced workflow arrangement and improved concept visualisation. 
 
-It can be executed on Windows, macOS, and Linux with a Java Runtime Environment (JRE). 
-Users are expected to have basic computer skills and familiarity with mind mapping concepts. 
-Though it provides broad customisation and export options, Freeplane does not currently support mobile platforms or advanced project scheduling beyond mind mapping. 
+ It can be executed on Windows, macOS, and Linux with a Java Runtime Environment (JRE). 
+ Users are expected to have basic computer skills and familiarity with mind mapping concepts. 
+ Though it provides broad customisation and export options, Freeplane does not currently support mobile platforms or advanced project scheduling beyond mind mapping. 
 
 1.3 Definitions, Acronyms, and Abbreviations (This part will help audience understand
 this SRS document clearly)
  Mind Map: A diagram used to organize ideas or tasks, where each idea is shown as a "node".
-JRE: Java Runtime Environment – Required to run Freeplane on any platform.
-UI: User Interface – Visual interface of the application.
-Mind Map: A visual representation of information, structured hierarchically with nodes and connections to illustrate relationships.
-OS: Operating System, the software that manages hardware and software resources, such as Windows, macOS, and Linux.
-JVM: Java Virtual Machine. A runtime environment that enables Java programs to run on different operating systems without modification.
-GUI: Graphical User Interface. A user-friendly interface that includes visual elements like windows, menus, and icons for interacting with software.
-gRPC: A high-performance framework that enables remote communication between applications or services. In Freeplane, it can be used to interact with external systems.
-FOP: Freeplane Online Presentation - The system for exporting interactive presentations
-
-
+ JRE: Java Runtime Environment – Required to run Freeplane on any platform.
+ UI: User Interface – Visual interface of the application.
+ Mind Map: A visual representation of information, structured hierarchically with nodes and connections to illustrate relationships.
+ OS: Operating System, the software that manages hardware and software resources, such as Windows, macOS, and Linux.
+ JVM: Java Virtual Machine. A runtime environment that enables Java programs to run on different operating systems without modification.
+ GUI: Graphical User Interface. A user-friendly interface that includes visual elements like windows, menus, and icons for interacting with software.
+ gRPC: A high-performance framework that enables remote communication between applications or services. In Freeplane, it can be used to interact with external systems.
+ FOP: Freeplane Online Presentation - The system for exporting interactive presentations
 
 1.4 References (Tips: you can reference some Appendixes provided)
-[1] Freeplane documentation (no date) Distributions - Freeplane Documentation. Available at: https://docs.freeplane.org/getting-started/Distributions.html (Accessed: 30 March 2025). 
-[2] IEEE 830 Software Requirements Specification.pdf (Provided document, Sections 2.5 and 2.6)(Accessed: 30 March 2025).
+ [1] Freeplane documentation (no date) Distributions - Freeplane Documentation. Available at: https://docs.freeplane.org/getting-started/Distributions.html (Accessed: 30 March 2025). 
+ [2] IEEE 830 Software Requirements Specification.pdf (Provided document, Sections 2.5 and 2.6)(Accessed: 30 March 2025).
 
 1.5 Document Overview
+ This Software Requirement Specification document is structured to comprehensively define the functional and non-functional requirements of the Freeplane mind mapping system. The document is intended for stakeholders including developers, project owners and end users who are involved in the design, implementation, validation or usage of the software.
+ The remainder of this document is organized as follows:
+ Section 2 – Overall Description
+ Provides a high-level overview of the system, including its context (product perspective), key features, user classifications, operating environment, system constraints, and assumptions or dependencies.
+ Section 3 – System Features
+ Describes the detailed system functionalities. Each feature is presented with a feature name, description, functional requirements, performance expectations, design constraints, and quality attributes. This section is subdivided according to core features such as node creation, filtering and searching, and node styling.
+ Section 4 – External Interface Requirements
+ Defines how Freeplane interfaces with users, hardware, software modules, and communication systems. It includes detailed descriptions of the user interface components, hardware compatibility, software APIs used in system integration, and supported network or protocol interfaces.
+ This organization ensures a logical flow from general system understanding to specific implementation requirements, making the SRS both readable and actionable for its target audiences.
 
 
 Overall Description
 2.1 Product perspective
+ Freeplane is a free and open-source mind mapping tool. It comes from another project called FreeMind. 
+ You can use Freeplane to draw maps that help you plan, organize ideas, and manage knowledge.
+ Freeplane works on computers with Windows, macOS, or Linux. It does not need the internet or a server to run. You can use it by itself. 
+ If you are an advanced user, you can also add extra tools, plugins, or write scripts to do more things.You can use Freeplane alone. 
+ It does not need other software to work. But it can work with other tools. For example, you can export maps and open them in PDF or HTML. 
+ You can also write scripts to connect it with other programs.
 
-Freeplane is a free and open-source mind mapping tool. It comes from another project called FreeMind. 
-You can use Freeplane to draw maps that help you plan, organize ideas, and manage knowledge.
-Freeplane works on computers with Windows, macOS, or Linux. It does not need the internet or a server to run. You can use it by itself. 
-If you are an advanced user, you can also add extra tools, plugins, or write scripts to do more things.You can use Freeplane alone. 
-It does not need other software to work. But it can work with other tools. For example, you can export maps and open them in PDF or HTML. 
-You can also write scripts to connect it with other programs.
-
-Freeplane is one part of many tools used for thinking, learning, or working. 
-It can open and save maps in different formats, like PDF, HTML, Markdown, and OPML. This helps you share your work with other software.
-This document (called SRS) explains what Freeplane should do, how it should work, and what limits it has. It helps developers build, test, and improve the software.
+ Freeplane is one part of many tools used for thinking, learning, or working. 
+ It can open and save maps in different formats, like PDF, HTML, Markdown, and OPML. This helps you share your work with other software.
+ This document (called SRS) explains what Freeplane should do, how it should work, and what limits it has. It helps developers build, test, and improve the software.
 
 2.2 Product Features
-A. Mind Map Editing
-1. Users can make mind maps.
-They can add ideas and connect them using branches. It is good for planning and thinking.
-2. Users can change the look of the map.
-They can use different colors, fonts, and icons. This helps make the map easy to read.
-3. Users can add files and links.
-They can put in pictures, documents, or website links to make the map more useful.
-B. Search and Organization
-Users can search and filter the map.
-They can find words or hide parts they don’t need. This is helpful when maps are big.
-C. Export and Sharing
-Users can save and share maps.
-They can export maps to PDF, HTML, Markdown, and other formats. It is easy to share with others.
-D. Security and Privacy
-Users can protect their maps.  
-They can use passwords to lock parts of the map. This helps keep private info safe.
-E. Platform and Support
-Freeplane works offline.
-It does not need the internet. It runs on Windows, macOS, and Linux.
-F. Advanced Features
-Advanced users can write scripts.
-These scripts help do things faster or in special ways. It is useful for power users.
+ A. Mind Map Editing
+ 1. Users can make mind maps.
+ They can add ideas and connect them using branches. It is good for planning and thinking.
+ 2. Users can change the look of the map.
+ They can use different colors, fonts, and icons. This helps make the map easy to read.
+ 3. Users can add files and links.
+ They can put in pictures, documents, or website links to make the map more useful.
+ B. Search and Organization
+ Users can search and filter the map.
+ They can find words or hide parts they don’t need. This is helpful when maps are big.
+ C. Export and Sharing
+ Users can save and share maps.
+ They can export maps to PDF, HTML, Markdown, and other formats. It is easy to share with others.
+ D. Security and Privacy
+ Users can protect their maps.  
+ They can use passwords to lock parts of the map. This helps keep private info safe.
+ E. Platform and Support
+ Freeplane works offline.
+ It does not need the internet. It runs on Windows, macOS, and Linux.
+ F. Advanced Features
+ Advanced users can write scripts.
+ These scripts help do things faster or in special ways. It is useful for power users.
 
 2.3 User classes and Characteristics
+ Casual Users
+ Characteristics: Basic computer literacy, occasional mind mapping needs
+ Responsibilities:Creating simple mind maps,Applying basic formatting,Saving/loading map files
+ Example: A student creating a study outline using default templates
+ Power Users
+ Characteristics: Advanced technical skills, frequent usage
+ Responsibilities:Using advanced formatting options,Creating custom templates,Managing add-ons
+ Example: A project manager creating complex GTD (Getting Things Done) systems
+ Add-on Developers
+ Characteristics: Java programming knowledge
+ Responsibilities:Developing extensions,Testing add-on compatibility,Maintaining documentation
+ Example: A developer creating a LaTeX equation plugin
+ Collaborators
+ Characteristics: Teamwork-oriented, diverse technical levels
+ Responsibilities:Sharing map files,Merging map versions,Providing feedback
+ Example: A research team collaborating on a literature review map
 
-Casual Users
-Characteristics: Basic computer literacy, occasional mind mapping needs
-Responsibilities:Creating simple mind maps,Applying basic formatting,Saving/loading map files
-Example: A student creating a study outline using default templates
-Power Users
-Characteristics: Advanced technical skills, frequent usage
-Responsibilities:Using advanced formatting options,Creating custom templates,Managing add-ons
-Example: A project manager creating complex GTD (Getting Things Done) systems
-Add-on Developers
-Characteristics: Java programming knowledge
-Responsibilities:Developing extensions,Testing add-on compatibility,Maintaining documentation
-Example: A developer creating a LaTeX equation plugin
-Collaborators
-Characteristics: Teamwork-oriented, diverse technical levels
-Responsibilities:Sharing map files,Merging map versions,Providing feedback
-Example: A research team collaborating on a literature review map
+ Users
+ Characteristics - these users want to use the software to create mind maps for personal or educational purposes. May lack the expertise of more advanced users and programmers. 
+ Responsibilities:
+ Creating and editing mind maps.
+ Organising thoughts, ideas, or information into the mind maps.
+ Adding nodes and connections to the map.
+ Exporting mind maps to intended file types
 
-Users
-Characteristics - these users want to use the software to create mind maps for personal or educational purposes. May lack the expertise of more advanced users and programmers. 
-Responsibilities:
-Creating and editing mind maps.
-Organising thoughts, ideas, or information into the mind maps.
-Adding nodes and connections to the map.
-Exporting mind maps to intended file types
+ Advanced Users
+ Characteristics  - these are more advanced users who have a deeper understanding of freeplane and/or want to use more advanced features of the software. 
+ These advanced features should include plugins and addons. 
+ Responsibilities:
+ Creating and editing more detailed mind maps.
+ Installing addons and/or plugins to freeplane to extend functionality
+ Collaborating with other users more dynamically with addons.
+ Able to extend exports options if needed
 
-Advanced Users
-Characteristics  - these are more advanced users who have a deeper understanding of freeplane and/or want to use more advanced features of the software. 
-These advanced features should include plugins and addons. 
-Responsibilities:
-Creating and editing more detailed mind maps.
-Installing addons and/or plugins to freeplane to extend functionality
-Collaborating with other users more dynamically with addons.
-Able to extend exports options if needed
+ Developer/Programmer
+ Characteristics  - programmers that have programming knowledge and want to extend the software functionality or implement quality of life changes to make the software more convenient.
+ Responsibilities:
+ Writing scripts/addons to automate or make actions more convenient within the mind maps
+ Developing and implementing additional functionality on freeplane
+ Creating or updating software/addon to a new version.
+ Fixing bugs 
 
-Developer/Programmer
-Characteristics  - programmers that have programming knowledge and want to extend the software functionality or implement quality of life changes to make the software more convenient.
-Responsibilities:
-Writing scripts/addons to automate or make actions more convenient within the mind maps
-Developing and implementing additional functionality on freeplane
-Creating or updating software/addon to a new version.
-Fixing bugs 
-
-Viewer
-Characteristics  - any user which only wants to view mind maps using the software.
-Responsibilities:
-Viewing mind maps
-Exporting mind maps to different file types
+ Viewer
+ Characteristics  - any user which only wants to view mind maps using the software.
+ Responsibilities:
+ Viewing mind maps
+ Exporting mind maps to different file types
 
 2.4 Operating Environment
-There are no specific hardware requirements on the program and can run on all modern operating systems (windows, mac & linux). Assumed recommended requirements:
-CPU, 2 GHz or higher (better performance)
-RAM, 1 GB or more (smoother when working with big mind maps)
-Storage, 200 MB or more (for installation and more depends on mind maps)
-Graphics, enough to handle basic 2d rendering
+ There are no specific hardware requirements on the program and can run on all modern operating systems (windows, mac & linux). Assumed recommended requirements:
+ CPU, 2 GHz or higher (better performance)
+ RAM, 1 GB or more (smoother when working with big mind maps)
+ Storage, 200 MB or more (for installation and more depends on mind maps)
+ Graphics, enough to handle basic 2d rendering
 
-The software requirements for the system requires an embedded java distribution in the installer or independently java 11 or later needs to be installed (preferably java 11 or 17). [1] 
-Without an installer and using git clone, ‘gradle’ additionally with java needs to be installed to build the program.
+ The software requirements for the system requires an embedded java distribution in the installer or independently java 11 or later needs to be installed (preferably java 11 or 17). [1] 
+ Without an installer and using git clone, ‘gradle’ additionally with java needs to be installed to build the program.
 
-The program is mainly an offline local application and may only need the network to check for updates.
+ The program is mainly an offline local application and may only need the network to check for updates.
 
 
 2.5 Design and Implementation Constraints
-Technology Limitation - Java Dependency:
-Constraint: Freeplane is built using Java, which requires users to have a compatible Java Runtime Environment (JRE) installed on their systems. This limits the application’s portability to environments where Java is supported and imposes a dependency on maintaining compatibility with evolving Java versions (e.g., Java 8 or later as specified in the Freeplane GitHub repository).
-Impact: The design must adhere to Java-specific conventions, and updates to the Java platform (e.g., deprecated APIs) may necessitate refactoring. Additionally, performance may be constrained by the Java Virtual Machine (JVM) overhead compared to native applications.
-Standards Compliance - Export Formats:
-Constraint: Freeplane supports exporting mind maps to formats such as PDF, PNG, and HTML, which must comply with industry standards for these file types (e.g., PDF/A for archival purposes or HTML5 for web compatibility). Deviations from these standards could lead to interoperability issues with other tools.
-Impact: The implementation must include libraries or modules (e.g., iText for PDF generation) that conform to these standards, potentially limiting the choice of tools or increasing development complexity.
-Regulatory Requirements - Accessibility:
-Constraint: As a tool potentially used in educational or professional settings, Freeplane may need to comply with accessibility regulations such as the Web Content Accessibility Guidelines (WCAG) or Section 508 (if deployed in certain jurisdictions like the U.S.). This includes ensuring keyboard navigation and screen reader compatibility.
-Impact: The user interface design must incorporate accessibility features, which could constrain the complexity of visual elements or require additional development effort.
+ Technology Limitation - Java Dependency:
+ Constraint: Freeplane is built using Java, which requires users to have a compatible Java Runtime Environment (JRE) installed on their systems. This limits the application’s portability to environments where Java is supported and imposes a dependency on maintaining compatibility with evolving Java versions (e.g., Java 8 or later as specified in the Freeplane GitHub repository).
+ Impact: The design must adhere to Java-specific conventions, and updates to the Java platform (e.g., deprecated APIs) may necessitate refactoring. Additionally, performance may be constrained by the Java Virtual Machine (JVM) overhead compared to native applications.
+ Standards Compliance - Export Formats:
+ Constraint: Freeplane supports exporting mind maps to formats such as PDF, PNG, and HTML, which must comply with industry standards for these file types (e.g., PDF/A for archival purposes or HTML5 for web compatibility). Deviations from these standards could lead to interoperability issues with other tools.
+ Impact: The implementation must include libraries or modules (e.g., iText for PDF generation) that conform to these standards, potentially limiting the choice of tools or increasing development complexity.
+ Regulatory Requirements - Accessibility:
+ Constraint: As a tool potentially used in educational or professional settings, Freeplane may need to comply with accessibility regulations such as the Web Content Accessibility Guidelines (WCAG) or Section 508 (if deployed in certain jurisdictions like the U.S.). This includes ensuring keyboard navigation and screen reader compatibility.
+ Impact: The user interface design must incorporate accessibility features, which could constrain the complexity of visual elements or require additional development effort.
 
 2.6 Assumptions and Dependencies (Tips: Assumptions are the prerequisites that we
 take for granted when designing requirements. For example, for a certain function, do
 you think users need to have certain prerequisite capabilities before using it? )
-Assumption - User Familiarity with Mind Mapping:
-Assumption: Users of Freeplane are assumed to have a basic understanding of mind-mapping concepts (e.g., nodes, branches, hierarchies) to effectively utilize the software. The interface and documentation do not explicitly cater to absolute beginners in this domain.
-Implication: The system’s design assumes that users can navigate and interpret hierarchical structures without extensive onboarding, which may exclude features like step-by-step tutorials for novices.
-Assumption - Availability of Storage and Memory:
-Assumption: The system assumes that users have sufficient local storage and memory to handle large mind maps, especially when working with complex projects that include multimedia attachments (e.g., images or PDFs).
-Implication: No specific mechanisms are built into Freeplane to handle low-resource environments, potentially limiting usability on older or resource-constrained devices.
-Dependency - Java Ecosystem:
-Dependency: Freeplane relies on the Java ecosystem, including the JRE and libraries such as Swing for the graphical user interface. Any updates, discontinuations, or security patches in these components directly affect Freeplane’s functionality and maintenance.
-Implication: The development team must monitor Java updates and ensure compatibility, which may delay feature releases or require additional testing.
-Dependency - Operating System Compatibility:
-Dependency: Freeplane depends on operating systems (e.g., Windows, macOS, Linux) that support Java. Changes in OS-specific Java implementations (e.g., macOS dropping support for older Java versions) could disrupt functionality.
-Implication: The system assumes a stable OS-Java relationship, and compatibility issues may require OS-specific workarounds or updates.
+ Assumption - User Familiarity with Mind Mapping:
+ Assumption: Users of Freeplane are assumed to have a basic understanding of mind-mapping concepts (e.g., nodes, branches, hierarchies) to effectively utilize the software. The interface and documentation do not explicitly cater to absolute beginners in this domain.
+ Implication: The system’s design assumes that users can navigate and interpret hierarchical structures without extensive onboarding, which may exclude features like step-by-step tutorials for novices.
+ Assumption - Availability of Storage and Memory:
+ Assumption: The system assumes that users have sufficient local storage and memory to handle large mind maps, especially when working with complex projects that include multimedia attachments (e.g., images or PDFs).
+ Implication: No specific mechanisms are built into Freeplane to handle low-resource environments, potentially limiting usability on older or resource-constrained devices.
+ Dependency - Java Ecosystem:
+ Dependency: Freeplane relies on the Java ecosystem, including the JRE and libraries such as Swing for the graphical user interface. Any updates, discontinuations, or security patches in these components directly affect Freeplane’s functionality and maintenance.
+ Implication: The development team must monitor Java updates and ensure compatibility, which may delay feature releases or require additional testing.
+ Dependency - Operating System Compatibility:
+ Dependency: Freeplane depends on operating systems (e.g., Windows, macOS, Linux) that support Java. Changes in OS-specific Java implementations (e.g., macOS dropping support for older Java versions) could disrupt functionality.
+ Implication: The system assumes a stable OS-Java relationship, and compatibility issues may require OS-specific workarounds or updates.
 
 System features (Each student should provide one feature)
 Feature 1:
@@ -381,19 +386,11 @@ External Interface Requirements
 4.2 Hardware Interfaces
  1. Java Runtime Environment (JRE) Dependency:
  Requirement: Freeplane necessitates the presence of a compatible JRE on the host system to function correctly.
-
-
  Windows and macOS: Freeplane 1.11.x requires Java versions between 11 and 21.
-
-
  Linux: The same version supports Java versions between 8 and 21.
-
-
  Configuration: The environment variable FREEPLANE_JAVA_HOME should be set to the path of the desired Java installation. For instance:
  2. Operating System Compatibility:
  Supported Systems: Freeplane is compatible with Windows, macOS, and Linux operating systems, provided they meet the JRE requirements specified above.
-
-
  Distribution Variants: Different distributions are available to cater to specific OS needs:
  Windows:
  Installer with embedded Java
@@ -412,60 +409,20 @@ External Interface Requirements
  5. Network Interfaces:
  Online Collaboration: While Freeplane primarily functions as a standalone application, it can interface with network resources for purposes such as sharing mind maps via cloud storage services or integrating with other online tools. Network configurations should allow for standard HTTP/HTTPS protocols to enable these features.
 
-
 4.3 Software Interfaces
-4.4 Communication Interfaces
+ NodeModel interface: used to access and manipulate nodes in the mind map, providing fundamental methods such as getText(), setStyle(), etc. 
+ (Freeplane API document: org.freeplane.features.map.NodeModel)
+ MapModel class: abstract representation of the mind map, all nodes (NodeModel) are attached to it in a tree structure.
+ (Freeplane API document: org.freeplane.features.map.MapModel)
+ NodeCondition interface: used to define conditional expressions when filtering nodes, supporting plug-in and script calls.
+ (Freeplane API document: org.freeplane.api.NodeCondition)
+ ScriptEngine interface (javax.script): executes Groovy/JavaScript scripts to implement advanced filtering and custom node logic.
+ (JSR-223 standard API:
+ https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html)
+ FilterController module: handles node filtering and hiding logic, integrated with UI and Undo system.(Internal module, no separate documentation)
 
 4.4 Communication Interfaces
-Name
-Mnemonic
-Specification number
-Version number
-Source
-Java Runtime Environment
-JRE
-Java SE 8
-1.8+
-Oracle / OpenJDK
-Apache Ant
-Ant
--
-1.10+
-Apache Foundation
-Groovy Scripting Engine
-Groovy
--
-2.4+
-Codehaus / Apache
-Java Swing UI Toolkit
-Swing
--
-JDK built-in
-Oracle
-Java Scripting API
-javax.script
-JSR-223
-Java SE 6+
-Oracle
-
-NodeModel interface: used to access and manipulate nodes in the mind map, providing fundamental methods such as getText(), setStyle(), etc. 
-(Freeplane API document: org.freeplane.features.map.NodeModel)
-MapModel class: abstract representation of the mind map, all nodes (NodeModel) are attached to it in a tree structure.
-(Freeplane API document: org.freeplane.features.map.MapModel)
-NodeCondition interface: used to define conditional expressions when filtering nodes, supporting plug-in and script calls.
-(Freeplane API document: org.freeplane.api.NodeCondition)
-ScriptEngine interface (javax.script): executes Groovy/JavaScript scripts to implement advanced filtering and custom node logic.
-(JSR-223 standard API:
-https://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html)
-FilterController module: handles node filtering and hiding logic, integrated with UI and Undo system.(Internal module, no separate documentation)
-
-4.4 Communication Interfaces
-Plugin remote download: Freeplane plugins support remote pull from GitHub or plugin repositories via HTTP/HTTPS protocol, using port 443.
-
-URI file binding interface: allows users to bind local or remote .mm file paths, such as template:/my-template.mm.
-
-User script external request: Groovy/JavaScript scripts support external API requests via URLs, such as new URL(...).text to read external tasks or notes.
-
-Version check and update (optional): The system can access the official website address to detect the plugin/main program version, the protocol is HTTPS, and supports JSON format response.
-
-
+ Plugin remote download: Freeplane plugins support remote pull from GitHub or plugin repositories via HTTP/HTTPS protocol, using port 443.
+ URI file binding interface: allows users to bind local or remote .mm file paths, such as template:/my-template.mm.
+ User script external request: Groovy/JavaScript scripts support external API requests via URLs, such as new URL(...).text to read external tasks or notes.
+ Version check and update (optional): The system can access the official website address to detect the plugin/main program version, the protocol is HTTPS, and supports JSON format response.
