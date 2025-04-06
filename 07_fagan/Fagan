@@ -1,0 +1,32 @@
+Functionality
+- Does the software design implement the specifications and requirements? 
+- Are the specifications and requirements complete for the users?
+- Is the design functionality consistent?
+Performance
+- Does the design represent works for the all specified operating environment?
+  - Windows?
+  - MAC?
+  - Linux?
+- Does the software run without error?
+- Are the primary performance requirements specified?
+- Are the performance requirements such as being able to operate on the minimum hardware requirements met (2Hz cpu, 1GB RAM)?
+Interface
+- Does the interface facilitates troubleshooting?
+- Do all the interfaces provide the required information?
+- Are all the interfaces consistent with the requirements?
+- Is the interface appealing to look at?
+- Is the interface easy to navigate?
+- Are all buttons and other inputs clear and unambiguous?
+- Are all text and labels clear and unambiguous?
+Data Usage
+- Is there any data structure needed that has not been defined?
+- Are all objects, relationships, and parameter documented?
+Logic
+- Are all the actions taken correctly in all cases?
+Testability
+- Can the software programs be tested in an incremental manner?
+- Can the module that this design describes be tested or inspected to show that it satisfies the requirements?
+- Is the software thoroughly tested?
+Documentation
+- Is the software well documented?
+- Is the installation well documented?
