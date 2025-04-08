@@ -2,6 +2,9 @@ Functionality
 - Does the software design implement the specifications and requirements? 
 - Are the specifications and requirements complete for the users?
 - Is the design functionality consistent?
+- Does the design support key features like exporting mind maps to various formats (e.g., PDF, PNG, HTML)? 
+- Are collaborative features (if any) well-defined and implemented as per user requirements?
+
 Performance
 - Does the design represent works for the all specified operating environment?
   - Windows?
@@ -10,6 +13,9 @@ Performance
 - Does the software run without error?
 - Are the primary performance requirements specified?
 - Are the performance requirements such as being able to operate on the minimum hardware requirements met (2Hz cpu, 1GB RAM)?
+- Are there mechanisms to optimize performance during real-time updates (e.g., auto-saving or live collaboration)?
+- Does the application handle large mind maps (e.g., 10,000+ nodes) without significant lag?
+
 Interface
 - Does the interface facilitates troubleshooting?
 - Do all the interfaces provide the required information?
@@ -18,15 +24,34 @@ Interface
 - Is the interface easy to navigate?
 - Are all buttons and other inputs clear and unambiguous?
 - Are all text and labels clear and unambiguous?
+- Is the interface easy to navigate?
+- Are all buttons and other inputs clear and unambiguous?
+- Are all text and labels clear and unambiguous?
+- Does the interface support accessibility features (e.g., screen reader compatibility, high-contrast modes)?
+
 Data Usage
 - Is there any data structure needed that has not been defined?
 - Are all objects, relationships, and parameter documented?
+- Are there safeguards for data integrity during operations like undo/redo or file recovery?
 Logic
 - Are all the actions taken correctly in all cases?
+- Is there proper handling of external data imports (e.g., from other mind mapping tools like FreeMind)
+- Are there any logical inconsistencies in feature interactions (e.g., conflicts between formatting and filtering)?
+- Are conditional behaviors (e.g., filtering nodes, applying styles based on rules) implemented correctly?
+
 Testability
 - Can the software programs be tested in an incremental manner?
 - Can the module that this design describes be tested or inspected to show that it satisfies the requirements?
 - Is the software thoroughly tested?
+- Are there mechanisms to test performance under stress (e.g., opening multiple large mind maps simultaneously)?
+- Are there sufficient test cases for cross-platform compatibility (e.g., rendering differences on Linux vs. Windows)?
+- Can automated tests validate user interactions (e.g., drag-and-drop, keyboard shortcuts)?
+
 Documentation
 - Is the software well documented?
 - Is the installation well documented?
+- Does the documentation reflect the latest version of Freeplane (e.g., 1.11.14 as of May 14, 2024)?
+- Does the documentation accurately describe Freeplane’s system requirements (e.g., Java 11 or later for version 1.11.4)?
+- Is the documentation available in multiple languages, reflecting Freeplane’s supported languages (e.g., English, German, Spanish, Chinese)?
+- Is the documentation accessible offline (e.g., as a downloadable PDF or bundled with the Freeplane installation)?
+- Are there regular updates to the documentation to reflect new features or community contributions (e.g., add-ons, scripts)?
