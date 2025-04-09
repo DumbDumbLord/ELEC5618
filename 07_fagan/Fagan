@@ -11,14 +11,14 @@ Functionality
   The application is primarily designed for single-user productivity, and integrated real-time collaboration features are not a core part of its design.
 Performance
 - Does the design represent works for the all specified operating environment?
-  - Windows?
-  - MAC?
-  - Linux?
-- Does the software run without error?
-- Are the primary performance requirements specified?
-- Are the performance requirements such as being able to operate on the minimum hardware requirements met (2Hz cpu, 1GB RAM)?
-- Are there mechanisms to optimize performance during real-time updates (e.g., auto-saving or live collaboration)?
-- Does the application handle large mind maps (e.g., 10,000+ nodes) without significant lag?
+  - Windows? Yes
+  - MAC? Yes
+  - Linux? Yes
+- Does the software run without error? Yes
+- Are the primary performance requirements specified? Yes
+- Are the performance requirements such as being able to operate on the minimum hardware requirements met (2Hz cpu, 1GB RAM)? Yes
+- Are there mechanisms to optimize performance during real-time updates (e.g., auto-saving or live collaboration)? No
+- Does the application handle large mind maps (e.g., 10,000+ nodes) without significant lag? No
 
 Interface
 - Does the interface facilitates troubleshooting?
