@@ -41,18 +41,18 @@ Logic
 - Are conditional behaviors (e.g., filtering nodes, applying styles based on rules) implemented correctly? Yes
 
 Testability
-- Can the software programs be tested in an incremental manner?
-- Can the module that this design describes be tested or inspected to show that it satisfies the requirements?
-- Is the software thoroughly tested?
-- Are there mechanisms to test performance under stress (e.g., opening multiple large mind maps simultaneously)?
-- Are there sufficient test cases for cross-platform compatibility (e.g., rendering differences on Linux vs. Windows)?
-- Can automated tests validate user interactions (e.g., drag-and-drop, keyboard shortcuts)?
+- Can the software programs be tested in an incremental manner? Yes
+- Can the module that this design describes be tested or inspected to show that it satisfies the requirements? Yes
+- Is the software thoroughly tested? No
+- Are there mechanisms to test performance under stress (e.g., opening multiple large mind maps simultaneously)? No
+- Are there sufficient test cases for cross-platform compatibility (e.g., rendering differences on Linux vs. Windows)? No
+- Can automated tests validate user interactions (e.g., drag-and-drop, keyboard shortcuts)? No
 
 Documentation
-- Is the software well documented?
-- Is the installation well documented?
-- Does the documentation reflect the latest version of Freeplane (e.g., 1.11.14 as of May 14, 2024)?
-- Does the documentation accurately describe Freeplane’s system requirements (e.g., Java 11 or later for version 1.11.4)?
-- Is the documentation available in multiple languages, reflecting Freeplane’s supported languages (e.g., English, German, Spanish, Chinese)?
-- Is the documentation accessible offline (e.g., as a downloadable PDF or bundled with the Freeplane installation)?
-- Are there regular updates to the documentation to reflect new features or community contributions (e.g., add-ons, scripts)?
+- Is the software well documented? Yes
+- Is the installation well documented? Yes
+- Does the documentation reflect the latest version of Freeplane (e.g., 1.11.14 as of May 14, 2024)? No
+- Does the documentation accurately describe Freeplane’s system requirements (e.g., Java 11 or later for version 1.11.4)? Yes
+- Is the documentation available in multiple languages, reflecting Freeplane’s supported languages (e.g., English, German, Spanish, Chinese)? Yes
+- Is the documentation accessible offline (e.g., as a downloadable PDF or bundled with the Freeplane installation)? Yes
+- Are there regular updates to the documentation to reflect new features or community contributions (e.g., add-ons, scripts)? Yes
