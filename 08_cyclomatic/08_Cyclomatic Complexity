@@ -22,13 +22,107 @@ Independent Paths:
 Test Cases:
 Run Test-Cases:
 
-Method/Function 4
 Selected Method: 
+freeplane/freeplane/src/main/java/org/freeplane/features/attribute/AttributeBuilder.java
+
+public Object createElement(final Object parent, final String tag, final XMLElement attributes) {
+	if (tag.equals(AttributeBuilder.XML_NODE_ATTRIBUTE)
+			|| tag.equals(AttributeBuilder.XML_NODE_REGISTERED_ATTRIBUTE_VALUE)) {
+		return new AttributeProperties(parent);
+	}
+	if (tag.equals(AttributeBuilder.XML_NODE_REGISTERED_ATTRIBUTE_NAME)) {
+		return new RegisteredAttributeProperties();
+	}
+	if (tag.equals(AttributeBuilder.XML_NODE_ATTRIBUTE_REGISTRY)) {
+		return parent;
+	}
+	return null;
+}
+
+Purpose:
+Determines what element is created according to the XML attributes tag.
+
 Flow Graph:
+[flow graph](./feature4Flow.png)
+
 Calculations: 
+Number of nodes: 9
+Number of edges: 11
+Cyclomatic complexity formula:
+V(G)  =  number of edges – number of nodes + 2
+ = 11 – 9 + 2
+ = 4
+
 Independent Paths:
+Independent paths: 4
+1,2,7,6
+Scenario: tag for generation is XML_NODE_ATTRIBUTE or XML_NODE_REGISTERED_ATTRIBUTE_VALUE
+Expected: Return a new AttributeProperties class with parent as argument. 
+
+1,2,3,8,6
+Scenario: tag for generation is XML_NODE_REGISTERED_ATTRIBUTE_NAME
+Expected: Return a new RegisteredAttributeProperties class. 
+
+1,2,3,4,9,6
+Scenario: tag for generation is XML_NODE_ATTRIBUTE_REGISTRY
+Expected: Return parent. 
+
+1,2,3,4,5,6
+Scenario: tag is not one of the above tags
+Expected: Return null
+
 Test Cases:
+package org.freeplane.features.attribute;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import org.freeplane.features.attribute.AttributeBuilder.AttributeProperties;
+import org.freeplane.features.attribute.AttributeBuilder.RegisteredAttributeProperties;
+import org.freeplane.n3.nanoxml.XMLElement;
+import org.junit.Test;
+
+
+public class AttributeBuilderSpec {
+    @Test
+	public void createElementAttributeProperties() throws Exception {
+        AttributeBuilder aBulid = new AttributeBuilder(null, null);
+        Object result = aBulid.createElement(null, AttributeBuilder.XML_NODE_ATTRIBUTE, new XMLElement());
+
+        assertTrue(result instanceof AttributeProperties);
+	}
+
+    @Test
+	public void createElementRegisteredAttributeProperties() throws Exception {
+        AttributeBuilder aBulid = new AttributeBuilder(null, null);
+        Object result = aBulid.createElement(null, AttributeBuilder.XML_NODE_REGISTERED_ATTRIBUTE_NAME, new XMLElement());
+
+        assertTrue(result instanceof RegisteredAttributeProperties);
+	}
+
+    @Test
+	public void createElementParent() throws Exception {
+        AttributeBuilder aBulid = new AttributeBuilder(null, null);
+        Object result = aBulid.createElement(1, AttributeBuilder.XML_NODE_ATTRIBUTE_REGISTRY, new XMLElement());
+
+        assertEquals(1, result);
+	}
+
+    @Test
+	public void createElementNull() throws Exception {
+        AttributeBuilder aBulid = new AttributeBuilder(null, null);
+        Object result = aBulid.createElement(null, AttributeBuilder.XML_NODE_ATTRIBUTE_LAYOUT, new XMLElement());
+
+        assertNull(result);
+	}
+}
+
+[code file](./AttributeBuilderSpec.java)
+
 Run Test-Cases:
+[test result](./feature4TestResult.PNG)
+(Used VScode’s java testing)
 
 Method/Function 5
 Selected Method: 
