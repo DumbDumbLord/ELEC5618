@@ -255,8 +255,108 @@ Run Test-Cases:
 
 Method/Function 5
 Selected Method: 
+freeplane/src/main/java/org/freeplane/features/attribute/AttributeRegistry.java
+public boolean exist(final String attributeName, final Object element) {
+    final int index = indexOf(attributeName);
+    if (index == -1) {
+        return false;
+    }
+    final SortedComboBoxModel values = getElement(index).getValues();
+    for (int i = 0; i < values.getSize(); i++) {
+        if (element.equals(values.getElementAt(i))) {
+            return true;
+        }
+    }
+    return false;
+}
+
 Flow Graph:
+[flow graph](./feature5Flow.png)
+
 Calculations: 
+Number of nodes: 9
+Number of edges: 11
+Cyclomatic complexity formula:
+V(G) = number of edges – number of nodes + 2
+= 11 – 9 + 2
+= 4
+
 Independent Paths:
+1,2,3,9
+Scenario: The attributeName does not exist in the elements collection (indexOf returns -1).
+Expected: Returns false.
+1,2,4,8,9
+Scenario: The attributeName exists, but its values list is empty or contains no matching element.
+Expected: Returns false.
+1,2,4,5,6,9
+Scenario: The attributeName exists, and the first value in its values list matches the element.
+Expected: Returns true.
+1,2,4,5,7,4
+Scenario: The attributeName exists, and a matching element is found after several iterations in the values list.
+Expected: Returns true.
+
 Test Cases:
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class Path1Test {
+    @Test
+    public void testPath1() {
+        AttributeRegistry registry = new AttributeRegistry();
+        // Attribute "attr3" does not exist
+        assertFalse(registry.exist("attr3", "val1"));
+    }
+}
+
+
+
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class Path2Test {
+    @Test
+    public void testPath2() {
+        AttributeRegistry registry = new AttributeRegistry();
+        // Add attribute "attr2" with no values
+        registry.elements.add("attr2", new AttributeRegistryElement("attr2", new ArrayList<>()));
+        assertFalse(registry.exist("attr2", "val1"));
+    }
+}
+
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.Arrays;
+
+
+public class Path3Test {
+    @Test
+    public void testPath3() {
+        AttributeRegistry registry = new AttributeRegistry();
+        // Add attribute "attr1" with values ["val1", "val2"]
+        registry.elements.add("attr1", new AttributeRegistryElement("attr1", Arrays.asList("val1", "val2")));
+        assertTrue(registry.exist("attr1", "val1"));
+    }
+}
+
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.Arrays;
+
+
+public class Path4Test {
+    @Test
+    public void testPath4() {
+        AttributeRegistry registry = new AttributeRegistry();
+        // Add attribute "attr1" with values ["val1", "val2"]
+        registry.elements.add("attr1", new AttributeRegistryElement("attr1", Arrays.asList("val1", "val2")));
+        assertTrue(registry.exist("attr1", "val2"));
+    }
+}
+
 Run Test-Cases:
+[test result](./feature5TestResult.PNG)
