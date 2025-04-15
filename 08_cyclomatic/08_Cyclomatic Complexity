@@ -1,10 +1,139 @@
 Method/Function 1
-Selected Method: 
+
+Selected Method:
+freeplane/src/main/java/org/freeplane/features/attribute/AttributeContainsCondition.java
+public boolean checkNode(final NodeModel node) {
+       final IAttributeTableModel attributes = NodeAttributeTableModel.getModel(node);
+       final TextController textController = TextController.getController();
+       for (int i = 0; i < attributes.getRowCount(); i++) {
+           if(attribute.equals(AttributeConditionController.ANY_ATTRIBUTE_NAME_OR_VALUE_OBJECT)){
+               if (checkContent(attributes.getValueAt(i, 0)))
+                   return true;
+
+
+           }
+           else if(! attributes.getValueAt(i, 0).equals(attribute)) {
+               continue;
+           }
+           final Object originalContent = attributes.getValueAt(i, 1);
+           final Object content = textController.getTransformedObjectNoFormattingNoThrow(node, attributes, originalContent);
+           if (checkContent(content))
+               return true;
+       }
+       return false;
+   }
+   
+Purpose:
+Traverse the attribute list of the specified node node to determine whether it contains an attribute that meets a specific condition. The condition is based on whether the attribute's name and value match the target attribute. Finally, call checkText(...) to verify whether the condition is satisfied.
+
 Flow Graph:
+[flow graph](./feature1Flow.png)
+
 Calculations: 
+Number of nodes: 10
+Number of edges: 13
+Cyclomatic complexity formula:
+V(G) = number of edges – number of nodes + 2 = 13 – 10 + 2 = 5
+
 Independent Paths:
+1 → 2 → 3 → 4 → 5 → 2
+Scenario: Attribute name is ANY, but checkText returns false (no match on name).
+Expected: Loop continues to next attribute (or returns false if only one row).
+1 → 2 → 3 → 6 → 5 → 2
+Scenario: Attribute is not ANY, and does not equal the target attribute — entry skipped via continue.
+Expected: Skips unmatched attribute row and continues loop; eventually returns false if no match found.
+1 → 2 →  9 → 10
+Scenario: Attribute list is empty, or all entries were skipped without any checkText being triggered.
+Expected: No iterations are executed, or none result in return true — final result is false.
+1 → 2 → 3 → 6 → 7 → 8 → 10
+Scenario: Attribute equals target attribute, and the checkText on its value returns true.
+Expected: Immediately returns true as the condition is satisfied.
+1 → 2 → 3 → 6 → 7 → 9 → 10
+Scenario: Attribute equals target attribute, but checkText on its value returns false.
+Expected: This entry is examined but rejected → loop continues → if no other match, function returns false.
+
 Test Cases:
+Path1Test.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class Path1Test {
+   @Test
+   public void testPath1() {
+       SimpleNode node = new SimpleNode();
+       node.addAttribute("random", "no_match");
+       AttributeContainsCondition cond = new AttributeContainsCondition("ANY", "MATCH");
+       assertFalse(cond.checkNode(node));
+   }
+}
+
+Path2Test.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class Path2Test {
+   @Test
+   public void testPath2() {
+       SimpleNode node = new SimpleNode();
+       node.addAttribute("other", "someValue");
+       AttributeContainsCondition cond = new AttributeContainsCondition("targetAttr", "MATCH");
+       assertFalse(cond.checkNode(node));
+   }
+}
+
+
+Path3Test.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class Path3Test {
+   @Test
+   public void testPath3() {
+       SimpleNode node = new SimpleNode();
+       AttributeContainsCondition cond = new AttributeContainsCondition("targetAttr", "MATCH");
+       assertFalse(cond.checkNode(node));
+   }
+}
+
+
+Path4Test.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class Path4Test {
+   @Test
+   public void testPath4() {
+       SimpleNode node = new SimpleNode();
+       node.addAttribute("type", "this MATCHes!");
+       AttributeContainsCondition cond = new AttributeContainsCondition("type", "MATCH");
+       assertTrue(cond.checkNode(node));
+   }
+}
+
+
+Path5Test.java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+public class Path5Test {
+   @Test
+   public void testPath5() {
+       SimpleNode node = new SimpleNode();
+       node.addAttribute("type", "no match here");
+       AttributeContainsCondition cond = new AttributeContainsCondition("type", "MATCH");
+       assertFalse(cond.checkNode(node));
+   }
+}
+
 Run Test-Cases:
+
+
+
 
 Method/Function 2
 Selected Method: 
