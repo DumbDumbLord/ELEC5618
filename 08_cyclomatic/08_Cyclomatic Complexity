@@ -383,7 +383,6 @@ public class Path2Test {
 Path3Test.java
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 public class Path3Test {
 	@Test
 	public void testWithoutBranchExport() {
@@ -405,6 +404,7 @@ public class Path4Test {
 
 Run Test-Cases:
 [test result](./feature3TestResult.PNG)
+
 Method/Function 4
 Selected Method: 
 freeplane/freeplane/src/main/java/org/freeplane/features/attribute/AttributeBuilder.java
