@@ -1,0 +1,139 @@
+Class 1
+Selected Class
+Test Suite
+Test Outcomes
+Additional Classes
+Bottom-Up Testing
+
+Class 2
+Selected Class
+Test Suite
+Test Outcomes
+Additional Classes
+Bottom-Up Testing
+
+Class 3
+Selected Class
+Test Suite
+Test Outcomes
+Additional Classes
+Bottom-Up Testing
+
+Class 4
+
+Selected Class
+
+NodeMatcher.java
+
+Directory:
+freeplane/src/main/java/org/freeplane/features/explorer/NodeMatcher.java
+
+Test Suite
+
+(Testing directly on original code)
+To get Test Coverage (using jacoco)
+
+Add to freeplane/bulid.gradle
+
+plugins {
+  id 'jacoco'
+}
+
+Add to freeplane/freeplane/bulid.gradle
+apply plugin: 'jacoco'
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+Test commands:
+gradle test
+
+Tests:
+All test in different file here [code](./Class 4 files/NodeMatcherSpec.java)
+(was place in freeplane/src/test/java/org/freeplane/features/explorer/NodeMatcherSpec.java)
+
+matches() matches property of node to check if it matches node.
+
+filterMatchingNodes() filters all matching nodes that has property
+
+NodeMatcherBlank(): Test matches() with blank test string, in addition should test no_content enum
+
+NodeMatcherAlias(): Test matches() with a node alias, in addition should test alias enum
+
+NodeMatcherTextFullTrue1(): Test matches() with text that has double quotation marks.
+
+NodeMatcherTextFullTrue2(): Test matches() with text that has single quotation marks.
+
+NodeMatcherTextPartTrue1(): Test matches() with text that has double quotation marks and ellipsis.
+
+NodeMatcherTextPartTrue2(): Test matches() with text that has single quotation marks and ellipsis.
+
+NodeMatcherTextFullFalse(): Test matches() with text when text doesn’t match node
+
+NodeMatcherInvalid(): Test matches() with invalid search string
+
+NodeMatcherCounterMatch(): Test matches() with counter, will return error as counter is used for filterMatchingNodes()
+
+NodeMatcherList(): Test filterMatchingNodes() with text.
+
+NodeMatcherCounter(): Test filterMatchingNodes() with counter, within node list range.
+
+NodeMatcherCounterEmpty(): Test filterMatchingNodes() with counter, outside node list range.
+
+Test Outcomes
+
+[Test Coverage](./Class 4 files/class4TestCoverage.PNG)
+(some branches are impossible while some are too minor and overlap)
+
+[Test Result](./Class 4 files/class4TestResult.PNG)
+
+Additional Classes
+
+Command
+(freeplane/src/main/java/org/freeplane/features/explorer/Command.java)
+
+A Class which functions with ExploringStep to control operations of NodeMatcher. Calls NodeMatcher 
+
+ExploringStep
+(freeplane/src/main/java/org/freeplane/features/explorer/ExploringStep.java)
+
+An Enum Class where its methods vary depending on its enum type. Calls NodeMatcher 
+
+Bottom-Up Testing
+
+(was place in freeplane/src/test/java/org/freeplane/features/explorer/Command.java)
+[code](./Class 4 files/CommandSpec.java)
+
+    @Test
+    public void NodeMatcherBlank() throws Exception {
+        AccessedNodes accessedNodes = mock(AccessedNodes.class);
+        NodeModel parent = new NodeModel("", null);
+
+        parent.insert(new NodeModel("a", null));
+        parent.insert(new NodeModel("b", null));
+        parent.insert(new NodeModel("c", null));
+        parent.insert(new NodeModel("d", null));
+
+        Command command = new Command(ExploringStep.CHILD, "\'b\'", accessedNodes);
+
+        assertEquals(command.getNodes(parent).toString(), "[b]");
+    }
+
+Code test dependency of NodeMatcher, Command and ExploringStep. Command creates NodeMatcher when it is created with search string “\’b\’”, while ExploringStep is type CHILD hence getNode (of ExploringStep) will search for the child nodes of the node selected when Command method getNodes is called. 
+
+Class 5
+Selected Class
+Test Suite
+Test Outcomes
+Additional Classes
+Bottom-Up Testing
