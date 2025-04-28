@@ -114,8 +114,8 @@ Bottom-Up Testing
 (was place in freeplane/src/test/java/org/freeplane/features/explorer/Command.java)
 [code](./Class 4 files/CommandSpec.java)
 
-    @Test
-    public void NodeMatcherBlank() throws Exception {
+   @Test
+    public void CommandChild() throws Exception {
         AccessedNodes accessedNodes = mock(AccessedNodes.class);
         NodeModel parent = new NodeModel("", null);
 
@@ -130,6 +130,56 @@ Bottom-Up Testing
     }
 
 Code test dependency of NodeMatcher, Command and ExploringStep. Command creates NodeMatcher when it is created with search string “\’b\’”, while ExploringStep is type CHILD hence getNode (of ExploringStep) will search for the child nodes of the node selected when Command method getNodes is called. 
+
+    @Test
+    public void CommandDescendant() throws Exception {
+        AccessedNodes accessedNodes = mock(AccessedNodes.class);
+        NodeModel parent = new NodeModel("", null);
+
+        parent.insert(new NodeModel("a", null));
+        NodeModel node = new NodeModel("b", null);
+        node.insert(new NodeModel("d", null));
+        parent.insert(node);
+        parent.insert(new NodeModel("c", null));
+
+        Command command = new Command(ExploringStep.DESCENDANT, "\'d\'", accessedNodes);
+
+        assertEquals(command.getNodes(parent).toString(), "[d]");
+    }
+
+Changed ExploringStep type to DESCENDANT hence will check descendants of nodes. This checks the descendant ‘d’ of ‘parent’ which is a child of ‘b’.
+
+   @Test
+    public void CommandAncestor() throws Exception {
+        AccessedNodes accessedNodes = mock(AccessedNodes.class);
+        NodeModel parent = new NodeModel("a", null);
+
+        parent.insert(new NodeModel("e", null));
+        NodeModel nodeB = new NodeModel("b", null);
+        NodeModel nodeC = new NodeModel("c", null);
+        nodeB.insert(nodeC);
+        parent.insert(nodeB);
+        parent.insert(new NodeModel("d", null));
+
+        Command command = new Command(ExploringStep.ANCESTOR, "\'a\'", accessedNodes);
+
+        assertEquals(command.getNodes(nodeC).toString(), "[a]");
+    }
+
+Changed ExploringStep type to ANCESTOR hence will check ancestors of the node. This code checks the ancestor of ‘c’, ‘a’.
+
+    @Test
+    public void CommandString() throws Exception {
+        AccessedNodes accessedNodes = mock(AccessedNodes.class);
+
+        Command command = new Command(ExploringStep.CHILD, "\'a\'", accessedNodes);
+
+        assertEquals(command.toString(), "Command [operator=CHILD, searchedString='a']");
+    }
+
+Checked toString method of command showing its ExploringStep type and searchedString.
+
+[Bottom Up Test Result](./Class 4 files/class4TestBottomUp.PNG)
 
 Class 5
 Selected Class
