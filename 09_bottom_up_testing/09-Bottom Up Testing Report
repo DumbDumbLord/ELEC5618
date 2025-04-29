@@ -14,11 +14,94 @@ Bottom-Up Testing
 
 Class 3
 Selected Class
+NodeRelativePath.java
+Directory:
+freeplane/src/main/java/org/freeplane/features/map/NodeRelativePath.java
 Test Suite
+All tests are placed in:
+freeplane/src/test/java/org/freeplane/features/map/NodeRelativePathClassTest.java
+Tests:
+testCreateNodeRelativePath(): Test creating a NodeRelativePath from the same node. Path length should be 0.
+testPathBeginAndEnd(): Test pathBegin and pathEnd when the source and destination are the same node.
+testCompareSameNode(): Test compareNodePositions for the same node, result should be 0.
+testEqualPaths(): Test equalPathsTo method for two identical NodeRelativePath objects. Should return true.
+testDifferentPathsNotEqual(): Test equalPathsTo method for two different NodeRelativePath objects. Should return false.
+testPathLengthZero(): Test that a NodeRelativePath from a node to itself has path length 0.
+testPathLengthOne(): Test that a NodeRelativePath from a child node to parent has path length 1.
+testPathBeginAtLevel(): Test pathBegin method when traversing a simple child node structure.
+testPathEndAtLevel(): Test pathEnd method when traversing a simple child node structure.
 Test Outcomes
+[Test Result](./Class 3 files/class3TestResult.PNG)
 Additional Classes
+NodeModel
+(freeplane\src\main\java\org\freeplane\features\map\NodeModel.java)
+Represents a single node in the mind map. It holds the node's content, style, and structure, including links to parent and child nodes. NodeModel manages node-level operations such as inserting, removing, cloning, and accessing nodes within the hierarchical map structure.
+SingleNodeList
+(freeplane\src\main\java\org\freeplane\features\map\SingleNodeList.java)
+A lightweight container class that holds a single NodeModel object. It provides a list-like interface for cases where a node needs to represent a clone or a simplified child list. Used internally by NodeModel to manage clone relationships without the overhead of full list structures.
 Bottom-Up Testing
+Code (was placed in
+freeplane/src/test/java/org/freeplane/features/map/NodeModelAndSingleNodeListSpec.java )
+@Test
+public void NodeModelCreate() {
+	MapModel map = null;
+	NodeModel node = new NodeModel("root", map);
+	assertEquals("root", node.getUserObject());
+}
 
+Test creating a NodeModel with a specific userObject and verifying that getUserObject() correctly returns the initial value.
+@Test
+public void NodeModelInsertChild() {
+	MapModel map = null;
+	NodeModel parent = new NodeModel("parent", map);
+	NodeModel child = new NodeModel("child", map);
+	parent.insert(child);
+	assertEquals(1, parent.getChildCount());
+}
+
+Test inserting a child node into a parent NodeModel, and check whether the number of children increases correctly.
+@Test
+public void NodeModelGetChildAt() {
+	MapModel map = null;
+	NodeModel parent = new NodeModel("parent", map);
+	NodeModel child = new NodeModel("child", map);
+	parent.insert(child);
+	assertEquals(child, parent.getChildAt(0));
+}
+
+Test whether the inserted child can be retrieved using getChildAt(0) from the parent node.
+@Test
+public void NodeModelSetUserObject() {
+	MapModel map = null;
+	NodeModel node = new NodeModel("old", map);
+	node.setUserObject("new");
+	assertEquals("new", node.getUserObject());
+}
+
+Test setting a new userObject value to a node and verify the update using getUserObject().
+@Test
+public void SingleNodeListCreate() {
+	MapModel map = null;
+	NodeModel node = new NodeModel("single", map);
+	SingleNodeList list = new SingleNodeList(node, null);
+	assertNotNull(list);
+}
+Test creation of a SingleNodeList and ensure it is not null after initialization.
+@Test
+public void SingleNodeListIterate() {
+	MapModel map = null;
+	NodeModel node = new NodeModel("single", map);
+	SingleNodeList list = new SingleNodeList(node, null);
+
+	NodeModel iteratedNode = null;
+	for (NodeModel n : list) {
+    	iteratedNode = n;
+	}
+	assertEquals(node, iteratedNode);
+}
+
+Test whether SingleNodeList supports iteration and whether it returns the expected single element during a for-each loop.
+[Bottom Up Test Result](./Class 3 files/class3TestBottomUp.PNG)
 Class 4
 
 Selected Class
