@@ -1,9 +1,75 @@
 Class 1
 Selected Class
-Test Suite
+    NodeModel.java
+
+    Directory:
+    freeplane\src\main\java\org\freeplane\features\map\NodeModel.java
+    Test Suite
+    1. Ensure dependencies are present in build.gradle:
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    testImplementation 'org.mockito:mockito-core:5.2.0'
+
+    test {
+        useJUnitPlatform()
+    }
+
+    2. Place the test file at:	freeplane/freeplane/src/test/java/org/freeplane/features/map/NodeModelClassTest.java
+
+    3. Run tests from the project root or module directory:
+    cd freeplane/freeplane
+    gradle test
+
+    or to run only this test class:
+    gradle test --tests org.freeplane.features.map.NodeModelClassTest
+
+    4. View the test report: Open freeplane/freeplane/build/reports/tests/test/index.html in your browser to see the results.
+
+    Tests:
+    testSetAndGetText
+    Verifies that the setText and getText methods correctly set and retrieve the node's text content.
+
+    testInsertAndGetChild
+    Checks that inserting a child node increases the parent's child count, allows retrieval by index, and sets the correct parent reference for the child.
+
+    testFoldedState
+    Tests the isFolded and setFolded methods to ensure the node's folded (collapsed/expanded) state can be toggled and queried accurately.
+
+    testSetAndGetSide
+    Ensures that the node's side (e.g., TOP_OR_LEFT) can be set and retrieved using setSide and getSide.
+
+    testSetAndGetUserObject
+    Verifies that an arbitrary user object can be attached to the node and retrieved with setUserObject and getUserObject.
+
+    testChildrenListUnmodifiable
+    Confirms that the list returned by getChildren is unmodifiable, i.e., attempts to add elements throw an exception.
+
+    testIsLeaf
+    Checks if the node correctly reports being a leaf (no children) and updates this status after a child is inserted.
+
+    testSetAndGetXmlText
+    Tests setting and retrieving the node's XML text representation, ensuring it is stored and returned in the expected format.
+
+    testDepth
+    Verifies that the depth method accurately reports the node's depth in the tree structure (root = 0, child = 1, grandchild = 2, etc.).
 Test Outcomes
+    pic
 Additional Classes
+    MapModel
+    (freeplane\src\main\java\org\freeplane\features\map\MapModel.java)
+    Manages the structure and data of the mind map, storing and organizing NodeModel objects in a tree. It provides methods for adding, removing, and accessing nodes, and notifies listeners about changes to nodes or the map.
+
+    MapController
+    (freeplane\src\main\java\org\freeplane\features\map\MapController.java)
+    Handles user actions and logic for the mind map. It operates on NodeModel objects by selecting, folding/unfolding, sorting, and updating nodes. It coordinates changes between the UI and the underlying MapModel, ensuring that operations on nodes are reflected in both the data and the interface.
 Bottom-Up Testing
+    testInsertNodeAndGetChild:
+      Verifies that inserting a child node into a parent updates the parent's child count and allows correct retrieval of the child.
+    testMapControllerSelect:
+      Ensures that the select method of MapController can be called with a NodeModel and that the call is properly registered (using Mockito verification).
+    testSortNodesByDepth:
+      Demonstrates how to call the sortNodesByDepth method on a list of nodes. (Note: The actual sorting logic is not tested here since a real MapController object is not used.)
+    
+    pic
 
 Class 2
 Class 2
