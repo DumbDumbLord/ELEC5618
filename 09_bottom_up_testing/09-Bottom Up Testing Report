@@ -291,7 +291,148 @@ Checked toString method of command showing its ExploringStep type and searchedSt
 
 Class 5
 Selected Class
+NodeStyleController.java
+Directory:
+freeplane/src/main/java/org/freeplane/features/nodestyle/NodeStyleController.java
+
 Test Suite
+Ensure dependencies are present in build.gradle (freeplane/freeplane/build.gradle):
+testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+testImplementation 'org.mockito:mockito-core:5.2.0'
+testImplementation 'org.assertj:assertj-core:3.26.0'
+test {
+    useJUnitPlatform()
+}
+Place the test file at: freeplane/freeplane/src/test/java/org/freeplane/features/nodestyle/NodeStyleControllerTest.java
+test {
+    useJUnitPlatform() // Enable JUnit 5 platform support
+}
+testGetFont_UsesNodeStyleModelOverride: Verifies getFont prioritizes font attributes from the node's NodeStyleModel when present (mocked).
+testGetFont_UsesAppliedStyleWhenNoOverride: Checks getFont uses attributes from the logical style (obtained via mocked LogicalStyleController) if no node override exists.
+testGetFont_UsesDefaultWhenNoStyle: Ensures getFont returns the system default font when neither node nor style provides font information.
+testGetColor_PrecedenceCheck: Verifies getColor correctly follows precedence: node's NodeStyleModel > applied style > default color.
+testGetBackgroundColor_PrecedenceCheck: Similar test for getBackgroundColor.
+testGetShapeConfiguration_PrecedenceCheck: Verifies getShapeConfiguration follows precedence: node's NodeStyleModel > applied style > default (AS_PARENT).
+testGetMaxWidth_MinWidth_PrecedenceCheck: Verifies getMaxWidth/getMinWidth follows precedence: node's NodeSizeModel > applied style > default values.
+testGetBorderProperties_PrecedenceCheck: Verifies retrieval for border properties (Color, Width, Dash, etc.) follows precedence: node's NodeBorderModel > applied style > defaults.
+testIsBold_Italic_StrikedThrough_ComputedCorrectly: Checks boolean style methods return correct values based on the final computed font from various sources.
+
 Test Outcomes
+Ensure that all style-related methods work as expected.
+Verify that styles are correctly applied, inherited, and persisted.
+Confirm that invalid operations are handled gracefully.
+
 Additional Classes
+NodeModel.java (freeplane/src/main/java/org/freeplane/features/map/NodeModel.java)
+Description: Holds node data and extensions (NodeStyleModel, etc.). In unit tests, it's mocked. In bottom-up tests, its state (and attached extensions) is verified after controller actions. Unit tested in Class 1.
+NodeStyleModel.java (freeplane/src/main/java/org/freeplane/features/nodestyle/NodeStyleModel.java)
+Description: Stores node-specific style overrides. Mocked in unit tests. State verified in bottom-up tests after actions from MNodeStyleController. Assumed unit-tested.
+NodeSizeModel.java (freeplane/src/main/java/org/freeplane/features/nodestyle/NodeSizeModel.java)
+Description: Stores node-specific size constraints. Mocked in unit tests. State verified in bottom-up tests. Assumed unit-tested.
+NodeBorderModel.java (freeplane/src/main/java/org/freeplane/features/nodestyle/NodeBorderModel.java)
+Description: Stores node-specific border properties. Mocked in unit tests. State verified in bottom-up tests. Assumed unit-tested.
+MNodeStyleController.java (freeplane/src/main/java/org/freeplane/features/nodestyle/mindmapmode/MNodeStyleController.java)
+Description: Subclass providing actions (setColor, setBold, etc.) that modify the style models. These actions are the focus of the bottom-up integration tests.
+
 Bottom-Up Testing
+File:freeplane/src/test/java/org/freeplane/features/nodestyle/NodeStyleModificationIntegrationTest.java
+
+import org.freeplane.features.map.NodeModel;
+import org.freeplane.features.nodestyle.NodeStyleModel;
+import org.freeplane.features.nodestyle.NodeSizeModel;
+import org.freeplane.features.nodestyle.NodeBorderModel;
+import org.freeplane.features.nodestyle.mindmapmode.MNodeStyleController;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class NodeStyleModificationIntegrationTest {
+
+    @Test
+    public void testSetStyle() {
+        // Initialize lower-level class
+        NodeModel node = new NodeModel("Test Node", null);
+        NodeStyleModel style = new NodeStyleModel();
+        style.setFontFamily("Arial");
+        style.setFontSize(14);
+
+        // Use MNodeStyleController to modify style
+        MNodeStyleController controller = new MNodeStyleController(null);
+        controller.setNodeStyle(node, style);
+
+        // Verify interaction and state
+        assertEquals(style, NodeStyleModel.getNodeStyle(node));
+        assertEquals("Arial", NodeStyleModel.getFontFamily(node));
+        assertEquals(14, NodeStyleModel.getFontSize(node));
+    }
+
+    @Test
+    public void testRemoveStyle() {
+        // Initialize with a style
+        NodeModel node = new NodeModel("Test Node", null);
+        NodeStyleModel style = new NodeStyleModel();
+        style.setFontFamily("Arial");
+        MNodeStyleController controller = new MNodeStyleController(null);
+        controller.setNodeStyle(node, style);
+
+        // Remove style and verify
+        controller.setNodeStyle(node, null);
+        assertNull(NodeStyleModel.getNodeStyle(node));
+    }
+
+    @Test
+    public void testApplyStyleToChildren() {
+        // Create parent-child hierarchy
+        NodeModel parent = new NodeModel("Parent", null);
+        NodeModel child = new NodeModel("Child", null);
+        parent.insert(child);
+
+        // Apply style to parent
+        NodeStyleModel style = new NodeStyleModel();
+        style.setFontFamily("Helvetica");
+        style.setFontSize(12);
+        MNodeStyleController controller = new MNodeStyleController(null);
+        controller.setNodeStyle(parent, style);
+
+        // Propagate style to children
+        controller.copyStyleToChildren(parent);
+
+        // Verify child inherited style
+        assertEquals("Helvetica", NodeStyleModel.getFontFamily(child));
+        assertEquals(12, NodeStyleModel.getFontSize(child));
+    }
+
+    @Test
+    public void testSetBorderProperties() {
+        // Initialize node and border model
+        NodeModel node = new NodeModel("Test Node", null);
+        NodeBorderModel border = new NodeBorderModel();
+        border.setBorderWidth(2);
+        border.setBorderColor(Color.RED);
+
+        // Use MNodeStyleController to set border
+        MNodeStyleController controller = new MNodeStyleController(null);
+        controller.setBorderModel(node, border);
+
+        // Verify interaction and state
+        assertEquals(2, NodeBorderModel.getBorderWidth(node));
+        assertEquals(Color.RED, NodeBorderModel.getBorderColor(node));
+    }
+
+    @Test
+    public void testSetSizeConstraints() {
+        // Initialize node and size model
+        NodeModel node = new NodeModel("Test Node", null);
+        NodeSizeModel size = new NodeSizeModel();
+        size.setMaxNodeWidth(200);
+        size.setMinNodeWidth(50);
+
+        // Use MNodeStyleController to set size
+        MNodeStyleController controller = new MNodeStyleController(null);
+        controller.setNodeSizeModel(node, size);
+
+        // Verify interaction and state
+        assertEquals(200, NodeSizeModel.getMaxNodeWidth(node));
+        assertEquals(50, NodeSizeModel.getMinNodeWidth(node));
+    }
+}
+
