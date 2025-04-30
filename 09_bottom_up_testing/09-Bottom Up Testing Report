@@ -6,11 +6,119 @@ Additional Classes
 Bottom-Up Testing
 
 Class 2
+Class 2
 Selected Class
+MapModel.java
+Directory:
+freeplane/src/main/java/org/freeplane/features/map/MapModel.java
 Test Suite
+1. Ensure dependencies are present in build.gradle（freeplane/build.gradle）:
+testImplementation 'junit:junit:4.13.2'
+testImplementation 'org.mockito:mockito-core:3.12.4'
+testImplementation 'org.assertj:assertj-core:3.26.0'
+2. Place the test file at:	freeplane/src/test/java/org/freeplane/features/map/MapModelSpec.java
+
+3. Run the tests:
+./gradlew :freeplane:test --tests org.freeplane.features.map.MapModelSpec
+
+4. View the test report: Open freeplane/build/reports/tests/test/index.html in your browser to see the results.
+
+Tests:
+shouldCreateMapAndSetRootNode
+Verifies that a root node can be created, assigned to a MapModel, and later retrieved correctly using getRootNode().
+shouldInsertChildNodesAndRetrieve
+Checks that child nodes can be inserted into a root node, retrieved by index, and that they are correctly registered and accessible using getNodeForID().
+shouldSimulateFullMapCreation
+Simulates the creation of a multi-level node hierarchy (root → childA → childB) and confirms proper parent-child relationships and node registration.
+shouldSetAndGetRootNode
+Tests MapModel.setRoot() and getRootNode() methods to ensure correct root node assignment and retrieval.
+shouldRegisterNodeAndFindById
+Verifies that a node with a specific ID can be registered using registryNode() and retrieved using getNodeForID().
+shouldSetAndGetReadOnlyFlag
+Tests that MapModel.setReadOnly() accurately updates the read-only flag, and isReadOnly() reflects the correct state.
+shouldSetAndGetURL
+Ensures that MapModel.setURL() correctly sets the URL, and both getURL() and getTitle() return the expected values.
+shouldRegisterNodesRecursively
+Checks that registryNodeRecursive() properly registers a node and all its children, allowing retrieval by ID for any node in the subtree.
+shouldSetAndCheckSavedStatusValidates the save state tracking by toggling 
+setSaved(true/false) and confirming the result through isSaved().
+shouldAddAndRemoveMapChangeListener
+Ensures that a map change listener can be added and removed from the MapModel without error (functional verification via control flow).
+shouldAddAndRemoveExtensions
+Tests the MapModel extension system by adding a dummy extension, verifying presence with containsExtension(), and removing it successfully with removeExtension().
 Test Outcomes
 Additional Classes
+NodeModel.java(src/main/java/org/freeplane/features/map/NodeModel.java)
+MapController.java(src/main/java/org/freeplane/features/map/MapController.java)
 Bottom-Up Testing
+shouldCreateMapAndSetRootNode
+Verifies that a NodeModel can be created, assigned as the root of a MapModel, and later retrieved using getRootNode(). It also checks that the node’s ID is preserved correctly.
+@Test
+   public void shouldCreateMapAndSetRootNode() {
+       root = new NodeModel(map);
+       root.setID("rootNode");
+       map.setRoot(root);
+
+
+       assertSame(root, map.getRootNode());
+       assertEquals("rootNode", map.getRootNode().getID());
+   }
+shouldInsertChildNodesAndRetrieve
+Tests the ability to insert multiple child nodes into the root node. It verifies that the children are retrievable by index, and that their IDs are correctly registered and retrievable via getNodeForID().
+@Test
+   public void shouldInsertChildNodesAndRetrieve() {
+       root = new NodeModel(map);
+       map.setRoot(root);
+
+
+       NodeModel child1 = new NodeModel(map);
+       child1.setID("child1");
+       root.insert(child1);
+
+
+       NodeModel child2 = new NodeModel(map);
+       child2.setID("child2");
+       root.insert(child2);
+
+
+       map.registryNode(child1);
+       map.registryNode(child2);
+
+
+       assertEquals(2, root.getChildCount());
+       assertSame(child1, root.getChildAt(0));
+       assertSame(child2, root.getChildAt(1));
+       assertSame(child1, map.getNodeForID("child1"));
+       assertSame(child2, map.getNodeForID("child2"));
+   }
+shouldSimulateFullMapCreation
+Simulates a nested node hierarchy (root → childA → childB) and ensures that the structure is built correctly. It validates that child nodes can be inserted at deeper levels and still be registered and accessed properly via their unique IDs.
+@Test
+   public void shouldSimulateFullMapCreation() {
+       root = new NodeModel(map);
+       root.setID("root123");
+       map.setRoot(root);
+
+
+       NodeModel childA = new NodeModel(map);
+       childA.setID("childA");
+       root.insert(childA);
+
+
+       NodeModel childB = new NodeModel(map);
+       childB.setID("childB");
+       childA.insert(childB);
+
+
+       map.registryNode(childA);
+       map.registryNode(childB);
+
+
+       assertEquals(childA, root.getChildAt(0));
+       assertEquals(childB, childA.getChildAt(0));
+       assertEquals(childB, map.getNodeForID("childB"));
+   }
+
 
 Class 3
 Selected Class
