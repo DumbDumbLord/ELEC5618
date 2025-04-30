@@ -136,178 +136,158 @@ Run Test-Cases:
 
 
 Method/Function 2
-Selected Method: 
-freeplane/freeplane_plugin_script/src/main/java/org/freeplane/plugin/script/addons/ManageAddOnsDialog.java
-	public ManageAddOnsDialog(final List<AddOnProperties> addOns) {
-		super((Frame) UITools.getMenuComponent(), TextUtils.getText("ManageAddOnsAction.text"), true);
-		// stolen from FileRevisionsDialog - no idea if actually needed
-		if (getOwner() != null) {
-			final Window[] ownedWindows = getOwner().getOwnedWindows();
-			for (Window w : ownedWindows) {
-				if (w.isVisible()) {
-					w.toBack();
-				}
+Selected Method:
+freeplane/freeplane/src/main/java/org/freeplane/features/map
+/NodeModel.java
+private int nextNodeIndex(NodeModel root, int index, final boolean leftSide, final int step) {
+		for(int i = index  + step; i >= 0 && i < getChildCount(); i+=step){
+			final NodeModel followingNode = getChildAt(i);
+			if(followingNode.isTopOrLeft(root) == leftSide) {
+				return i;
 			}
 		}
-		tabbedPane = new JTabbedPane();
-		tabbedPane.setPreferredSize(getPreferredSizeForWindow());
-		final ManageAddOnsPanel manageAddOnsPanel = new ManageAddOnsPanel(filterNonThemes(addOns));
-		final ManageAddOnsPanel manageThemesPanel = new ManageAddOnsPanel(filterThemes(addOns));
-		addOnInstallerPanel = new AddOnInstallerPanel(manageAddOnsPanel, manageThemesPanel);
-		tabbedPane.addTab(getText("tab.install"), createIcon("/images/install_addons.svg"), addOnInstallerPanel,
-		    getText("tab.install.tooltip"));
-		tabbedPane.addTab(getText("tab.manage"), createIcon("/images/manage_addons.svg"), manageAddOnsPanel,
-		    getText("tab.manage.tooltip"));
-		tabbedPane.addTab(getText("tab.manage.themes"), createIcon("/images/manage_themes.svg"), manageThemesPanel,
-		    getText("tab.manage.themes.tooltip"));
-		getContentPane().add(tabbedPane, BorderLayout.CENTER);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton closeButton = new JButton();
-				LabelAndMnemonicSetter.setLabelAndMnemonic(closeButton, TextUtils.getRawText("close_btn"));
-				closeButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						setVisible(false);
-					}
-				});
-				buttonPane.add(closeButton);
-			}
-		}
-		pack();
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		UITools.addEscapeActionToDialog(this);
+		return -1;
 	}
 
+
+Purpose:
+The purpose of this method is to:
+Starting from the given index + step, traverse child nodes with a step size of step, 
+find the first child node that satisfies the condition isTopOrLeft(root) == leftSide, and return its index. If not found, return -1.
+ 
 Flow Graph:
-Calculations: 
-	Number of Nodes (N): 7
-	Number of Edges (E): 10
-	Connected Components (P): 1​
-	Cyclomatic Complexity Formula:
-	V(G) = E - N + 2P = 10 - 7 + 2*1 = 5 
+
+Calculations:
+Number of Nodes (N): 7
+
+Number of Edges (E): 8
+
+Connected Components (P): 1
+
+Cyclomatic Complexity Formula:
+V(G) = E - N + 2P = 8 - 7 + 2*1 = 3
+
 Independent Paths:
-	Path 1: Owner is null
-	Flow: Start → Check if getOwner() != null → UI Setup → End
-	Scenario: The dialog has no owner.
-	Expected Behavior: The method skips the window iteration logic and proceeds directly to initialize the UI components.​
-	Path 2: Owner exists, but ownedWindows is empty
-	Flow: Start → Check if getOwner() != null → Retrieve ownedWindows → Loop over ownedWindows (no iterations) → UI Setup → End
-	Scenario: The dialog has an owner, but there are no owned windows.
-	Expected Behavior: The method retrieves an empty list of owned windows and proceeds to initialize the UI components without entering the loop.​
-	Path 3: Owner exists, one ownedWindow is not visible
-	Flow: Start → Check if getOwner() != null → Retrieve ownedWindows → Loop over ownedWindows → Check if w.isVisible() (false) → Continue loop → UI Setup → End
-	Scenario: The dialog has an owner with one owned window that is not visible.
-	Expected Behavior: The method checks the visibility of the window, finds it not visible, skips the w.toBack() call, and proceeds to initialize the UI components.​
-	Path 4: Owner exists, one ownedWindow is visible
-	Flow: Start → Check if getOwner() != null → Retrieve ownedWindows → Loop over ownedWindows → Check if w.isVisible() (true) → Execute w.toBack() → Continue loop → UI Setup → End
-	Scenario: The dialog has an owner with one owned window that is visible.
-	Expected Behavior: The method checks the visibility of the window, finds it visible, calls w.toBack() to send it to the back, and then proceeds to initialize the UI components.​
-	Path 5: Owner exists, multiple ownedWindows with mixed visibility
-	Flow: Start → Check if getOwner() != null → Retrieve ownedWindows → Loop over ownedWindows → For each w: Check if w.isVisible() → If true, execute w.toBack() → Continue loop → UI Setup → End
-	Scenario: The dialog has an owner with multiple owned windows, some visible and some not.
-	Expected Behavior: The method iterates over each owned window, sending the visible ones to the back using w.toBack(), and then proceeds to initialize the UI components.
+Path 1: Match found on the first try, returns i directly.
+(1) → (2) → (3) (Yes) → (4)
+Scenario:
+There are 3 child nodes. The first child node's isTopOrLeft returns true, while the other two return false.
+Expected Result:
+nextNodeIndex(null, -1, true) should return 0, which is the index of the first child node, because it is the first child that meets the condition (isTopOrLeft == true).
+Path 2: Loops multiple times, match found later, returns i.
+(1) → (2) → (3) (No) → (5) → (2) → (3) (Yes) → (4)
+Scenario:
+There are 3 child nodes. Only the second child node's isTopOrLeft returns true, while the other two return false.
 
-Test Cases:
-	Test Class 1: Owner is null
-	import org.junit.jupiter.api.Test;
-	import static org.junit.jupiter.api.Assertions.*;
-	import java.util.Collections;
-	public class ManageAddOnsDialogTest_NoOwner {
-	    @Test
-	    public void testConstructorWithNullOwner() {
-		// Since getOwner() is null, the window iteration should be skipped.
-		ManageAddOnsDialog dialog = new ManageAddOnsDialog(Collections.emptyList());
-		assertNotNull(dialog);
-		// Additional assertions can be added here to verify UI components if accessible.
-	    }
-	}
+Expected Result:
+nextNodeIndex(null, -1, true) should return 1, which is the index of the second child node, because it is the first child that meets the condition.
+Path 3: No match found, exits the loop, returns -1.
+(1) → (2) → (3) (No) → (5) → (2)... until (2) (No) → (6)
+Scenario:
+There are 3 child nodes, and all their isTopOrLeft methods return false.
 
-	 Test Class 2: Owner exists, but ownedWindows is empty
-	import org.junit.jupiter.api.Test;
-	import static org.junit.jupiter.api.Assertions.*;
-	import java.awt.Frame;
-	import java.util.Collections;
-	public class ManageAddOnsDialogTest_OwnerNoOwnedWindows {
-	    @Test
-	    public void testConstructorWithOwnerNoOwnedWindows() {
-		// Create a dummy Frame to act as the owner with no owned windows.
-		Frame owner = new Frame();
-		// Assuming UITools.getMenuComponent() returns this owner.
-		// You may need to mock UITools.getMenuComponent() to return 'owner' if possible.
+Expected Result:
+nextNodeIndex(null, -1, true) should return -1, indicating that none of the child nodes meet the condition.
 
-		ManageAddOnsDialog dialog = new ManageAddOnsDialog(Collections.emptyList());
-		assertNotNull(dialog);
-		// Additional assertions can be added here to verify UI components if accessible.
-	    }
-	}
+Test Cases：
+Path1Test.java：
+package org.freeplane.features.map;
 
-	Test Class 3: Owner exists, one ownedWindow is not visible
-	import org.junit.jupiter.api.Test;
-	import static org.junit.jupiter.api.Assertions.*;
-	import java.awt.Frame;
-	import java.awt.Window;
-	import java.util.Collections;
-	public class ManageAddOnsDialogTest_OwnerOneOwnedWindowNotVisible {
-	    @Test
-	    public void testConstructorWithOneOwnedWindowNotVisible() {
-		Frame owner = new Frame();
-		Window ownedWindow = new Window(owner);
-		ownedWindow.setVisible(false);
-		// Assuming UITools.getMenuComponent() returns 'owner'.
-		// You may need to mock UITools.getMenuComponent() to return 'owner' if possible.
-		ManageAddOnsDialog dialog = new ManageAddOnsDialog(Collections.emptyList());
-		assertNotNull(dialog);
-		// Additional assertions can be added here to verify UI components if accessible.
-	    }
-	}
 
-	 Test Class 4: Owner exists, one ownedWindow is visible
-	import org.junit.jupiter.api.Test;
-	import static org.junit.jupiter.api.Assertions.*;
-	import java.awt.Frame;
-	import java.awt.Window;
-	import java.util.Collections;
-	public class ManageAddOnsDialogTest_OwnerOneOwnedWindowVisible {
-	    @Test
-	    public void testConstructorWithOneOwnedWindowVisible() {
-		Frame owner = new Frame();
-		Window ownedWindow = new Window(owner);
-		ownedWindow.setVisible(true);
-		// Assuming UITools.getMenuComponent() returns 'owner'.
-		// You may need to mock UITools.getMenuComponent() to return 'owner' if possible.
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-		ManageAddOnsDialog dialog = new ManageAddOnsDialog(Collections.emptyList());
-		assertNotNull(dialog);
-		// Additional assertions can be added here to verify UI components if accessible.
-	    }
-	}
+class NodeModelFirstChildMatchesTest {
+    @Test
+    void testFirstChildMatches() {
+        NodeModel[] children = {
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return true; }
+            },
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return false; }
+            },
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return false; }
+            }
+        };
+        NodeModel node = new NodeModel(null) {
+            @Override public int getChildCount() { return children.length; }
+            @Override public NodeModel getChildAt(int index) { return children[index]; }
+        };
+        int result = node.nextNodeIndex(null, -1, true);
+        assertEquals(0, result);
+    }
+}
 
-	 Test Class 5: Owner exists, multiple ownedWindows with mixed visibility
-	import org.junit.jupiter.api.Test;
-	import static org.junit.jupiter.api.Assertions.*;
-	import java.awt.Frame;
-	import java.awt.Window;
-	import java.util.Collections;
-	public class ManageAddOnsDialogTest_OwnerMultipleOwnedWindowsMixedVisibility {
-	    @Test
-	    public void testConstructorWithMultipleOwnedWindowsMixedVisibility() {
-		Frame owner = new Frame();
-		Window visibleWindow = new Window(owner);
-		visibleWindow.setVisible(true);
-		Window invisibleWindow = new Window(owner);
-		invisibleWindow.setVisible(false);
-		// Assuming UITools.getMenuComponent() returns 'owner'.
-		// You may need to mock UITools.getMenuComponent() to return 'owner' if possible.
-		ManageAddOnsDialog dialog = new ManageAddOnsDialog(Collections.emptyList());
-		assertNotNull(dialog);
-		// Additional assertions can be added here to verify UI components if accessible.
-	    }
-	}
+
+Path2Test.java：
+package org.freeplane.features.map;
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+class NodeModelMiddleChildMatchesTest {
+    @Test
+    void testMiddleChildMatches() {
+        NodeModel[] children = {
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return false; }
+            },
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return true; }
+            },
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return false; }
+            }
+        };
+        NodeModel node = new NodeModel(null) {
+            @Override public int getChildCount() { return children.length; }
+            @Override public NodeModel getChildAt(int index) { return children[index]; }
+        };
+        int result = node.nextNodeIndex(null, -1, true);
+        assertEquals(1, result);
+    }
+}
+
+
+Path3Test.java：
+package org.freeplane.features.map;
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+class NodeModelNoChildMatchesTest {
+    @Test
+    void testNoChildMatches() {
+        NodeModel[] children = {
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return false; }
+            },
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return false; }
+            },
+            new NodeModel(null) {
+                @Override public boolean isTopOrLeft(NodeModel root) { return false; }
+            }
+        };
+        NodeModel node = new NodeModel(null) {
+            @Override public int getChildCount() { return children.length; }
+            @Override public NodeModel getChildAt(int index) { return children[index]; }
+        };
+        int result = node.nextNodeIndex(null, -1, true);
+        assertEquals(-1, result);
+    }
+}
+
+
 
 Run Test-Cases:
+
 
 Method/Function 3
 Selected Method: 
