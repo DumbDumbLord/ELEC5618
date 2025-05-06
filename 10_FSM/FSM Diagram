@@ -7,3 +7,80 @@ based on input data (which can be obtained visually by the tester if it refers t
 • Include the description of the FSM in a formal test case description template containing information about
 the type of test, purpose, prerequisite, input data, etc.
 Slide 3 of 4
+
+
+
+
+
+
+Function5
+1. Selected Functionality
+I've chosen to test Freeplane's mind map export functionality, which has been created for:
+Exporting the current mind map to various file formats (e.g., PNG, JPEG, PDF, SVG).
+Allowing the user to choose the export format.
+Ensuring the exported file is created and contains the mind map content.
+
+2.FSM Diagram
+
+3.Test Cases
+Test Case 1: Export to PNG Path
+Test Item
+Description
+Test Case ID
+EXPORT-01
+Type of Test
+Black-box Testing (GUI Functional Test)
+Path Tested
+S0 → S1 → S2 → S5 → S6 → S0
+Purpose
+Verify that a mind map can be successfully exported to PNG format.
+Prerequisite
+1. Freeplane installed and running. &lt;br> 2. A mind map is created or loaded.
+Input Data
+1. An open mind map. &lt;br> 2. Mouse clicks for menu navigation and selection. &lt;br> 3. Filename for export.
+Steps
+1. With a mind map open (S0), navigate to "File" -> "Export Map..." (E0) to open the export dialog (S1). &lt;br> 2. Select "PNG" as the export format (E1) (S2). &lt;br> 3. Click the "Save" or "Export" button to proceed (E4), opening the system save dialog (S5). &lt;br> 4. Enter a filename (e.g., "MyMap.png") and choose a save location. Click "Save" (E5). &lt;br> 5. Verify that the export process completes, and a PNG file is created in the specified location (S6). &lt;br> 6. Verify the Freeplane interface returns to the main map view (E8) (S0). &lt;br> 7. Open the exported PNG file and verify it accurately represents the mind map.
+Expected Result
+The mind map is successfully exported as a PNG file. The file is viewable and accurately reflects the mind map content and structure.
+
+Test Case 2: Export to PDF Path and Cancel
+Test Item
+Description
+Test Case ID
+EXPORT-02
+Type of Test
+Black-box Testing (GUI Functional Test)
+Path Tested
+S0 → S1 → S3 → S5 → S7 → S0
+Purpose
+Verify that the PDF export process can be cancelled from the system save dialog.
+Prerequisite
+1. Freeplane installed and running. &lt;br> 2. A mind map is created or loaded.
+Input Data
+1. An open mind map. &lt;br> 2. Mouse clicks.
+Steps
+1. With a mind map open (S0), navigate to "File" -> "Export Map..." (E0) to open the export dialog (S1). &lt;br> 2. Select "PDF" as the export format (E2) (S3). &lt;br> 3. Click the "Save" or "Export" button (E4) to open the system save dialog (S5). &lt;br> 4. Click the "Cancel" button in the system save dialog (E7) (S7). &lt;br> 5. Verify that no PDF file is created. &lt;br> 6. Verify the Freeplane interface returns to the main map view (E8) (S0).
+Expected Result
+The export process is cancelled. No PDF file is generated, and the application returns to the map editing state without error.
+
+Test Case 3: Cancel Export from Format Selection
+Test Item
+Description
+Test Case ID
+EXPORT-03
+Type of Test
+Black-box Testing (GUI Functional Test)
+Path Tested
+S0 → S1 → S7 → S0
+Purpose
+Verify that the export process can be cancelled directly from the export format selection dialog.
+Prerequisite
+1. Freeplane installed and running. &lt;br> 2. A mind map is created or loaded.
+Input Data
+1. An open mind map. &lt;br> 2. Mouse clicks.
+Steps
+1. With a mind map open (S0), navigate to "File" -> "Export Map..." (E0) to open the export dialog (S1). &lt;br> 2. Close the export dialog without selecting a format or clicking "Save" (e.g., by clicking the 'X' button or pressing 'Esc' if applicable) (E6) (S7). &lt;br> 3. Verify that no file is created. &lt;br> 4. Verify the Freeplane interface returns to the main map view (E8) (S0).
+Expected Result
+The export process is cancelled. No file is generated, and the application returns to the map editing state without error.
+
+
