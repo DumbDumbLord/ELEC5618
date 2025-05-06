@@ -1,0 +1,9 @@
+FSM Diagram
+• Select one functionality of your product for which to write a detailed test using FSMs.
+• Communicate your choice of functionality to the rest of the team so that all members use a different one.
+• Write a detailed description of the FSM used to test this functionality. The FSM must have at least
+three different paths all related to the same functionality. The decision of which path to select must be
+based on input data (which can be obtained visually by the tester if it refers to GUI elements).
+• Include the description of the FSM in a formal test case description template containing information about
+the type of test, purpose, prerequisite, input data, etc.
+Slide 3 of 4
