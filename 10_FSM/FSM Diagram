@@ -1,9 +1,95 @@
 FSM Diagram
-• Select one functionality of your product for which to write a detailed test using FSMs.
-• Communicate your choice of functionality to the rest of the team so that all members use a different one.
-• Write a detailed description of the FSM used to test this functionality. The FSM must have at least
-three different paths all related to the same functionality. The decision of which path to select must be
-based on input data (which can be obtained visually by the tester if it refers to GUI elements).
-• Include the description of the FSM in a formal test case description template containing information about
-the type of test, purpose, prerequisite, input data, etc.
-Slide 3 of 4
+Function1
+1.Selected Functionality
+2.FSM Diagram
+3.Test Cases
+Function2
+1.Selected Functionality
+2.FSM Diagram
+3.Test Cases
+Function3
+1.Selected Functionality
+2.FSM Diagram
+3.Test Cases
+
+Function4
+1.Selected Functionality
+Testing filtering functionality of Freeplane.
+filters mindmap with regular quick filter
+filters mindmap with ‘and filter’
+filters mindmap with ‘or filter’
+
+2.FSM Diagram
+
+3.Test Cases
+Testing Regular Quick filter
+
+Test Case ID
+01
+Type of Test
+Blackbox
+Path Tested
+S1 → S2  → S1
+Purpose
+Testing the basic quick filter feature
+Prerequisite 
+Freeplane installed and running.
+Input Data
+A mindmap with several nodes used for filtering and searching
+Word used for filtering
+Steps
+Run Freeplane with a already selected/made mindmap (S1)
+Enter word “...” in search bar and click quick filter button (S12)
+Check map has been folded into a version that only shows matching nodes with filters.
+Click quick filter button, again to exit filter (S21)
+Validate map is returned to original unfolded form.
+
+Testing ‘and filter’
+
+Test Case ID
+02
+Type of Test
+Blackbox
+Path Tested
+S1 → S3  → S1
+Purpose
+Testing the ‘and filter’ feature
+Prerequisite 
+Freeplane installed and running.
+Input Data
+A mindmap with several nodes used for filtering and searching
+Word used for filtering
+Steps
+Run Freeplane with a already selected/made mindmap (S1)
+Enter word “...” in search bar and click and filter button (S13)
+Check map has been folded into a version that only shows matching nodes with ‘and’ filters.
+Click quick filter button to exit filter (S31)
+Validate map is returned to original unfolded form.
+
+Testing ‘or filter’
+
+Test Case ID
+03
+Type of Test
+Blackbox
+Path Tested 
+S1 → S4  → S1
+Purpose
+Testing the ‘or filter’ feature
+Prerequisite
+Freeplane installed and running.
+Input Data
+A mindmap with several nodes used for filtering and searching
+Word used for filtering
+Steps
+
+Run Freeplane with a already selected/made mindmap (S1)
+Enter word “...” in search bar and click ‘or’ filter button (S13)
+Check map has been folded into a version that only shows matching nodes with ‘or’ filters.
+Click quick filter button to exit filter (S31)
+Validate map is returned to original unfolded form.
+
+Function5
+1.Selected Functionality
+2.FSM Diagram
+3.Test Cases
