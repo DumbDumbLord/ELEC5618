@@ -1,9 +1,105 @@
 FSM Diagram
 
 Function1
-1.Selected Functionality
+1. Selected Functionality
+I've chosen to test Freeplane's core node folding/unfolding functionality, which has been created for:
+Fold nodes to hide child nodes
+Unfold nodes to reveal child nodes
+Recursively fold/unfold entire subtrees
+
 2.FSM Diagram
+
 3.Test Cases
+Test Case 1: Basic Fold/Unfold Path
+Test Item
+Description
+Test Case ID
+FOLD-01
+Type of Test
+Black-box Testing (GUI Functional Test)
+Path Tested
+S1 → S2 → S1
+Purpose
+Verify basic node folding and unfolding functionality
+Prerequisite
+1. Freeplane installed and running
+2. Parent node with children created
+Input Data
+1. Parent node containing child nodes
+2. Mouse click events
+Steps
+1. Click fold icon (E1) on fully expanded node (S1)
+2. Verify node enters folded state (S2), child nodes invisible
+3. Click unfold icon (E2) on folded node (S2)
+4. Verify node returns to fully expanded state (S1), all children visible
+Expected Result
+Node correctly toggles between expanded and folded states
+Actual Result
+[To be filled after execution]
+Status
+[Pass/Fail]
+
+Test Case 2: Recursive Fold Path
+Test Item
+Description
+Test Case ID
+FOLD-02
+Type of Test
+Black-box Testing (GUI Functional Test)
+Path Tested
+S1 → S4 → S1
+Purpose
+Verify recursive folding functionality
+Prerequisite
+1. Freeplane installed and running
+2. Multi-level node structure created
+Input Data
+1. Multi-level node structure
+2. Ctrl+Click event
+Steps
+1. Ctrl+Click fold icon (E3) on fully expanded node (S1)
+2. Verify entire subtree enters recursively folded state (S4), all descendants hidden
+3. Click unfold icon (E2) on recursively folded node (S4)
+4. Verify node returns to fully expanded state (S1), all descendants visible
+Expected Result
+Entire subtree correctly folds and unfolds recursively
+Actual Result
+[To be filled after execution]
+Status
+[Pass/Fail]
+
+Test Case 3: Partial Expansion Path
+Test Item
+Description
+Test Case ID
+FOLD-03
+Type of Test
+Black-box Testing (GUI Functional Test)
+Path Tested
+S1 → S2 → S3 → S1
+Purpose
+Verify partial expansion functionality
+Prerequisite
+1. Freeplane installed and running
+2. Parent node with multi-level children created
+Input Data
+1. Multi-level node structure
+2. Mouse click events
+3. Shift+Click event
+Steps
+1. Click fold icon (E1) on fully expanded node (S1)
+2. Verify node enters folded state (S2)
+3. Shift+Click unfold icon (E4)
+4. Verify node enters partially expanded state (S3), only direct children visible
+5. Normal click unfold icon (E2)
+6. Verify node returns to fully expanded state (S1)
+Expected Result
+Node correctly enters partially expanded state and returns to fully expanded state
+Actual Result
+[To be filled after execution]
+Status
+[Pass/Fail]
+
 
 Function2
 1.Selected Functionality
