@@ -1,17 +1,240 @@
 FSM Diagram
-• Select one functionality of your product for which to write a detailed test using FSMs.
-• Communicate your choice of functionality to the rest of the team so that all members use a different one.
-• Write a detailed description of the FSM used to test this functionality. The FSM must have at least
-three different paths all related to the same functionality. The decision of which path to select must be
-based on input data (which can be obtained visually by the tester if it refers to GUI elements).
-• Include the description of the FSM in a formal test case description template containing information about
-the type of test, purpose, prerequisite, input data, etc.
-Slide 3 of 4
+
+Function1
+1.Selected Functionality
+2.FSM Diagram
+3.Test Cases
+
+Function2
+1.Selected Functionality
+I've chosen to test Freeplane’s node deletion and undo functionality, which supports:
+Deleting a selected node from the mind map
+Undoing a deletion to restore the node
+Redoing the deletion after undo
+Ensuring the correct node is restored or removed at each step
+2.FSM Diagram
+FSMfunction2.png
+3.Test Cases
+Test Case 1: Basic Delete and Undo Path
+Test Item
+ Description
+Test Case ID
+ DEL-01
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S0 → S1 → S2 → S3
+Purpose
+ Verify that a selected node can be deleted and successfully restored using the Undo function.
+Prerequisite
+Freeplane is installed and running
 
 
+A map with at least one node present
 
 
+Input Data
+A selected node
 
+
+Delete key and Ctrl+Z keyboard inputs
+
+
+Steps
+Click on an existing node to select it (S0 → S1)
+
+
+Press the Delete key to remove the selected node (S1 → S2)
+
+
+Press Ctrl+Z to perform Undo (S2 → S3)
+
+
+Verify that the previously deleted node reappears
+
+
+Expected Result
+ The node is deleted and then successfully restored using the Undo function.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+Test Case 2: Deletion Without Node Selection
+Test Item
+ Description
+Test Case ID
+ DEL-02
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S0 → S0
+Purpose
+ Verify that pressing the Delete key when no node is selected does not affect the map.
+Prerequisite
+Freeplane is installed and running
+
+
+No node is selected
+
+
+Input Data
+Delete key pressed without selecting any node
+
+
+Steps
+Ensure no node is currently selected (S0)
+
+
+Press the Delete key
+
+
+Observe the interface for any unintended changes
+
+
+Expected Result
+ No action is performed, and the system remains in the same state.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+Test Case 3: Delete → Undo → Redo Path
+Test Item
+ Description
+Test Case ID
+ DEL-03
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S0 → S1 → S2 → S3 → S2
+Purpose
+ Verify that a deleted node can be restored using Undo and then deleted again using Redo.
+Prerequisite
+Freeplane is installed and running
+A node is available for testing
+Input Data
+Node selection
+Delete key, Ctrl+Z, and Ctrl+Y inputs
+Steps
+Select a node (S0 → S1)
+Press the Delete key (S1 → S2)
+Press Ctrl+Z to undo (S2 → S3)
+Press Ctrl+Y to redo the deletion (S3 → S2)
+Expected Result
+ The node is deleted, successfully restored, and then removed again using Redo.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+Test Case 4: Undo Fails after Redo
+Test Item
+ Description
+Test Case ID
+ DEL-04
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S2 → S5
+Purpose
+ Verify that the Undo function fails or is disabled when redo has exhausted the undo stack.
+Prerequisite
+Freeplane is installed and running
+A node has been deleted and redone
+Input Data
+Node deletion
+Ctrl+Z and Ctrl+Y commands
+Steps
+Select and delete a node (S1 → S2)
+Press Ctrl+Z to undo (S2 → S3)
+Press Ctrl+Y to redo (S3 → S2)
+Attempt to undo again (S2 → S5)
+Expected Result
+ The system does not allow further undo; a warning may be shown or the operation ignored.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+
+Function3
+1.Selected Functionality
+2.FSM Diagram
+3.Test Cases
+
+Function4
+1.Selected Functionality
+Testing filtering functionality of Freeplane.
+filters mindmap with regular quick filter
+filters mindmap with ‘and filter’
+filters mindmap with ‘or filter’
+
+2.FSM Diagram
+
+3.Test Cases
+Testing Regular Quick filter
+
+Test Case ID
+01
+Type of Test
+Blackbox
+Path Tested
+S1 → S2  → S1
+Purpose
+Testing the basic quick filter feature
+Prerequisite 
+Freeplane installed and running.
+Input Data
+A mindmap with several nodes used for filtering and searching
+Word used for filtering
+Steps
+Run Freeplane with a already selected/made mindmap (S1)
+Enter word “...” in search bar and click quick filter button (S12)
+Check map has been folded into a version that only shows matching nodes with filters.
+Click quick filter button, again to exit filter (S21)
+Validate map is returned to original unfolded form.
+
+Testing ‘and filter’
+
+Test Case ID
+02
+Type of Test
+Blackbox
+Path Tested
+S1 → S3  → S1
+Purpose
+Testing the ‘and filter’ feature
+Prerequisite 
+Freeplane installed and running.
+Input Data
+A mindmap with several nodes used for filtering and searching
+Word used for filtering
+Steps
+Run Freeplane with a already selected/made mindmap (S1)
+Enter word “...” in search bar and click and filter button (S13)
+Check map has been folded into a version that only shows matching nodes with ‘and’ filters.
+Click quick filter button to exit filter (S31)
+Validate map is returned to original unfolded form.
+
+Testing ‘or filter’
+
+Test Case ID
+03
+Type of Test
+Blackbox
+Path Tested 
+S1 → S4  → S1
+Purpose
+Testing the ‘or filter’ feature
+Prerequisite
+Freeplane installed and running.
+Input Data
+A mindmap with several nodes used for filtering and searching
+Word used for filtering
+Steps
+
+Run Freeplane with a already selected/made mindmap (S1)
+Enter word “...” in search bar and click ‘or’ filter button (S13)
+Check map has been folded into a version that only shows matching nodes with ‘or’ filters.
+Click quick filter button to exit filter (S31)
+Validate map is returned to original unfolded form.
 
 Function5
 1. Selected Functionality
@@ -82,5 +305,3 @@ Steps
 1. With a mind map open (S0), navigate to "File" -> "Export Map..." (E0) to open the export dialog (S1). &lt;br> 2. Close the export dialog without selecting a format or clicking "Save" (e.g., by clicking the 'X' button or pressing 'Esc' if applicable) (E6) (S7). &lt;br> 3. Verify that no file is created. &lt;br> 4. Verify the Freeplane interface returns to the main map view (E8) (S0).
 Expected Result
 The export process is cancelled. No file is generated, and the application returns to the map editing state without error.
-
-
