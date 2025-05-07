@@ -3,10 +3,156 @@ Function1
 1.Selected Functionality
 2.FSM Diagram
 3.Test Cases
+
 Function2
 1.Selected Functionality
+I've chosen to test Freeplane’s node deletion and undo functionality, which supports:
+Deleting a selected node from the mind map
+Undoing a deletion to restore the node
+Redoing the deletion after undo
+Ensuring the correct node is restored or removed at each step
 2.FSM Diagram
+FSMfunction2.png
 3.Test Cases
+Test Case 1: Basic Delete and Undo Path
+Test Item
+ Description
+Test Case ID
+ DEL-01
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S0 → S1 → S2 → S3
+Purpose
+ Verify that a selected node can be deleted and successfully restored using the Undo function.
+Prerequisite
+Freeplane is installed and running
+
+
+A map with at least one node present
+
+
+Input Data
+A selected node
+
+
+Delete key and Ctrl+Z keyboard inputs
+
+
+Steps
+Click on an existing node to select it (S0 → S1)
+
+
+Press the Delete key to remove the selected node (S1 → S2)
+
+
+Press Ctrl+Z to perform Undo (S2 → S3)
+
+
+Verify that the previously deleted node reappears
+
+
+Expected Result
+ The node is deleted and then successfully restored using the Undo function.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+Test Case 2: Deletion Without Node Selection
+Test Item
+ Description
+Test Case ID
+ DEL-02
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S0 → S0
+Purpose
+ Verify that pressing the Delete key when no node is selected does not affect the map.
+Prerequisite
+Freeplane is installed and running
+
+
+No node is selected
+
+
+Input Data
+Delete key pressed without selecting any node
+
+
+Steps
+Ensure no node is currently selected (S0)
+
+
+Press the Delete key
+
+
+Observe the interface for any unintended changes
+
+
+Expected Result
+ No action is performed, and the system remains in the same state.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+Test Case 3: Delete → Undo → Redo Path
+Test Item
+ Description
+Test Case ID
+ DEL-03
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S0 → S1 → S2 → S3 → S2
+Purpose
+ Verify that a deleted node can be restored using Undo and then deleted again using Redo.
+Prerequisite
+Freeplane is installed and running
+A node is available for testing
+Input Data
+Node selection
+Delete key, Ctrl+Z, and Ctrl+Y inputs
+Steps
+Select a node (S0 → S1)
+Press the Delete key (S1 → S2)
+Press Ctrl+Z to undo (S2 → S3)
+Press Ctrl+Y to redo the deletion (S3 → S2)
+Expected Result
+ The node is deleted, successfully restored, and then removed again using Redo.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+Test Case 4: Undo Fails after Redo
+Test Item
+ Description
+Test Case ID
+ DEL-04
+Type of Test
+ Black-box Testing (GUI Functional Test)
+Path Tested
+ S2 → S5
+Purpose
+ Verify that the Undo function fails or is disabled when redo has exhausted the undo stack.
+Prerequisite
+Freeplane is installed and running
+A node has been deleted and redone
+Input Data
+Node deletion
+Ctrl+Z and Ctrl+Y commands
+Steps
+Select and delete a node (S1 → S2)
+Press Ctrl+Z to undo (S2 → S3)
+Press Ctrl+Y to redo (S3 → S2)
+Attempt to undo again (S2 → S5)
+Expected Result
+ The system does not allow further undo; a warning may be shown or the operation ignored.
+Actual Result
+ [To be filled after execution]
+Status
+ [Pass/Fail]
+
 Function3
 1.Selected Functionality
 2.FSM Diagram
