@@ -31,7 +31,7 @@ FSM
 
 Log File
 [log file](./Function 4 files/function4log.PNG)
-Console.log outputs to the terminal, using test cases to test.
+System.out.println outputs to the terminal, using test cases to test.
 
 Probability Calculation Code
 [code](./Function 4 files/MarkovProbabilityCode(function4).py)
