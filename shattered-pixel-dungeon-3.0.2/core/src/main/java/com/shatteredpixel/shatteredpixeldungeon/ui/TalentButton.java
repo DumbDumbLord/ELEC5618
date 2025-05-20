@@ -234,6 +234,18 @@ public class TalentButton extends Button {
 	}
 
 	@Override
+	protected void onHoverStart() {
+		icon.brightness( 1.2f );
+		bg.brightness( 1.2f );
+	}
+
+	@Override
+	protected void onHoverEnd() {
+		icon.resetColor();
+		bg.resetColor();
+	}
+
+	@Override
 	protected String hoverText() {
 		return Messages.titleCase(talent.title());
 	}

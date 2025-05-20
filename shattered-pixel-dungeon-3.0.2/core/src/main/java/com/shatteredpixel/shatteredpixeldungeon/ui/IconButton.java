@@ -61,6 +61,16 @@ public class IconButton extends Button {
 		if (icon != null) icon.resetColor();
 	}
 	
+	@Override
+	protected void onHoverStart() {
+		if (icon != null) icon.brightness( 1.2f );
+	}
+	
+	@Override
+	protected void onHoverEnd() {
+		if (icon != null) icon.resetColor();
+	}
+
 	public void enable( boolean value ) {
 		active = value;
 		if (icon != null) icon.alpha( value ? 1.0f : 0.3f );

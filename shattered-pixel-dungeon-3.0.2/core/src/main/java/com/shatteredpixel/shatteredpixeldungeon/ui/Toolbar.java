@@ -765,6 +765,20 @@ public class Toolbar extends Component {
 			}
 		}
 		
+		@Override
+		protected void onHoverStart() {
+			base.brightness( 1.2f );
+		}
+		
+		@Override
+		protected void onHoverEnd() {
+			if (active) {
+				base.resetColor();
+			} else {
+				base.tint( BGCOLOR, 0.7f );
+			}
+		}
+
 		public void enable( boolean value ) {
 			if (value != active) {
 				if (icon != null) icon.alpha( value ? 1f : 0.4f);

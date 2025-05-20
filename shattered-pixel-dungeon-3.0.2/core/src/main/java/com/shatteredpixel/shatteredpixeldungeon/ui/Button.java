@@ -105,11 +105,13 @@ public class Button extends Component {
 					hoverTip.camera = camera();
 					alignTooltip(hoverTip);
 				}
+				Button.this.onHoverStart();
 			}
 
 			@Override
 			protected void onHoverEnd(PointerEvent event) {
 				killTooltip();
+				Button.this.onHoverEnd();
 			}
 		};
 		add( hotArea );
@@ -171,6 +173,8 @@ public class Button extends Component {
 	
 	protected void onPointerDown() {}
 	protected void onPointerUp() {}
+	protected void onHoverStart() {}
+	protected void onHoverEnd() {}
 	protected void onClick() {} //left click, default key type
 	protected void onRightClick() {}
 	protected void onMiddleClick() {}

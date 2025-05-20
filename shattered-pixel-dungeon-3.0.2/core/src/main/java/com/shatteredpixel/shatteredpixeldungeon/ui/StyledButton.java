@@ -101,7 +101,7 @@ public class StyledButton extends Button {
 	
 	@Override
 	protected void onPointerDown() {
-		bg.brightness( 1.2f );
+		bg.brightness( 1.3f );
 		Sample.INSTANCE.play( Assets.Sounds.CLICK );
 	}
 	
@@ -110,6 +110,16 @@ public class StyledButton extends Button {
 		bg.resetColor();
 	}
 	
+	@Override
+	protected void onHoverStart() {
+		bg.brightness( 1.2f );
+	}
+	
+	@Override
+	protected void onHoverEnd() {
+		bg.resetColor();
+	}
+
 	public void enable( boolean value ) {
 		active = value;
 		text.alpha( value ? 1.0f : 0.3f );

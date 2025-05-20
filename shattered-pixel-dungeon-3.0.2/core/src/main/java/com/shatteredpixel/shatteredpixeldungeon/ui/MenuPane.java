@@ -306,6 +306,16 @@ public class MenuPane extends Component {
 		}
 
 		@Override
+		protected void onHoverStart() {
+			bg.brightness( 1.2f );
+		}
+
+		@Override
+		protected void onHoverEnd() {
+			bg.resetColor();
+		}
+
+		@Override
 		protected void onClick() {
 			time = 0;
 			keyIcon.am = journalIcon.am = 1;
@@ -382,6 +392,16 @@ public class MenuPane extends Component {
 
 		@Override
 		protected void onPointerUp() {
+			image.resetColor();
+		}
+
+		@Override
+		protected void onHoverStart() {
+			image.brightness( 1.2f );
+		}
+
+		@Override
+		protected void onHoverEnd() {
 			image.resetColor();
 		}
 
