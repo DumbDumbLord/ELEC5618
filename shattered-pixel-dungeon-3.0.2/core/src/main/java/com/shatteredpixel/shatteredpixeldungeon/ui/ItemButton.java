@@ -44,12 +44,23 @@ public class ItemButton extends Component {
 		slot = new ItemSlot() {
 			@Override
 			protected void onPointerDown() {
-				bg.brightness(1.2f);
+				bg.brightness(1.3f);
 				Sample.INSTANCE.play(Assets.Sounds.CLICK);
 			}
 
 			@Override
 			protected void onPointerUp() {
+				bg.resetColor();
+			}
+
+			@Override
+			protected void onHoverStart() {
+				bg.brightness(1.2f);
+				Sample.INSTANCE.play(Assets.Sounds.CLICK);
+			}
+
+			@Override
+			protected void onHoverEnd() {
 				bg.resetColor();
 			}
 

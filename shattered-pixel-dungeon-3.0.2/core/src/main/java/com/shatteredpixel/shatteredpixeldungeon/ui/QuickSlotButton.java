@@ -136,6 +136,15 @@ public class QuickSlotButton extends Button {
 			protected void onPointerUp() {
 				sprite.resetColor();
 			}
+			
+			@Override
+			protected void onHoverStart() {
+				sprite.lightness( 0.6f );
+			}
+			@Override
+			protected void onHoverEnd() {
+				sprite.resetColor();
+			}
 
 			@Override
 			protected String hoverText() {

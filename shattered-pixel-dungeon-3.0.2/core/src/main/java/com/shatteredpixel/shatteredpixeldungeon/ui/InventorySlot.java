@@ -124,4 +124,13 @@ public class InventorySlot extends ItemSlot {
 		bg.brightness( 1.0f );
 	}
 
+	@Override
+	protected void onHoverStart() {
+		bg.brightness( 1.2f );
+	}
+
+	protected void onHoverEnd() {
+		bg.brightness( 1.0f );
+	}
+
 }
