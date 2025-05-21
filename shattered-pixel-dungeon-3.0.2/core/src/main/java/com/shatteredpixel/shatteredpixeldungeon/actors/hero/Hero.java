@@ -195,6 +195,8 @@ public class Hero extends Char {
 	
 	public static final int MAX_LEVEL = 30;
 
+	private float waterRegenTimer = 0f;//new
+
 	public static final int STARTING_STR = 10;
 	
 	private static final float TIME_TO_REST		    = 1f;
@@ -904,6 +906,28 @@ public class Hero extends Char {
 			}
 		}
 		
+		// ...existing code...
+		if (Dungeon.level.map[pos] == Terrain.WATER) {
+				waterRegenTimer += TICK; // TICK 通常为1f，表示每回合1秒
+				if (waterRegenTimer >= 20f) {
+						for (Item item : belongings.backpack.items) {
+								if (item instanceof com.shatteredpixel.shatteredpixeldungeon.items.Waterskin) {
+										com.shatteredpixel.shatteredpixeldungeon.items.Waterskin waterskin = (com.shatteredpixel.shatteredpixeldungeon.items.Waterskin) item;
+										if (!waterskin.isFull()) {
+												Dewdrop dew = new Dewdrop();
+												dew.setQuantity(1);
+												waterskin.collectDew(dew);
+												break; // 只补充第一个水袋
+										}
+								}
+						}
+						waterRegenTimer -= 20f;
+				}
+		} else {
+				waterRegenTimer = 0f; // 离开水面时重置计时
+		}
+		// ...existing code...
+
 		if(hasTalent(Talent.BARKSKIN) && Dungeon.level.map[pos] == Terrain.FURROWED_GRASS){
 			Barkskin.conditionallyAppend(this, (lvl*pointsInTalent(Talent.BARKSKIN))/2, 1 );
 		}
