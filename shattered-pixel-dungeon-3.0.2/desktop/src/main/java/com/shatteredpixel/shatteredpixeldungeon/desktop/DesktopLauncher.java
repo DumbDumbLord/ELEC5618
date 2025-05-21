@@ -186,6 +186,23 @@ public class DesktopLauncher {
 		config.setWindowIcon("icons/icon_16.png", "icons/icon_32.png", "icons/icon_48.png",
 				"icons/icon_64.png", "icons/icon_128.png", "icons/icon_256.png");
 
-		new Lwjgl3Application(new ShatteredPixelDungeon(new DesktopPlatformSupport()), config);
+		//new Lwjgl3Application(new ShatteredPixelDungeon(new DesktopPlatformSupport()), config);
+		new Lwjgl3Application(new ShatteredPixelDungeon(new DesktopPlatformSupport()) {
+			@Override
+			public void create() {
+				super.create();
+				com.badlogic.gdx.Gdx.input.setInputProcessor(new com.badlogic.gdx.InputAdapter() {
+					@Override
+					public boolean keyDown(int keycode) {
+						if (keycode == com.badlogic.gdx.Input.Keys.F12) {
+							com.shatteredpixel.shatteredpixeldungeon.utils.ScreenshotUtil.takeScreenshotToRoot();
+							System.out.println("Screenshot taken");
+							return true;
+						}
+						return false;
+					}
+				});
+			}
+		}, config);
 	}
 }
