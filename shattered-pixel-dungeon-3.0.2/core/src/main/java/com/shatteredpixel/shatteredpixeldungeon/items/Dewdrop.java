@@ -79,6 +79,10 @@ public class Dewdrop extends Item {
 		return true;
 	}
 
+	public void setQuantity(int quantity) {
+			this.quantity = quantity;
+	}
+
 	public static boolean consumeDew(int quantity, Hero hero, boolean force){
 		//20 drops for a full heal
 		int effect = Math.round( hero.HT * 0.05f * quantity );
