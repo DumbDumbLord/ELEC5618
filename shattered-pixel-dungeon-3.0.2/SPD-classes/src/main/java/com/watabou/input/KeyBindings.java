@@ -124,7 +124,11 @@ public class KeyBindings {
 		} else if (keyCode == 1004) {
 			return "Mouse 5";
 		}
-
+		
+		if (keyCode == Input.Keys.F12){
+			return "F12";
+		}
+		
 		if (keyCode == Input.Keys.UNKNOWN){
 			return "None";
 		} else if (keyCode == Input.Keys.PLUS){
