@@ -23,6 +23,7 @@ package com.shatteredpixel.shatteredpixeldungeon.ui;
 
 import com.shatteredpixel.shatteredpixeldungeon.SPDAction;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.PixelScene;
+import com.shatteredpixel.shatteredpixeldungeon.utils.ScreenshotUtil;
 import com.watabou.input.GameAction;
 import com.watabou.input.KeyBindings;
 import com.watabou.input.KeyEvent;
@@ -81,6 +82,9 @@ public class ScrollPane extends Component {
 						keyScroll += 1;
 					}
 					keyScroll = GameMath.gate(-1f, keyScroll, +1f);
+					return true;
+				} else if (action == SPDAction.SCREENSHOT && keyEvent.pressed) {
+					ScreenshotUtil.takeScreenshotToRoot();
 					return true;
 				}
 				return false;
