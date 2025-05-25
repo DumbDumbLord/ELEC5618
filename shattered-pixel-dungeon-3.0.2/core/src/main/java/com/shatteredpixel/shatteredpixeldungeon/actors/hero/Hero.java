@@ -195,7 +195,7 @@ public class Hero extends Char {
 	
 	public static final int MAX_LEVEL = 30;
 
-	private float waterRegenTimer = 0f;//new
+	// private float waterRegenTimer = 0f;//new
 
 	public static final int STARTING_STR = 10;
 	
@@ -906,27 +906,6 @@ public class Hero extends Char {
 			}
 		}
 		
-		// ...existing code...
-		if (Dungeon.level.map[pos] == Terrain.WATER) {
-				waterRegenTimer += TICK; // TICK 通常为1f，表示每回合1秒
-				if (waterRegenTimer >= 20f) {
-						for (Item item : belongings.backpack.items) {
-								if (item instanceof com.shatteredpixel.shatteredpixeldungeon.items.Waterskin) {
-										com.shatteredpixel.shatteredpixeldungeon.items.Waterskin waterskin = (com.shatteredpixel.shatteredpixeldungeon.items.Waterskin) item;
-										if (!waterskin.isFull()) {
-												Dewdrop dew = new Dewdrop();
-												dew.setQuantity(1);
-												waterskin.collectDew(dew);
-												break; // 只补充第一个水袋
-										}
-								}
-						}
-						waterRegenTimer -= 20f;
-				}
-		} else {
-				waterRegenTimer = 0f; // 离开水面时重置计时
-		}
-		// ...existing code...
 
 		if(hasTalent(Talent.BARKSKIN) && Dungeon.level.map[pos] == Terrain.FURROWED_GRASS){
 			Barkskin.conditionallyAppend(this, (lvl*pointsInTalent(Talent.BARKSKIN))/2, 1 );
@@ -2258,12 +2237,38 @@ public class Hero extends Char {
 		}
 	}
 
+	private int waterMoveCounter = 0;
+
 	@Override
 	public void move(int step, boolean travelling) {
 		boolean wasHighGrass = Dungeon.level.map[step] == Terrain.HIGH_GRASS;
+		boolean wasWater = Dungeon.level.map[pos] == Terrain.WATER;
 
 		super.move( step, travelling);
 		
+    // count water moves for waterskin replenishment
+    if (Dungeon.level.map[pos] == Terrain.WATER) {
+        if (wasWater && travelling) { // only count if we are still on water
+            waterMoveCounter++;
+            if (waterMoveCounter >= 20) {
+                for (Item item : belongings.backpack.items) {
+                    if (item instanceof com.shatteredpixel.shatteredpixeldungeon.items.Waterskin) {
+                        com.shatteredpixel.shatteredpixeldungeon.items.Waterskin waterskin = (com.shatteredpixel.shatteredpixeldungeon.items.Waterskin) item;
+                        if (!waterskin.isFull()) {
+                            Dewdrop dew = new Dewdrop();
+                            dew.setQuantity(1);
+                            waterskin.collectDew(dew);
+                            break; // only fill one waterskin per 20 water moves
+                        }
+                    }
+                }
+                waterMoveCounter = 0;
+            }
+        }
+    } else {
+        waterMoveCounter = 0; // refresh counter if not on water
+    }
+
 		if (!flying && travelling) {
 			if (Dungeon.level.water[pos]) {
 				Sample.INSTANCE.play( Assets.Sounds.WATER, 1, Random.Float( 0.8f, 1.25f ) );
