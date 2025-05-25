@@ -191,7 +191,8 @@ public class DesktopLauncher {
 			@Override
 			public void create() {
 				super.create();
-				com.badlogic.gdx.Gdx.input.setInputProcessor(new com.badlogic.gdx.InputAdapter() {
+				com.badlogic.gdx.InputProcessor gameInput = com.badlogic.gdx.Gdx.input.getInputProcessor();
+				com.badlogic.gdx.InputAdapter screenshotInput = new com.badlogic.gdx.InputAdapter() {
 					@Override
 					public boolean keyDown(int keycode) {
 						if (keycode == com.badlogic.gdx.Input.Keys.F12) {
@@ -201,7 +202,11 @@ public class DesktopLauncher {
 						}
 						return false;
 					}
-				});
+				};
+				com.badlogic.gdx.InputMultiplexer multiplexer = new com.badlogic.gdx.InputMultiplexer();
+				multiplexer.addProcessor(screenshotInput);
+				if (gameInput != null) multiplexer.addProcessor(gameInput);
+				com.badlogic.gdx.Gdx.input.setInputProcessor(multiplexer);
 			}
 		}, config);
 	}
